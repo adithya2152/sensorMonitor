@@ -1,0 +1,4742 @@
+{
+  "UsersData": {
+    "9CI64ReqZ6PrUis1trk46pRKfck2": {
+      "readings": {
+        "0": {
+          "altitude": 51.49,
+          "humidity": 55.11,
+          "mics5524": 3.3,
+          "mq5": 475,
+          "pressure": 1008.11,
+          "rain": 4095,
+          "temperature": 26.85,
+          "timestamp": 0,
+          "uv": 0.58
+        },
+        "1773037873": {
+          "humidity": 12,
+          "temperature": -0.5,
+          "timestamp": 1773037873
+        },
+        "1773037893": {
+          "humidity": 11.7,
+          "temperature": -0.5,
+          "timestamp": 1773037893
+        },
+        "1773037903": {
+          "humidity": 11.9,
+          "temperature": -0.6,
+          "timestamp": 1773037903
+        },
+        "1773037913": {
+          "humidity": 14.1,
+          "temperature": -0.5,
+          "timestamp": 1773037913
+        },
+        "1773037923": {
+          "humidity": 15.3,
+          "temperature": -0.2,
+          "timestamp": 1773037923
+        },
+        "1773037933": {
+          "humidity": 12.4,
+          "temperature": -0.2,
+          "timestamp": 1773037933
+        },
+        "1773037943": {
+          "humidity": 11.4,
+          "temperature": -0.2,
+          "timestamp": 1773037943
+        },
+        "1773037953": {
+          "humidity": 11,
+          "temperature": -0.2,
+          "timestamp": 1773037953
+        },
+        "1773037963": {
+          "humidity": 10.8,
+          "temperature": -0.2,
+          "timestamp": 1773037963
+        },
+        "1773037973": {
+          "humidity": 11,
+          "temperature": -0.2,
+          "timestamp": 1773037973
+        },
+        "1773037983": {
+          "humidity": 11.4,
+          "temperature": -0.3,
+          "timestamp": 1773037983
+        },
+        "1773037993": {
+          "humidity": 11,
+          "temperature": -0.3,
+          "timestamp": 1773037993
+        },
+        "1773038003": {
+          "humidity": 11,
+          "temperature": -0.3,
+          "timestamp": 1773038003
+        },
+        "1773038013": {
+          "humidity": 11.1,
+          "temperature": -0.3,
+          "timestamp": 1773038013
+        },
+        "1773038023": {
+          "humidity": 11.4,
+          "temperature": -0.4,
+          "timestamp": 1773038023
+        },
+        "1773038033": {
+          "humidity": 11.4,
+          "temperature": -0.4,
+          "timestamp": 1773038033
+        },
+        "1773038043": {
+          "humidity": 11.6,
+          "temperature": -0.4,
+          "timestamp": 1773038043
+        },
+        "1773118813": {
+          "humidity": 84.9,
+          "temperature": 26.7,
+          "timestamp": 1773118813
+        },
+        "1773118823": {
+          "humidity": 87,
+          "temperature": 26.7,
+          "timestamp": 1773118823
+        },
+        "1773118833": {
+          "humidity": 72.8,
+          "temperature": 26.3,
+          "timestamp": 1773118833
+        },
+        "1773118843": {
+          "humidity": 73.2,
+          "temperature": 26.1,
+          "timestamp": 1773118843
+        },
+        "1773118853": {
+          "humidity": 71.3,
+          "temperature": 26.1,
+          "timestamp": 1773118853
+        },
+        "1773118863": {
+          "humidity": 72.9,
+          "temperature": 26.1,
+          "timestamp": 1773118863
+        },
+        "1773118873": {
+          "humidity": 69.9,
+          "temperature": 26.1,
+          "timestamp": 1773118873
+        },
+        "1773118883": {
+          "humidity": 70.1,
+          "temperature": 26.1,
+          "timestamp": 1773118883
+        },
+        "1773118893": {
+          "humidity": 70.1,
+          "temperature": 26.1,
+          "timestamp": 1773118893
+        },
+        "1773118903": {
+          "humidity": 69.3,
+          "temperature": 26,
+          "timestamp": 1773118903
+        },
+        "1773118913": {
+          "humidity": 68.3,
+          "temperature": 26,
+          "timestamp": 1773118913
+        },
+        "1773118923": {
+          "humidity": 70.8,
+          "temperature": 26,
+          "timestamp": 1773118923
+        },
+        "1773118933": {
+          "humidity": 69.5,
+          "temperature": 26,
+          "timestamp": 1773118933
+        },
+        "1773118943": {
+          "humidity": 69.7,
+          "temperature": 26,
+          "timestamp": 1773118943
+        },
+        "1773118953": {
+          "humidity": 68.7,
+          "temperature": 26,
+          "timestamp": 1773118953
+        },
+        "1773118963": {
+          "humidity": 65.3,
+          "temperature": 26,
+          "timestamp": 1773118963
+        },
+        "1773118973": {
+          "humidity": 65.8,
+          "temperature": 26,
+          "timestamp": 1773118973
+        },
+        "1773118983": {
+          "humidity": 63.3,
+          "temperature": 26,
+          "timestamp": 1773118983
+        },
+        "1773118993": {
+          "humidity": 63.6,
+          "temperature": 25.9,
+          "timestamp": 1773118993
+        },
+        "1773119003": {
+          "humidity": 66,
+          "temperature": 26,
+          "timestamp": 1773119003
+        },
+        "1773119013": {
+          "humidity": 66.3,
+          "temperature": 26,
+          "timestamp": 1773119013
+        },
+        "1773119023": {
+          "humidity": 65.9,
+          "temperature": 26,
+          "timestamp": 1773119023
+        },
+        "1773119033": {
+          "humidity": 65.3,
+          "temperature": 26,
+          "timestamp": 1773119033
+        },
+        "1773119043": {
+          "humidity": 64.8,
+          "temperature": 26,
+          "timestamp": 1773119043
+        },
+        "1773119053": {
+          "humidity": 62.9,
+          "temperature": 26,
+          "timestamp": 1773119053
+        },
+        "1773119063": {
+          "humidity": 63.4,
+          "temperature": 26,
+          "timestamp": 1773119063
+        },
+        "1773119073": {
+          "humidity": 63.2,
+          "temperature": 26.1,
+          "timestamp": 1773119073
+        },
+        "1773119083": {
+          "humidity": 62.8,
+          "temperature": 26.1,
+          "timestamp": 1773119083
+        },
+        "1773119093": {
+          "humidity": 61.4,
+          "temperature": 26.1,
+          "timestamp": 1773119093
+        },
+        "1773119103": {
+          "humidity": 61.2,
+          "temperature": 26.1,
+          "timestamp": 1773119103
+        },
+        "1773119113": {
+          "humidity": 60.9,
+          "temperature": 26.2,
+          "timestamp": 1773119113
+        },
+        "1773119123": {
+          "humidity": 60.4,
+          "temperature": 26.2,
+          "timestamp": 1773119123
+        },
+        "1773119133": {
+          "humidity": 60.2,
+          "temperature": 26.2,
+          "timestamp": 1773119133
+        },
+        "1773119143": {
+          "humidity": 60.4,
+          "temperature": 26.2,
+          "timestamp": 1773119143
+        },
+        "1773119153": {
+          "humidity": 60.3,
+          "temperature": 26.2,
+          "timestamp": 1773119153
+        },
+        "1773119163": {
+          "humidity": 60.3,
+          "temperature": 26.2,
+          "timestamp": 1773119163
+        },
+        "1773119173": {
+          "humidity": 60,
+          "temperature": 26.2,
+          "timestamp": 1773119173
+        },
+        "1773119183": {
+          "humidity": 60.1,
+          "temperature": 26.2,
+          "timestamp": 1773119183
+        },
+        "1773119193": {
+          "humidity": 60.2,
+          "temperature": 26.2,
+          "timestamp": 1773119193
+        },
+        "1773119203": {
+          "humidity": 60.1,
+          "temperature": 26.2,
+          "timestamp": 1773119203
+        },
+        "1773119213": {
+          "humidity": 60.1,
+          "temperature": 26.3,
+          "timestamp": 1773119213
+        },
+        "1773119223": {
+          "humidity": 59.9,
+          "temperature": 26.2,
+          "timestamp": 1773119223
+        },
+        "1773119233": {
+          "humidity": 59.7,
+          "temperature": 26.3,
+          "timestamp": 1773119233
+        },
+        "1773119243": {
+          "humidity": 59.7,
+          "temperature": 26.2,
+          "timestamp": 1773119243
+        },
+        "1773119253": {
+          "humidity": 59.4,
+          "temperature": 26.2,
+          "timestamp": 1773119253
+        },
+        "1773119263": {
+          "humidity": 59.4,
+          "temperature": 26.3,
+          "timestamp": 1773119263
+        },
+        "1773119273": {
+          "humidity": 59.2,
+          "temperature": 26.2,
+          "timestamp": 1773119273
+        },
+        "1773119283": {
+          "humidity": 59.3,
+          "temperature": 26.2,
+          "timestamp": 1773119283
+        },
+        "1773119293": {
+          "humidity": 59.3,
+          "temperature": 26.3,
+          "timestamp": 1773119293
+        },
+        "1773119303": {
+          "humidity": 59.2,
+          "temperature": 26.3,
+          "timestamp": 1773119303
+        },
+        "1773119313": {
+          "humidity": 59.2,
+          "temperature": 26.3,
+          "timestamp": 1773119313
+        },
+        "1773119323": {
+          "humidity": 59,
+          "temperature": 26.3,
+          "timestamp": 1773119323
+        },
+        "1773119333": {
+          "humidity": 59.1,
+          "temperature": 26.3,
+          "timestamp": 1773119333
+        },
+        "1773119343": {
+          "humidity": 58.8,
+          "temperature": 26.3,
+          "timestamp": 1773119343
+        },
+        "1773119353": {
+          "humidity": 58.6,
+          "temperature": 26.3,
+          "timestamp": 1773119353
+        },
+        "1773119363": {
+          "humidity": 58.7,
+          "temperature": 26.2,
+          "timestamp": 1773119363
+        },
+        "1773119373": {
+          "humidity": 58.7,
+          "temperature": 26.3,
+          "timestamp": 1773119373
+        },
+        "1773119383": {
+          "humidity": 58.6,
+          "temperature": 26.3,
+          "timestamp": 1773119383
+        },
+        "1773119393": {
+          "humidity": 58.5,
+          "temperature": 26.2,
+          "timestamp": 1773119393
+        },
+        "1773119403": {
+          "humidity": 58.6,
+          "temperature": 26.3,
+          "timestamp": 1773119403
+        },
+        "1773119413": {
+          "humidity": 58.7,
+          "temperature": 26.3,
+          "timestamp": 1773119413
+        },
+        "1773119423": {
+          "humidity": 58.7,
+          "temperature": 26.3,
+          "timestamp": 1773119423
+        },
+        "1773119433": {
+          "humidity": 58.5,
+          "temperature": 26.3,
+          "timestamp": 1773119433
+        },
+        "1773119443": {
+          "humidity": 58.6,
+          "temperature": 26.2,
+          "timestamp": 1773119443
+        },
+        "1773119453": {
+          "humidity": 58.4,
+          "temperature": 26.3,
+          "timestamp": 1773119453
+        },
+        "1773119463": {
+          "humidity": 58.3,
+          "temperature": 26.2,
+          "timestamp": 1773119463
+        },
+        "1773119473": {
+          "humidity": 58.2,
+          "temperature": 26.2,
+          "timestamp": 1773119473
+        },
+        "1773119483": {
+          "humidity": 58.3,
+          "temperature": 26.2,
+          "timestamp": 1773119483
+        },
+        "1773119493": {
+          "humidity": 58.2,
+          "temperature": 26.3,
+          "timestamp": 1773119493
+        },
+        "1773119503": {
+          "humidity": 58.2,
+          "temperature": 26.2,
+          "timestamp": 1773119503
+        },
+        "1773119513": {
+          "humidity": 58.2,
+          "temperature": 26.2,
+          "timestamp": 1773119513
+        },
+        "1773119523": {
+          "humidity": 58.1,
+          "temperature": 26.3,
+          "timestamp": 1773119523
+        },
+        "1773119533": {
+          "humidity": 58.1,
+          "temperature": 26.2,
+          "timestamp": 1773119533
+        },
+        "1773119543": {
+          "humidity": 58.2,
+          "temperature": 26.3,
+          "timestamp": 1773119543
+        },
+        "1773119553": {
+          "humidity": 58.3,
+          "temperature": 26.3,
+          "timestamp": 1773119553
+        },
+        "1773119563": {
+          "humidity": 58.3,
+          "temperature": 26.2,
+          "timestamp": 1773119563
+        },
+        "1773119573": {
+          "humidity": 58.4,
+          "temperature": 26.3,
+          "timestamp": 1773119573
+        },
+        "1773119583": {
+          "humidity": 58.5,
+          "temperature": 26.3,
+          "timestamp": 1773119583
+        },
+        "1773119593": {
+          "humidity": 58.7,
+          "temperature": 26.3,
+          "timestamp": 1773119593
+        },
+        "1773119603": {
+          "humidity": 58.7,
+          "temperature": 26.3,
+          "timestamp": 1773119603
+        },
+        "1773119613": {
+          "humidity": 58.6,
+          "temperature": 26.3,
+          "timestamp": 1773119613
+        },
+        "1773119623": {
+          "humidity": 58.9,
+          "temperature": 26.3,
+          "timestamp": 1773119623
+        },
+        "1773119633": {
+          "humidity": 58.9,
+          "temperature": 26.3,
+          "timestamp": 1773119633
+        },
+        "1773119643": {
+          "humidity": 59,
+          "temperature": 26.3,
+          "timestamp": 1773119643
+        },
+        "1773119653": {
+          "humidity": 59.7,
+          "temperature": 26.3,
+          "timestamp": 1773119653
+        },
+        "1773119663": {
+          "humidity": 59.7,
+          "temperature": 26.3,
+          "timestamp": 1773119663
+        },
+        "1773119673": {
+          "humidity": 59.8,
+          "temperature": 26.3,
+          "timestamp": 1773119673
+        },
+        "1773119683": {
+          "humidity": 60.2,
+          "temperature": 26.3,
+          "timestamp": 1773119683
+        },
+        "1773119693": {
+          "humidity": 60.5,
+          "temperature": 26.4,
+          "timestamp": 1773119693
+        },
+        "1773119703": {
+          "humidity": 60.5,
+          "temperature": 26.3,
+          "timestamp": 1773119703
+        },
+        "1773119713": {
+          "humidity": 60.6,
+          "temperature": 26.3,
+          "timestamp": 1773119713
+        },
+        "1773119723": {
+          "humidity": 60.7,
+          "temperature": 26.4,
+          "timestamp": 1773119723
+        },
+        "1773119733": {
+          "humidity": 60.7,
+          "temperature": 26.4,
+          "timestamp": 1773119733
+        },
+        "1773119743": {
+          "humidity": 60.7,
+          "temperature": 26.4,
+          "timestamp": 1773119743
+        },
+        "1773119753": {
+          "humidity": 61,
+          "temperature": 26.4,
+          "timestamp": 1773119753
+        },
+        "1773119763": {
+          "humidity": 61.1,
+          "temperature": 26.4,
+          "timestamp": 1773119763
+        },
+        "1773119773": {
+          "humidity": 61.3,
+          "temperature": 26.4,
+          "timestamp": 1773119773
+        },
+        "1773119783": {
+          "humidity": 61.2,
+          "temperature": 26.4,
+          "timestamp": 1773119783
+        },
+        "1773119793": {
+          "humidity": 61.3,
+          "temperature": 26.4,
+          "timestamp": 1773119793
+        },
+        "1773119803": {
+          "humidity": 61.6,
+          "temperature": 26.5,
+          "timestamp": 1773119803
+        },
+        "1773119813": {
+          "humidity": 61.5,
+          "temperature": 26.4,
+          "timestamp": 1773119813
+        },
+        "1773119823": {
+          "humidity": 61.3,
+          "temperature": 26.4,
+          "timestamp": 1773119823
+        },
+        "1773119833": {
+          "humidity": 61.1,
+          "temperature": 26.4,
+          "timestamp": 1773119833
+        },
+        "1773119843": {
+          "humidity": 61.1,
+          "temperature": 26.4,
+          "timestamp": 1773119843
+        },
+        "1773119853": {
+          "humidity": 61.1,
+          "temperature": 26.4,
+          "timestamp": 1773119853
+        },
+        "1773119863": {
+          "humidity": 60.9,
+          "temperature": 26.4,
+          "timestamp": 1773119863
+        },
+        "1773119873": {
+          "humidity": 61,
+          "temperature": 26.4,
+          "timestamp": 1773119873
+        },
+        "1773119883": {
+          "humidity": 61.3,
+          "temperature": 26.4,
+          "timestamp": 1773119883
+        },
+        "1773119893": {
+          "humidity": 61.3,
+          "temperature": 26.5,
+          "timestamp": 1773119893
+        },
+        "1773119903": {
+          "humidity": 61.2,
+          "temperature": 26.5,
+          "timestamp": 1773119903
+        },
+        "1773119913": {
+          "humidity": 61,
+          "temperature": 26.5,
+          "timestamp": 1773119913
+        },
+        "1773119923": {
+          "humidity": 60.8,
+          "temperature": 26.5,
+          "timestamp": 1773119923
+        },
+        "1773119933": {
+          "humidity": 60.8,
+          "temperature": 26.4,
+          "timestamp": 1773119933
+        },
+        "1773119943": {
+          "humidity": 60.8,
+          "temperature": 26.4,
+          "timestamp": 1773119943
+        },
+        "1773119953": {
+          "humidity": 60.7,
+          "temperature": 26.4,
+          "timestamp": 1773119953
+        },
+        "1773119963": {
+          "humidity": 60.6,
+          "temperature": 26.4,
+          "timestamp": 1773119963
+        },
+        "1773119973": {
+          "humidity": 60.6,
+          "temperature": 26.4,
+          "timestamp": 1773119973
+        },
+        "1773119983": {
+          "humidity": 60.7,
+          "temperature": 26.4,
+          "timestamp": 1773119983
+        },
+        "1773119993": {
+          "humidity": 60.5,
+          "temperature": 26.4,
+          "timestamp": 1773119993
+        },
+        "1773120003": {
+          "humidity": 60.5,
+          "temperature": 26.4,
+          "timestamp": 1773120003
+        },
+        "1773120013": {
+          "humidity": 60.6,
+          "temperature": 26.4,
+          "timestamp": 1773120013
+        },
+        "1773120023": {
+          "humidity": 60.4,
+          "temperature": 26.4,
+          "timestamp": 1773120023
+        },
+        "1773120033": {
+          "humidity": 60.4,
+          "temperature": 26.4,
+          "timestamp": 1773120033
+        },
+        "1773120043": {
+          "humidity": 60.3,
+          "temperature": 26.4,
+          "timestamp": 1773120043
+        },
+        "1773120053": {
+          "humidity": 60.1,
+          "temperature": 26.4,
+          "timestamp": 1773120053
+        },
+        "1773120063": {
+          "humidity": 60,
+          "temperature": 26.4,
+          "timestamp": 1773120063
+        },
+        "1773120073": {
+          "humidity": 59.8,
+          "temperature": 26.4,
+          "timestamp": 1773120073
+        },
+        "1773120083": {
+          "humidity": 59.7,
+          "temperature": 26.4,
+          "timestamp": 1773120083
+        },
+        "1773120093": {
+          "humidity": 59.7,
+          "temperature": 26.4,
+          "timestamp": 1773120093
+        },
+        "1773120103": {
+          "humidity": 59.7,
+          "temperature": 26.4,
+          "timestamp": 1773120103
+        },
+        "1773120113": {
+          "humidity": 59.6,
+          "temperature": 26.4,
+          "timestamp": 1773120113
+        },
+        "1773120123": {
+          "humidity": 59.8,
+          "temperature": 26.4,
+          "timestamp": 1773120123
+        },
+        "1773120133": {
+          "humidity": 59.9,
+          "temperature": 26.4,
+          "timestamp": 1773120133
+        },
+        "1773120143": {
+          "humidity": 59.9,
+          "temperature": 26.4,
+          "timestamp": 1773120143
+        },
+        "1773120153": {
+          "humidity": 59.9,
+          "temperature": 26.3,
+          "timestamp": 1773120153
+        },
+        "1773120163": {
+          "humidity": 59.8,
+          "temperature": 26.4,
+          "timestamp": 1773120163
+        },
+        "1773120173": {
+          "humidity": 59.8,
+          "temperature": 26.4,
+          "timestamp": 1773120173
+        },
+        "1773120183": {
+          "humidity": 59.8,
+          "temperature": 26.4,
+          "timestamp": 1773120183
+        },
+        "1773120193": {
+          "humidity": 59.7,
+          "temperature": 26.4,
+          "timestamp": 1773120193
+        },
+        "1773120203": {
+          "humidity": 59.6,
+          "temperature": 26.4,
+          "timestamp": 1773120203
+        },
+        "1773120213": {
+          "humidity": 59.9,
+          "temperature": 26.4,
+          "timestamp": 1773120213
+        },
+        "1773120223": {
+          "humidity": 60.2,
+          "temperature": 26.4,
+          "timestamp": 1773120223
+        },
+        "1773120233": {
+          "humidity": 60.1,
+          "temperature": 26.4,
+          "timestamp": 1773120233
+        },
+        "1773120243": {
+          "humidity": 59.9,
+          "temperature": 26.4,
+          "timestamp": 1773120243
+        },
+        "1773120253": {
+          "humidity": 59.8,
+          "temperature": 26.4,
+          "timestamp": 1773120253
+        },
+        "1773120263": {
+          "humidity": 59.7,
+          "temperature": 26.4,
+          "timestamp": 1773120263
+        },
+        "1773124742": {
+          "humidity": 74.9,
+          "temperature": 25.5,
+          "timestamp": 1773124742
+        },
+        "1773124752": {
+          "humidity": 75,
+          "temperature": 25.5,
+          "timestamp": 1773124752
+        },
+        "1773124762": {
+          "humidity": 75.2,
+          "temperature": 25.5,
+          "timestamp": 1773124762
+        },
+        "1773124772": {
+          "humidity": 75.1,
+          "temperature": 25.6,
+          "timestamp": 1773124772
+        },
+        "1773124782": {
+          "humidity": 75.1,
+          "temperature": 25.6,
+          "timestamp": 1773124782
+        },
+        "1773124792": {
+          "humidity": 75.3,
+          "temperature": 25.6,
+          "timestamp": 1773124792
+        },
+        "1773124802": {
+          "humidity": 75.3,
+          "temperature": 25.6,
+          "timestamp": 1773124802
+        },
+        "1773124812": {
+          "humidity": 75.2,
+          "temperature": 25.7,
+          "timestamp": 1773124812
+        },
+        "1773124822": {
+          "humidity": 73.7,
+          "temperature": 25.6,
+          "timestamp": 1773124822
+        },
+        "1773124832": {
+          "humidity": 74.7,
+          "temperature": 25.7,
+          "timestamp": 1773124832
+        },
+        "1773124842": {
+          "humidity": 73.4,
+          "temperature": 25.6,
+          "timestamp": 1773124842
+        },
+        "1773124852": {
+          "humidity": 71.9,
+          "temperature": 25.6,
+          "timestamp": 1773124852
+        },
+        "1773124862": {
+          "humidity": 70.9,
+          "temperature": 25.5,
+          "timestamp": 1773124862
+        },
+        "1773124872": {
+          "humidity": 71.7,
+          "temperature": 25.5,
+          "timestamp": 1773124872
+        },
+        "1773124882": {
+          "humidity": 71.7,
+          "temperature": 25.4,
+          "timestamp": 1773124882
+        },
+        "1773124892": {
+          "humidity": 70.9,
+          "temperature": 25.4,
+          "timestamp": 1773124892
+        },
+        "1773124902": {
+          "humidity": 70.3,
+          "temperature": 25.3,
+          "timestamp": 1773124902
+        },
+        "1773124912": {
+          "humidity": 70.9,
+          "temperature": 25.3,
+          "timestamp": 1773124912
+        },
+        "1773124922": {
+          "humidity": 70.4,
+          "temperature": 25.3,
+          "timestamp": 1773124922
+        },
+        "1773124932": {
+          "humidity": 69.4,
+          "temperature": 25.2,
+          "timestamp": 1773124932
+        },
+        "1773124942": {
+          "humidity": 69.8,
+          "temperature": 25.2,
+          "timestamp": 1773124942
+        },
+        "1773124952": {
+          "humidity": 70,
+          "temperature": 25.1,
+          "timestamp": 1773124952
+        },
+        "1773124962": {
+          "humidity": 69.7,
+          "temperature": 25,
+          "timestamp": 1773124962
+        },
+        "1773124972": {
+          "humidity": 69.5,
+          "temperature": 25,
+          "timestamp": 1773124972
+        },
+        "1773124982": {
+          "humidity": 70.4,
+          "temperature": 24.9,
+          "timestamp": 1773124982
+        },
+        "1773124992": {
+          "humidity": 72.5,
+          "temperature": 24.9,
+          "timestamp": 1773124992
+        },
+        "1773125002": {
+          "humidity": 74,
+          "temperature": 24.8,
+          "timestamp": 1773125002
+        },
+        "1773125012": {
+          "humidity": 75.2,
+          "temperature": 24.9,
+          "timestamp": 1773125012
+        },
+        "1773125022": {
+          "humidity": 75.8,
+          "temperature": 24.9,
+          "timestamp": 1773125022
+        },
+        "1773125032": {
+          "humidity": 76.1,
+          "temperature": 24.9,
+          "timestamp": 1773125032
+        },
+        "1773125042": {
+          "humidity": 76.6,
+          "temperature": 25,
+          "timestamp": 1773125042
+        },
+        "1773125052": {
+          "humidity": 76.6,
+          "temperature": 25,
+          "timestamp": 1773125052
+        },
+        "1773125062": {
+          "humidity": 76.9,
+          "temperature": 25.1,
+          "timestamp": 1773125062
+        },
+        "1773125072": {
+          "humidity": 76.7,
+          "temperature": 25.1,
+          "timestamp": 1773125072
+        },
+        "1773125082": {
+          "humidity": 76.8,
+          "temperature": 25.1,
+          "timestamp": 1773125082
+        },
+        "1773125092": {
+          "humidity": 77.1,
+          "temperature": 25.1,
+          "timestamp": 1773125092
+        },
+        "1773125102": {
+          "humidity": 77,
+          "temperature": 25.2,
+          "timestamp": 1773125102
+        },
+        "1773125112": {
+          "humidity": 76.8,
+          "temperature": 25.2,
+          "timestamp": 1773125112
+        },
+        "1773125122": {
+          "humidity": 76.6,
+          "temperature": 25.3,
+          "timestamp": 1773125122
+        },
+        "1773125132": {
+          "humidity": 76.6,
+          "temperature": 25.3,
+          "timestamp": 1773125132
+        },
+        "1773125142": {
+          "humidity": 76.6,
+          "temperature": 25.3,
+          "timestamp": 1773125142
+        },
+        "1773125152": {
+          "humidity": 76.7,
+          "temperature": 25.3,
+          "timestamp": 1773125152
+        },
+        "1773125162": {
+          "humidity": 76.8,
+          "temperature": 25.4,
+          "timestamp": 1773125162
+        },
+        "1773125172": {
+          "humidity": 76.7,
+          "temperature": 25.4,
+          "timestamp": 1773125172
+        },
+        "1773125182": {
+          "humidity": 76.9,
+          "temperature": 25.4,
+          "timestamp": 1773125182
+        },
+        "1773125192": {
+          "humidity": 77,
+          "temperature": 25.5,
+          "timestamp": 1773125192
+        },
+        "1773125202": {
+          "humidity": 77,
+          "temperature": 25.5,
+          "timestamp": 1773125202
+        },
+        "1773125212": {
+          "humidity": 77,
+          "temperature": 25.5,
+          "timestamp": 1773125212
+        },
+        "1773125222": {
+          "humidity": 76.9,
+          "temperature": 25.5,
+          "timestamp": 1773125222
+        },
+        "1773125232": {
+          "humidity": 76.8,
+          "temperature": 25.6,
+          "timestamp": 1773125232
+        },
+        "1773125242": {
+          "humidity": 76.9,
+          "temperature": 25.6,
+          "timestamp": 1773125242
+        },
+        "1773125252": {
+          "humidity": 76.9,
+          "temperature": 25.6,
+          "timestamp": 1773125252
+        },
+        "1773125262": {
+          "humidity": 76.8,
+          "temperature": 25.6,
+          "timestamp": 1773125262
+        },
+        "1773125272": {
+          "humidity": 76.9,
+          "temperature": 25.6,
+          "timestamp": 1773125272
+        },
+        "1773125282": {
+          "humidity": 77,
+          "temperature": 25.7,
+          "timestamp": 1773125282
+        },
+        "1773125292": {
+          "humidity": 77,
+          "temperature": 25.7,
+          "timestamp": 1773125292
+        },
+        "1773125302": {
+          "humidity": 75.6,
+          "temperature": 25.7,
+          "timestamp": 1773125302
+        },
+        "1773125312": {
+          "humidity": 75.8,
+          "temperature": 25.6,
+          "timestamp": 1773125312
+        },
+        "1773125322": {
+          "humidity": 75.8,
+          "temperature": 25.6,
+          "timestamp": 1773125322
+        },
+        "1773125332": {
+          "humidity": 74.2,
+          "temperature": 25.6,
+          "timestamp": 1773125332
+        },
+        "1773125342": {
+          "humidity": 72.3,
+          "temperature": 25.5,
+          "timestamp": 1773125342
+        },
+        "1773125352": {
+          "humidity": 72.4,
+          "temperature": 25.5,
+          "timestamp": 1773125352
+        },
+        "1773125362": {
+          "humidity": 72.8,
+          "temperature": 25.5,
+          "timestamp": 1773125362
+        },
+        "1773125372": {
+          "humidity": 72.3,
+          "temperature": 25.4,
+          "timestamp": 1773125372
+        },
+        "1773125382": {
+          "humidity": 71.7,
+          "temperature": 25.4,
+          "timestamp": 1773125382
+        },
+        "1773125392": {
+          "humidity": 71.5,
+          "temperature": 25.3,
+          "timestamp": 1773125392
+        },
+        "1773125402": {
+          "humidity": 72,
+          "temperature": 25.3,
+          "timestamp": 1773125402
+        },
+        "1773125412": {
+          "humidity": 71.3,
+          "temperature": 25.3,
+          "timestamp": 1773125412
+        },
+        "1773125422": {
+          "humidity": 70.9,
+          "temperature": 25.2,
+          "timestamp": 1773125422
+        },
+        "1773125432": {
+          "humidity": 70.9,
+          "temperature": 25.2,
+          "timestamp": 1773125432
+        },
+        "1773125442": {
+          "humidity": 71.2,
+          "temperature": 25.2,
+          "timestamp": 1773125442
+        },
+        "1773125452": {
+          "humidity": 71.6,
+          "temperature": 25.1,
+          "timestamp": 1773125452
+        },
+        "1773125462": {
+          "humidity": 73.1,
+          "temperature": 25.1,
+          "timestamp": 1773125462
+        },
+        "1773125472": {
+          "humidity": 74.5,
+          "temperature": 25.1,
+          "timestamp": 1773125472
+        },
+        "1773125482": {
+          "humidity": 75.1,
+          "temperature": 25.1,
+          "timestamp": 1773125482
+        },
+        "1773125492": {
+          "humidity": 75.7,
+          "temperature": 25.2,
+          "timestamp": 1773125492
+        },
+        "1773125502": {
+          "humidity": 75.9,
+          "temperature": 25.2,
+          "timestamp": 1773125502
+        },
+        "1773125512": {
+          "humidity": 76.2,
+          "temperature": 25.2,
+          "timestamp": 1773125512
+        },
+        "1773125522": {
+          "humidity": 76.3,
+          "temperature": 25.2,
+          "timestamp": 1773125522
+        },
+        "1773125532": {
+          "humidity": 76.1,
+          "temperature": 25.3,
+          "timestamp": 1773125532
+        },
+        "1773125542": {
+          "humidity": 76.6,
+          "temperature": 25.3,
+          "timestamp": 1773125542
+        },
+        "1773125552": {
+          "humidity": 76.4,
+          "temperature": 25.3,
+          "timestamp": 1773125552
+        },
+        "1773125562": {
+          "humidity": 76.4,
+          "temperature": 25.3,
+          "timestamp": 1773125562
+        },
+        "1773125572": {
+          "humidity": 76.4,
+          "temperature": 25.3,
+          "timestamp": 1773125572
+        },
+        "1773125582": {
+          "humidity": 76.5,
+          "temperature": 25.3,
+          "timestamp": 1773125582
+        },
+        "1773125592": {
+          "humidity": 76.5,
+          "temperature": 25.4,
+          "timestamp": 1773125592
+        },
+        "1773125602": {
+          "humidity": 76.3,
+          "temperature": 25.4,
+          "timestamp": 1773125602
+        },
+        "1773125612": {
+          "humidity": 76.3,
+          "temperature": 25.4,
+          "timestamp": 1773125612
+        },
+        "1773125622": {
+          "humidity": 76.3,
+          "temperature": 25.4,
+          "timestamp": 1773125622
+        },
+        "1773125632": {
+          "humidity": 76.3,
+          "temperature": 25.4,
+          "timestamp": 1773125632
+        },
+        "1773125642": {
+          "humidity": 76.4,
+          "temperature": 25.5,
+          "timestamp": 1773125642
+        },
+        "1773125652": {
+          "humidity": 76.2,
+          "temperature": 25.5,
+          "timestamp": 1773125652
+        },
+        "1773125662": {
+          "humidity": 76.4,
+          "temperature": 25.5,
+          "timestamp": 1773125662
+        },
+        "1773125672": {
+          "humidity": 76.4,
+          "temperature": 25.5,
+          "timestamp": 1773125672
+        },
+        "1773125682": {
+          "humidity": 76.4,
+          "temperature": 25.6,
+          "timestamp": 1773125682
+        },
+        "1773125692": {
+          "humidity": 76.5,
+          "temperature": 25.6,
+          "timestamp": 1773125692
+        },
+        "1773125702": {
+          "humidity": 76.5,
+          "temperature": 25.6,
+          "timestamp": 1773125702
+        },
+        "1773125712": {
+          "humidity": 76.5,
+          "temperature": 25.6,
+          "timestamp": 1773125712
+        },
+        "1773125722": {
+          "humidity": 76.5,
+          "temperature": 25.7,
+          "timestamp": 1773125722
+        },
+        "1773125732": {
+          "humidity": 76.6,
+          "temperature": 25.7,
+          "timestamp": 1773125732
+        },
+        "1773125742": {
+          "humidity": 76.6,
+          "temperature": 25.7,
+          "timestamp": 1773125742
+        },
+        "1773125752": {
+          "humidity": 76.6,
+          "temperature": 25.7,
+          "timestamp": 1773125752
+        },
+        "1773125762": {
+          "humidity": 76.7,
+          "temperature": 25.7,
+          "timestamp": 1773125762
+        },
+        "1773125772": {
+          "humidity": 76.7,
+          "temperature": 25.7,
+          "timestamp": 1773125772
+        },
+        "1773125782": {
+          "humidity": 76.4,
+          "temperature": 25.7,
+          "timestamp": 1773125782
+        },
+        "1773125792": {
+          "humidity": 75.2,
+          "temperature": 25.8,
+          "timestamp": 1773125792
+        },
+        "1773125802": {
+          "humidity": 75.3,
+          "temperature": 25.7,
+          "timestamp": 1773125802
+        },
+        "1773125812": {
+          "humidity": 74.9,
+          "temperature": 25.8,
+          "timestamp": 1773125812
+        },
+        "1773125822": {
+          "humidity": 74.3,
+          "temperature": 25.7,
+          "timestamp": 1773125822
+        },
+        "1773125832": {
+          "humidity": 73,
+          "temperature": 25.8,
+          "timestamp": 1773125832
+        },
+        "1773125842": {
+          "humidity": 72.9,
+          "temperature": 25.7,
+          "timestamp": 1773125842
+        },
+        "1773125852": {
+          "humidity": 73.1,
+          "temperature": 25.7,
+          "timestamp": 1773125852
+        },
+        "1773125862": {
+          "humidity": 72.5,
+          "temperature": 25.7,
+          "timestamp": 1773125862
+        },
+        "1773125872": {
+          "humidity": 72.3,
+          "temperature": 25.6,
+          "timestamp": 1773125872
+        },
+        "1773125882": {
+          "humidity": 72.3,
+          "temperature": 25.5,
+          "timestamp": 1773125882
+        },
+        "1773125892": {
+          "humidity": 72.5,
+          "temperature": 25.5,
+          "timestamp": 1773125892
+        },
+        "1773125902": {
+          "humidity": 72.1,
+          "temperature": 25.4,
+          "timestamp": 1773125902
+        },
+        "1773125912": {
+          "humidity": 72,
+          "temperature": 25.3,
+          "timestamp": 1773125912
+        },
+        "1773125922": {
+          "humidity": 72.3,
+          "temperature": 25.3,
+          "timestamp": 1773125922
+        },
+        "1773125932": {
+          "humidity": 72.3,
+          "temperature": 25.3,
+          "timestamp": 1773125932
+        },
+        "1773125942": {
+          "humidity": 71.9,
+          "temperature": 25.3,
+          "timestamp": 1773125942
+        },
+        "1773125952": {
+          "humidity": 71.2,
+          "temperature": 25.3,
+          "timestamp": 1773125952
+        },
+        "1773125962": {
+          "humidity": 71.1,
+          "temperature": 25.3,
+          "timestamp": 1773125962
+        },
+        "1773125972": {
+          "humidity": 70.6,
+          "temperature": 25.2,
+          "timestamp": 1773125972
+        },
+        "1773125982": {
+          "humidity": 70.4,
+          "temperature": 25.1,
+          "timestamp": 1773125982
+        },
+        "1773125992": {
+          "humidity": 70.8,
+          "temperature": 25,
+          "timestamp": 1773125992
+        },
+        "1773126002": {
+          "humidity": 70.9,
+          "temperature": 25,
+          "timestamp": 1773126002
+        },
+        "1773126012": {
+          "humidity": 71.2,
+          "temperature": 24.9,
+          "timestamp": 1773126012
+        },
+        "1773126022": {
+          "humidity": 71.2,
+          "temperature": 24.9,
+          "timestamp": 1773126022
+        },
+        "1773126032": {
+          "humidity": 71.5,
+          "temperature": 24.8,
+          "timestamp": 1773126032
+        },
+        "1773126042": {
+          "humidity": 71.6,
+          "temperature": 24.8,
+          "timestamp": 1773126042
+        },
+        "1773126052": {
+          "humidity": 71.4,
+          "temperature": 24.8,
+          "timestamp": 1773126052
+        },
+        "1773126062": {
+          "humidity": 71.2,
+          "temperature": 24.6,
+          "timestamp": 1773126062
+        },
+        "1773126072": {
+          "humidity": 71.7,
+          "temperature": 24.5,
+          "timestamp": 1773126072
+        },
+        "1773126082": {
+          "humidity": 72.1,
+          "temperature": 24.5,
+          "timestamp": 1773126082
+        },
+        "1773126092": {
+          "humidity": 72,
+          "temperature": 24.4,
+          "timestamp": 1773126092
+        },
+        "1773126102": {
+          "humidity": 72.4,
+          "temperature": 24.4,
+          "timestamp": 1773126102
+        },
+        "1773642600": {
+          "altitude": 51.51,
+          "humidity": 54.16,
+          "mics5524": 3.3,
+          "mq5": 475,
+          "pressure": 1008.15,
+          "rain": 896,
+          "temperature": 26.86,
+          "timestamp": 1773642600,
+          "uv": 0.58
+        },
+        "1773642610": {
+          "altitude": 51.46,
+          "humidity": 54.45,
+          "mics5524": 3.3,
+          "mq5": 479,
+          "pressure": 1008.17,
+          "rain": 0,
+          "temperature": 26.84,
+          "timestamp": 1773642610,
+          "uv": 0.62
+        },
+        "1773642620": {
+          "altitude": 51.49,
+          "humidity": 54.14,
+          "mics5524": 3.3,
+          "mq5": 471,
+          "pressure": 1008.15,
+          "rain": 560,
+          "temperature": 26.89,
+          "timestamp": 1773642620,
+          "uv": 0.59
+        },
+        "1773642630": {
+          "altitude": 51.73,
+          "humidity": 53.92,
+          "mics5524": 3.3,
+          "mq5": 473,
+          "pressure": 1008.15,
+          "rain": 912,
+          "temperature": 26.92,
+          "timestamp": 1773642630,
+          "uv": 0.61
+        },
+        "1773642640": {
+          "altitude": 51.55,
+          "humidity": 54.09,
+          "mics5524": 3.3,
+          "mq5": 471,
+          "pressure": 1008.15,
+          "rain": 561,
+          "temperature": 26.99,
+          "timestamp": 1773642640,
+          "uv": 0.59
+        },
+        "1773642650": {
+          "altitude": 51.1,
+          "humidity": 54,
+          "mics5524": 3.3,
+          "mq5": 466,
+          "pressure": 1008.17,
+          "rain": 4095,
+          "temperature": 27.02,
+          "timestamp": 1773642650,
+          "uv": 0.58
+        },
+        "1773642660": {
+          "altitude": 51.37,
+          "humidity": 54.03,
+          "mics5524": 3.3,
+          "mq5": 464,
+          "pressure": 1008.16,
+          "rain": 914,
+          "temperature": 27.06,
+          "timestamp": 1773642660,
+          "uv": 0.6
+        },
+        "1773642670": {
+          "altitude": 51.39,
+          "humidity": 54.06,
+          "mics5524": 3.3,
+          "mq5": 466,
+          "pressure": 1008.13,
+          "rain": 1147,
+          "temperature": 27.09,
+          "timestamp": 1773642670,
+          "uv": 0.6
+        },
+        "1773642680": {
+          "altitude": 51.48,
+          "humidity": 54.05,
+          "mics5524": 3.3,
+          "mq5": 464,
+          "pressure": 1008.13,
+          "rain": 4095,
+          "temperature": 27.1,
+          "timestamp": 1773642680,
+          "uv": 0.6
+        },
+        "1773642690": {
+          "altitude": 51.38,
+          "humidity": 54.06,
+          "mics5524": 3.3,
+          "mq5": 470,
+          "pressure": 1008.15,
+          "rain": 912,
+          "temperature": 27.11,
+          "timestamp": 1773642690,
+          "uv": 0.59
+        },
+        "1773642700": {
+          "altitude": 51.44,
+          "humidity": 53.96,
+          "mics5524": 3.3,
+          "mq5": 463,
+          "pressure": 1008.16,
+          "rain": 875,
+          "temperature": 27.06,
+          "timestamp": 1773642700,
+          "uv": 0.59
+        },
+        "1773642710": {
+          "altitude": 51.39,
+          "humidity": 53.89,
+          "mics5524": 3.3,
+          "mq5": 464,
+          "pressure": 1008.16,
+          "rain": 758,
+          "temperature": 27.11,
+          "timestamp": 1773642710,
+          "uv": 0.59
+        },
+        "1773642720": {
+          "altitude": 51.61,
+          "humidity": 53.55,
+          "mics5524": 3.3,
+          "mq5": 464,
+          "pressure": 1008.16,
+          "rain": 609,
+          "temperature": 27.08,
+          "timestamp": 1773642720,
+          "uv": 0.59
+        },
+        "1773642730": {
+          "altitude": 51.86,
+          "humidity": 53.9,
+          "mics5524": 3.3,
+          "mq5": 506,
+          "pressure": 1008.15,
+          "rain": 1167,
+          "temperature": 27.04,
+          "timestamp": 1773642730,
+          "uv": 0.59
+        },
+        "1773642740": {
+          "altitude": 51.69,
+          "humidity": 54.19,
+          "mics5524": 3.3,
+          "mq5": 464,
+          "pressure": 1008.13,
+          "rain": 235,
+          "temperature": 27.04,
+          "timestamp": 1773642740,
+          "uv": 0.58
+        },
+        "1773642750": {
+          "altitude": 51.52,
+          "humidity": 53.78,
+          "mics5524": 3.3,
+          "mq5": 464,
+          "pressure": 1008.15,
+          "rain": 669,
+          "temperature": 27,
+          "timestamp": 1773642750,
+          "uv": 0.58
+        },
+        "1773642760": {
+          "altitude": 51.37,
+          "humidity": 54.11,
+          "mics5524": 3.3,
+          "mq5": 459,
+          "pressure": 1008.13,
+          "rain": 511,
+          "temperature": 27.03,
+          "timestamp": 1773642760,
+          "uv": 0.58
+        },
+        "1773642770": {
+          "altitude": 51.24,
+          "humidity": 54.14,
+          "mics5524": 3.3,
+          "mq5": 456,
+          "pressure": 1008.16,
+          "rain": 349,
+          "temperature": 26.97,
+          "timestamp": 1773642770,
+          "uv": 0.57
+        },
+        "1773642780": {
+          "altitude": 51.56,
+          "humidity": 54.29,
+          "mics5524": 3.3,
+          "mq5": 459,
+          "pressure": 1008.14,
+          "rain": 250,
+          "temperature": 27.02,
+          "timestamp": 1773642780,
+          "uv": 0.58
+        },
+        "1773642790": {
+          "altitude": 51.68,
+          "humidity": 54.27,
+          "mics5524": 3.3,
+          "mq5": 459,
+          "pressure": 1008.11,
+          "rain": 4095,
+          "temperature": 27.04,
+          "timestamp": 1773642790,
+          "uv": 0.59
+        },
+        "1773642800": {
+          "altitude": 51.6,
+          "humidity": 54.53,
+          "mics5524": 3.3,
+          "mq5": 455,
+          "pressure": 1008.12,
+          "rain": 944,
+          "temperature": 27.02,
+          "timestamp": 1773642800,
+          "uv": 0.57
+        },
+        "1773642810": {
+          "altitude": 51.81,
+          "humidity": 54.5,
+          "mics5524": 3.3,
+          "mq5": 459,
+          "pressure": 1008.11,
+          "rain": 1047,
+          "temperature": 27.04,
+          "timestamp": 1773642810,
+          "uv": 0.58
+        },
+        "1773642820": {
+          "altitude": 51.79,
+          "humidity": 54.1,
+          "mics5524": 3.3,
+          "mq5": 448,
+          "pressure": 1008.13,
+          "rain": 4095,
+          "temperature": 26.99,
+          "timestamp": 1773642820,
+          "uv": 0.57
+        },
+        "1773642830": {
+          "altitude": 51.95,
+          "humidity": 54.56,
+          "mics5524": 3.3,
+          "mq5": 459,
+          "pressure": 1008.09,
+          "rain": 470,
+          "temperature": 27,
+          "timestamp": 1773642830,
+          "uv": 0.57
+        },
+        "1773642841": {
+          "altitude": 51.84,
+          "humidity": 54.28,
+          "mics5524": 3.3,
+          "mq5": 455,
+          "pressure": 1008.06,
+          "rain": 1059,
+          "temperature": 26.89,
+          "timestamp": 1773642841,
+          "uv": 0.57
+        },
+        "1773642851": {
+          "altitude": 51.99,
+          "humidity": 54.81,
+          "mics5524": 3.3,
+          "mq5": 455,
+          "pressure": 1008.05,
+          "rain": 435,
+          "temperature": 26.95,
+          "timestamp": 1773642851,
+          "uv": 0.57
+        },
+        "1773642861": {
+          "altitude": 51.96,
+          "humidity": 55.08,
+          "mics5524": 3.3,
+          "mq5": 456,
+          "pressure": 1008.06,
+          "rain": 635,
+          "temperature": 26.98,
+          "timestamp": 1773642861,
+          "uv": 0.57
+        },
+        "1773642871": {
+          "altitude": 51.85,
+          "humidity": 55.97,
+          "mics5524": 3.3,
+          "mq5": 459,
+          "pressure": 1008.09,
+          "rain": 368,
+          "temperature": 26.99,
+          "timestamp": 1773642871,
+          "uv": 0.56
+        },
+        "1773642881": {
+          "altitude": 51.85,
+          "humidity": 55.76,
+          "mics5524": 3.3,
+          "mq5": 458,
+          "pressure": 1008.09,
+          "rain": 1001,
+          "temperature": 27.02,
+          "timestamp": 1773642881,
+          "uv": 0.57
+        },
+        "1773642891": {
+          "altitude": 51.59,
+          "humidity": 56.5,
+          "mics5524": 3.3,
+          "mq5": 460,
+          "pressure": 1008.06,
+          "rain": 1008,
+          "temperature": 26.94,
+          "timestamp": 1773642891,
+          "uv": 0.57
+        },
+        "1773642901": {
+          "altitude": 51.43,
+          "humidity": 56.23,
+          "mics5524": 3.3,
+          "mq5": 459,
+          "pressure": 1008.07,
+          "rain": 186,
+          "temperature": 27,
+          "timestamp": 1773642901,
+          "uv": 0.58
+        },
+        "1773642911": {
+          "altitude": 52.09,
+          "humidity": 56.25,
+          "mics5524": 3.3,
+          "mq5": 458,
+          "pressure": 1008.06,
+          "rain": 190,
+          "temperature": 27.04,
+          "timestamp": 1773642911,
+          "uv": 0.58
+        },
+        "1773642921": {
+          "altitude": 52.11,
+          "humidity": 56.28,
+          "mics5524": 3.3,
+          "mq5": 454,
+          "pressure": 1008.07,
+          "rain": 151,
+          "temperature": 27.07,
+          "timestamp": 1773642921,
+          "uv": 0.58
+        },
+        "1773642931": {
+          "altitude": 52.4,
+          "humidity": 56.45,
+          "mics5524": 3.3,
+          "mq5": 454,
+          "pressure": 1008.03,
+          "rain": 118,
+          "temperature": 27.09,
+          "timestamp": 1773642931,
+          "uv": 0.58
+        },
+        "1773642941": {
+          "altitude": 52.36,
+          "humidity": 56.83,
+          "mics5524": 3.3,
+          "mq5": 454,
+          "pressure": 1008.04,
+          "rain": 398,
+          "temperature": 27.08,
+          "timestamp": 1773642941,
+          "uv": 0.57
+        },
+        "1773642951": {
+          "altitude": 52.09,
+          "humidity": 56.8,
+          "mics5524": 3.3,
+          "mq5": 461,
+          "pressure": 1008.08,
+          "rain": 350,
+          "temperature": 27.1,
+          "timestamp": 1773642951,
+          "uv": 0.59
+        },
+        "1773642961": {
+          "altitude": 52.31,
+          "humidity": 56.99,
+          "mics5524": 3.3,
+          "mq5": 447,
+          "pressure": 1008.05,
+          "rain": 4095,
+          "temperature": 27.11,
+          "timestamp": 1773642961,
+          "uv": 0.59
+        },
+        "1773642971": {
+          "altitude": 52.16,
+          "humidity": 56.85,
+          "mics5524": 3.3,
+          "mq5": 456,
+          "pressure": 1008.09,
+          "rain": 0,
+          "temperature": 27.14,
+          "timestamp": 1773642971,
+          "uv": 0.6
+        },
+        "1773642981": {
+          "altitude": 51.97,
+          "humidity": 56.99,
+          "mics5524": 3.3,
+          "mq5": 456,
+          "pressure": 1008.08,
+          "rain": 846,
+          "temperature": 27.12,
+          "timestamp": 1773642981,
+          "uv": 0.59
+        },
+        "1773642991": {
+          "altitude": 52.37,
+          "humidity": 56.95,
+          "mics5524": 3.3,
+          "mq5": 464,
+          "pressure": 1008.03,
+          "rain": 4095,
+          "temperature": 27.13,
+          "timestamp": 1773642991,
+          "uv": 0.58
+        },
+        "1773643001": {
+          "altitude": 52.39,
+          "humidity": 57.16,
+          "mics5524": 3.3,
+          "mq5": 455,
+          "pressure": 1008.05,
+          "rain": 995,
+          "temperature": 27.13,
+          "timestamp": 1773643001,
+          "uv": 0.59
+        },
+        "1773643011": {
+          "altitude": 52.14,
+          "humidity": 57.08,
+          "mics5524": 3.3,
+          "mq5": 457,
+          "pressure": 1008.04,
+          "rain": 739,
+          "temperature": 27.12,
+          "timestamp": 1773643011,
+          "uv": 0.58
+        },
+        "1773643021": {
+          "altitude": 52.29,
+          "humidity": 57.12,
+          "mics5524": 3.3,
+          "mq5": 463,
+          "pressure": 1008.05,
+          "rain": 373,
+          "temperature": 27.16,
+          "timestamp": 1773643021,
+          "uv": 0.6
+        },
+        "1773643031": {
+          "altitude": 52.37,
+          "humidity": 57.37,
+          "mics5524": 3.3,
+          "mq5": 458,
+          "pressure": 1008.02,
+          "rain": 940,
+          "temperature": 27.18,
+          "timestamp": 1773643031,
+          "uv": 0.57
+        },
+        "1773643041": {
+          "altitude": 52.4,
+          "humidity": 57.32,
+          "mics5524": 3.3,
+          "mq5": 457,
+          "pressure": 1007.99,
+          "rain": 331,
+          "temperature": 27.2,
+          "timestamp": 1773643041,
+          "uv": 0.57
+        },
+        "1773643051": {
+          "altitude": 52.58,
+          "humidity": 57.26,
+          "mics5524": 3.3,
+          "mq5": 459,
+          "pressure": 1008.01,
+          "rain": 897,
+          "temperature": 27.22,
+          "timestamp": 1773643051,
+          "uv": 0.57
+        },
+        "1773643061": {
+          "altitude": 52.61,
+          "humidity": 57.19,
+          "mics5524": 3.3,
+          "mq5": 461,
+          "pressure": 1007.99,
+          "rain": 710,
+          "temperature": 27.24,
+          "timestamp": 1773643061,
+          "uv": 0.57
+        },
+        "1773643071": {
+          "altitude": 52.77,
+          "humidity": 57.18,
+          "mics5524": 3.3,
+          "mq5": 454,
+          "pressure": 1008.03,
+          "rain": 255,
+          "temperature": 27.27,
+          "timestamp": 1773643071,
+          "uv": 0.57
+        },
+        "1773643081": {
+          "altitude": 52.69,
+          "humidity": 57.36,
+          "mics5524": 3.3,
+          "mq5": 455,
+          "pressure": 1008.01,
+          "rain": 336,
+          "temperature": 27.27,
+          "timestamp": 1773643081,
+          "uv": 0.58
+        },
+        "1773643091": {
+          "altitude": 52.72,
+          "humidity": 57.29,
+          "mics5524": 3.3,
+          "mq5": 461,
+          "pressure": 1008.02,
+          "rain": 966,
+          "temperature": 27.29,
+          "timestamp": 1773643091,
+          "uv": 0.56
+        },
+        "1773643101": {
+          "altitude": 52.76,
+          "humidity": 57.23,
+          "mics5524": 3.3,
+          "mq5": 455,
+          "pressure": 1008.02,
+          "rain": 4095,
+          "temperature": 27.29,
+          "timestamp": 1773643101,
+          "uv": 0.57
+        },
+        "1773643111": {
+          "altitude": 52.53,
+          "humidity": 57.28,
+          "mics5524": 3.3,
+          "mq5": 464,
+          "pressure": 1008.02,
+          "rain": 320,
+          "temperature": 27.3,
+          "timestamp": 1773643111,
+          "uv": 0.56
+        },
+        "1773643121": {
+          "altitude": 52.7,
+          "humidity": 57.19,
+          "mics5524": 3.3,
+          "mq5": 448,
+          "pressure": 1008,
+          "rain": 176,
+          "temperature": 27.26,
+          "timestamp": 1773643121,
+          "uv": 0.56
+        },
+        "1773643131": {
+          "altitude": 52.96,
+          "humidity": 57.29,
+          "mics5524": 3.3,
+          "mq5": 454,
+          "pressure": 1008.04,
+          "rain": 4095,
+          "temperature": 27.29,
+          "timestamp": 1773643131,
+          "uv": 0.55
+        },
+        "1773643141": {
+          "altitude": 52.89,
+          "humidity": 57.36,
+          "mics5524": 3.3,
+          "mq5": 459,
+          "pressure": 1008.02,
+          "rain": 290,
+          "temperature": 27.31,
+          "timestamp": 1773643141,
+          "uv": 0.55
+        },
+        "1773643151": {
+          "altitude": 52.98,
+          "humidity": 57.01,
+          "mics5524": 3.3,
+          "mq5": 450,
+          "pressure": 1007.99,
+          "rain": 1066,
+          "temperature": 27.27,
+          "timestamp": 1773643151,
+          "uv": 0.55
+        },
+        "1773643161": {
+          "altitude": 52.64,
+          "humidity": 57.35,
+          "mics5524": 3.3,
+          "mq5": 453,
+          "pressure": 1008.03,
+          "rain": 1168,
+          "temperature": 27.29,
+          "timestamp": 1773643161,
+          "uv": 0.57
+        },
+        "1773643171": {
+          "altitude": 52.88,
+          "humidity": 57.01,
+          "mics5524": 3.3,
+          "mq5": 451,
+          "pressure": 1008.02,
+          "rain": 752,
+          "temperature": 27.24,
+          "timestamp": 1773643171,
+          "uv": 0.57
+        },
+        "1773643181": {
+          "altitude": 52.9,
+          "humidity": 57.4,
+          "mics5524": 3.3,
+          "mq5": 451,
+          "pressure": 1008.02,
+          "rain": 151,
+          "temperature": 27.24,
+          "timestamp": 1773643181,
+          "uv": 0.56
+        },
+        "1773643191": {
+          "altitude": 52.8,
+          "humidity": 56.59,
+          "mics5524": 3.3,
+          "mq5": 451,
+          "pressure": 1007.98,
+          "rain": 998,
+          "temperature": 27.19,
+          "timestamp": 1773643191,
+          "uv": 0.56
+        },
+        "1773643201": {
+          "altitude": 52.9,
+          "humidity": 56.84,
+          "mics5524": 3.3,
+          "mq5": 448,
+          "pressure": 1008,
+          "rain": 81,
+          "temperature": 27.23,
+          "timestamp": 1773643201,
+          "uv": 0.56
+        },
+        "1773643211": {
+          "altitude": 52.88,
+          "humidity": 57.01,
+          "mics5524": 3.3,
+          "mq5": 453,
+          "pressure": 1008,
+          "rain": 117,
+          "temperature": 27.25,
+          "timestamp": 1773643211,
+          "uv": 0.56
+        },
+        "1773643221": {
+          "altitude": 52.91,
+          "humidity": 56.68,
+          "mics5524": 3.3,
+          "mq5": 450,
+          "pressure": 1007.97,
+          "rain": 64,
+          "temperature": 27.23,
+          "timestamp": 1773643221,
+          "uv": 0.55
+        },
+        "1773643231": {
+          "altitude": 53.35,
+          "humidity": 56.92,
+          "mics5524": 3.3,
+          "mq5": 449,
+          "pressure": 1007.94,
+          "rain": 212,
+          "temperature": 27.25,
+          "timestamp": 1773643231,
+          "uv": 0.56
+        },
+        "1773643241": {
+          "altitude": 52.48,
+          "humidity": 56.45,
+          "mics5524": 3.3,
+          "mq5": 447,
+          "pressure": 1007.98,
+          "rain": 4095,
+          "temperature": 27.17,
+          "timestamp": 1773643241,
+          "uv": 0.56
+        },
+        "1773643251": {
+          "altitude": 52.71,
+          "humidity": 56.65,
+          "mics5524": 3.3,
+          "mq5": 449,
+          "pressure": 1007.97,
+          "rain": 103,
+          "temperature": 27.17,
+          "timestamp": 1773643251,
+          "uv": 0.55
+        },
+        "1773643261": {
+          "altitude": 52.49,
+          "humidity": 56.76,
+          "mics5524": 3.3,
+          "mq5": 448,
+          "pressure": 1007.99,
+          "rain": 960,
+          "temperature": 27.19,
+          "timestamp": 1773643261,
+          "uv": 0.55
+        },
+        "1773643271": {
+          "altitude": 52.78,
+          "humidity": 56.59,
+          "mics5524": 3.3,
+          "mq5": 447,
+          "pressure": 1008,
+          "rain": 4095,
+          "temperature": 27.16,
+          "timestamp": 1773643271,
+          "uv": 0.55
+        },
+        "1773643281": {
+          "altitude": 52.55,
+          "humidity": 56.49,
+          "mics5524": 3.3,
+          "mq5": 449,
+          "pressure": 1007.98,
+          "rain": 416,
+          "temperature": 27.17,
+          "timestamp": 1773643281,
+          "uv": 0.55
+        },
+        "1773643291": {
+          "altitude": 52.49,
+          "humidity": 56.67,
+          "mics5524": 3.3,
+          "mq5": 447,
+          "pressure": 1007.97,
+          "rain": 368,
+          "temperature": 27.07,
+          "timestamp": 1773643291,
+          "uv": 0.55
+        },
+        "1773643301": {
+          "altitude": 52.79,
+          "humidity": 56.81,
+          "mics5524": 3.3,
+          "mq5": 447,
+          "pressure": 1007.95,
+          "rain": 4095,
+          "temperature": 27.09,
+          "timestamp": 1773643301,
+          "uv": 0.55
+        },
+        "1773643311": {
+          "altitude": 52.8,
+          "humidity": 56.74,
+          "mics5524": 3.3,
+          "mq5": 442,
+          "pressure": 1007.98,
+          "rain": 921,
+          "temperature": 27.01,
+          "timestamp": 1773643311,
+          "uv": 0.55
+        },
+        "1773643321": {
+          "altitude": 52.81,
+          "humidity": 57.12,
+          "mics5524": 3.3,
+          "mq5": 441,
+          "pressure": 1007.94,
+          "rain": 1014,
+          "temperature": 27.04,
+          "timestamp": 1773643321,
+          "uv": 0.55
+        },
+        "1773643331": {
+          "altitude": 52.64,
+          "humidity": 57.88,
+          "mics5524": 3.3,
+          "mq5": 448,
+          "pressure": 1007.97,
+          "rain": 1013,
+          "temperature": 27.01,
+          "timestamp": 1773643331,
+          "uv": 0.55
+        },
+        "1773643341": {
+          "altitude": 52.65,
+          "humidity": 57.85,
+          "mics5524": 3.3,
+          "mq5": 439,
+          "pressure": 1007.94,
+          "rain": 912,
+          "temperature": 27.03,
+          "timestamp": 1773643341,
+          "uv": 0.55
+        },
+        "1773643352": {
+          "altitude": 52.85,
+          "humidity": 57.82,
+          "mics5524": 3.3,
+          "mq5": 448,
+          "pressure": 1007.95,
+          "rain": 898,
+          "temperature": 27.05,
+          "timestamp": 1773643352,
+          "uv": 0.55
+        },
+        "1773643362": {
+          "altitude": 52.9,
+          "humidity": 58.29,
+          "mics5524": 3.3,
+          "mq5": 450,
+          "pressure": 1007.93,
+          "rain": 46,
+          "temperature": 27.06,
+          "timestamp": 1773643362,
+          "uv": 0.55
+        },
+        "1773643372": {
+          "altitude": 52.9,
+          "humidity": 58.04,
+          "mics5524": 3.3,
+          "mq5": 450,
+          "pressure": 1007.93,
+          "rain": 0,
+          "temperature": 27.09,
+          "timestamp": 1773643372,
+          "uv": 0.55
+        },
+        "1773643382": {
+          "altitude": 53.03,
+          "humidity": 58.39,
+          "mics5524": 3.3,
+          "mq5": 443,
+          "pressure": 1007.96,
+          "rain": 790,
+          "temperature": 27.08,
+          "timestamp": 1773643382,
+          "uv": 0.55
+        },
+        "1773643392": {
+          "altitude": 52.88,
+          "humidity": 58.27,
+          "mics5524": 3.3,
+          "mq5": 446,
+          "pressure": 1007.94,
+          "rain": 883,
+          "temperature": 27.1,
+          "timestamp": 1773643392,
+          "uv": 0.55
+        },
+        "1773643402": {
+          "altitude": 52.97,
+          "humidity": 58.38,
+          "mics5524": 3.3,
+          "mq5": 443,
+          "pressure": 1007.9,
+          "rain": 558,
+          "temperature": 27.07,
+          "timestamp": 1773643402,
+          "uv": 0.54
+        },
+        "1773643412": {
+          "altitude": 52.92,
+          "humidity": 58.36,
+          "mics5524": 3.3,
+          "mq5": 447,
+          "pressure": 1007.93,
+          "rain": 4095,
+          "temperature": 27.06,
+          "timestamp": 1773643412,
+          "uv": 0.54
+        },
+        "1773643422": {
+          "altitude": 53.15,
+          "humidity": 57.99,
+          "mics5524": 3.3,
+          "mq5": 449,
+          "pressure": 1007.88,
+          "rain": 995,
+          "temperature": 27.05,
+          "timestamp": 1773643422,
+          "uv": 0.55
+        },
+        "1773643432": {
+          "altitude": 52.89,
+          "humidity": 58.25,
+          "mics5524": 3.3,
+          "mq5": 439,
+          "pressure": 1007.92,
+          "rain": 581,
+          "temperature": 27.05,
+          "timestamp": 1773643432,
+          "uv": 0.54
+        },
+        "1773643442": {
+          "altitude": 53.24,
+          "humidity": 71.8,
+          "mics5524": 3.3,
+          "mq5": 458,
+          "pressure": 1007.96,
+          "rain": 4095,
+          "temperature": 27.21,
+          "timestamp": 1773643442,
+          "uv": 0.54
+        },
+        "1773643452": {
+          "altitude": 52.92,
+          "humidity": 60.77,
+          "mics5524": 3.3,
+          "mq5": 445,
+          "pressure": 1007.95,
+          "rain": 43,
+          "temperature": 27.12,
+          "timestamp": 1773643452,
+          "uv": 0.55
+        },
+        "1773643462": {
+          "altitude": 53.11,
+          "humidity": 60.25,
+          "mics5524": 3.3,
+          "mq5": 447,
+          "pressure": 1007.88,
+          "rain": 922,
+          "temperature": 27.15,
+          "timestamp": 1773643462,
+          "uv": 0.55
+        },
+        "1773643472": {
+          "altitude": 53.16,
+          "humidity": 59.19,
+          "mics5524": 3.3,
+          "mq5": 463,
+          "pressure": 1007.88,
+          "rain": 663,
+          "temperature": 27.13,
+          "timestamp": 1773643472,
+          "uv": 0.55
+        },
+        "1773643482": {
+          "altitude": 53.19,
+          "humidity": 58.64,
+          "mics5524": 3.3,
+          "mq5": 451,
+          "pressure": 1007.9,
+          "rain": 241,
+          "temperature": 27.13,
+          "timestamp": 1773643482,
+          "uv": 0.55
+        },
+        "1773643492": {
+          "altitude": 53.68,
+          "humidity": 58.14,
+          "mics5524": 3.3,
+          "mq5": 443,
+          "pressure": 1007.86,
+          "rain": 175,
+          "temperature": 27.13,
+          "timestamp": 1773643492,
+          "uv": 0.55
+        },
+        "1773643502": {
+          "altitude": 53.39,
+          "humidity": 57.95,
+          "mics5524": 3.3,
+          "mq5": 445,
+          "pressure": 1007.84,
+          "rain": 18,
+          "temperature": 27.1,
+          "timestamp": 1773643502,
+          "uv": 0.55
+        },
+        "1773643512": {
+          "altitude": 53.45,
+          "humidity": 57.86,
+          "mics5524": 3.3,
+          "mq5": 444,
+          "pressure": 1007.86,
+          "rain": 82,
+          "temperature": 27.14,
+          "timestamp": 1773643512,
+          "uv": 0.55
+        },
+        "1773643522": {
+          "altitude": 53.57,
+          "humidity": 57.62,
+          "mics5524": 3.3,
+          "mq5": 447,
+          "pressure": 1007.87,
+          "rain": 125,
+          "temperature": 27.09,
+          "timestamp": 1773643522,
+          "uv": 0.56
+        },
+        "1773643532": {
+          "altitude": 53.55,
+          "humidity": 57.54,
+          "mics5524": 3.3,
+          "mq5": 443,
+          "pressure": 1007.85,
+          "rain": 57,
+          "temperature": 27.11,
+          "timestamp": 1773643532,
+          "uv": 0.55
+        },
+        "1773643542": {
+          "altitude": 53.87,
+          "humidity": 57.52,
+          "mics5524": 3.3,
+          "mq5": 442,
+          "pressure": 1007.8,
+          "rain": 0,
+          "temperature": 27.08,
+          "timestamp": 1773643542,
+          "uv": 0.55
+        },
+        "1773643552": {
+          "altitude": 53.74,
+          "humidity": 57.48,
+          "mics5524": 3.3,
+          "mq5": 438,
+          "pressure": 1007.84,
+          "rain": 981,
+          "temperature": 27.09,
+          "timestamp": 1773643552,
+          "uv": 0.55
+        },
+        "1773643562": {
+          "altitude": 53.87,
+          "humidity": 57.44,
+          "mics5524": 3.3,
+          "mq5": 442,
+          "pressure": 1007.83,
+          "rain": 619,
+          "temperature": 27.1,
+          "timestamp": 1773643562,
+          "uv": 0.55
+        },
+        "1773643572": {
+          "altitude": 54.47,
+          "humidity": 57.16,
+          "mics5524": 3.3,
+          "mq5": 441,
+          "pressure": 1007.79,
+          "rain": 311,
+          "temperature": 27.07,
+          "timestamp": 1773643572,
+          "uv": 0.55
+        },
+        "1773643582": {
+          "altitude": 54.41,
+          "humidity": 57.11,
+          "mics5524": 3.3,
+          "mq5": 440,
+          "pressure": 1007.8,
+          "rain": 4095,
+          "temperature": 27.1,
+          "timestamp": 1773643582,
+          "uv": 0.55
+        },
+        "1773643592": {
+          "altitude": 54.3,
+          "humidity": 56.92,
+          "mics5524": 3.3,
+          "mq5": 438,
+          "pressure": 1007.79,
+          "rain": 766,
+          "temperature": 27.12,
+          "timestamp": 1773643592,
+          "uv": 0.56
+        },
+        "1773643602": {
+          "altitude": 54.51,
+          "humidity": 56.79,
+          "mics5524": 3.3,
+          "mq5": 433,
+          "pressure": 1007.77,
+          "rain": 1040,
+          "temperature": 27.14,
+          "timestamp": 1773643602,
+          "uv": 0.55
+        },
+        "1773643612": {
+          "altitude": 54.75,
+          "humidity": 56.62,
+          "mics5524": 3.3,
+          "mq5": 435,
+          "pressure": 1007.79,
+          "rain": 4095,
+          "temperature": 27.16,
+          "timestamp": 1773643612,
+          "uv": 0.55
+        },
+        "1773643622": {
+          "altitude": 54.51,
+          "humidity": 56.41,
+          "mics5524": 3.3,
+          "mq5": 442,
+          "pressure": 1007.77,
+          "rain": 26,
+          "temperature": 27.17,
+          "timestamp": 1773643622,
+          "uv": 0.56
+        },
+        "1773643632": {
+          "altitude": 54.63,
+          "humidity": 56.37,
+          "mics5524": 3.3,
+          "mq5": 436,
+          "pressure": 1007.75,
+          "rain": 684,
+          "temperature": 27.18,
+          "timestamp": 1773643632,
+          "uv": 0.55
+        },
+        "1773643642": {
+          "altitude": 54.76,
+          "humidity": 56.3,
+          "mics5524": 3.3,
+          "mq5": 432,
+          "pressure": 1007.77,
+          "rain": 1291,
+          "temperature": 27.13,
+          "timestamp": 1773643642,
+          "uv": 0.55
+        },
+        "1773643652": {
+          "altitude": 54.93,
+          "humidity": 56.3,
+          "mics5524": 3.3,
+          "mq5": 432,
+          "pressure": 1007.75,
+          "rain": 387,
+          "temperature": 27.14,
+          "timestamp": 1773643652,
+          "uv": 0.56
+        },
+        "1773643662": {
+          "altitude": 54.93,
+          "humidity": 56.17,
+          "mics5524": 3.3,
+          "mq5": 431,
+          "pressure": 1007.77,
+          "rain": 362,
+          "temperature": 27.1,
+          "timestamp": 1773643662,
+          "uv": 0.55
+        },
+        "1773643672": {
+          "altitude": 54.77,
+          "humidity": 56.29,
+          "mics5524": 3.3,
+          "mq5": 435,
+          "pressure": 1007.75,
+          "rain": 164,
+          "temperature": 27.12,
+          "timestamp": 1773643672,
+          "uv": 0.55
+        },
+        "1773643682": {
+          "altitude": 55.07,
+          "humidity": 56.15,
+          "mics5524": 3.3,
+          "mq5": 433,
+          "pressure": 1007.76,
+          "rain": 59,
+          "temperature": 27.12,
+          "timestamp": 1773643682,
+          "uv": 0.55
+        },
+        "1773643692": {
+          "altitude": 54.98,
+          "humidity": 56.16,
+          "mics5524": 3.3,
+          "mq5": 432,
+          "pressure": 1007.75,
+          "rain": 1018,
+          "temperature": 27.11,
+          "timestamp": 1773643692,
+          "uv": 0.55
+        },
+        "1773643702": {
+          "altitude": 54.76,
+          "humidity": 56.14,
+          "mics5524": 3.3,
+          "mq5": 435,
+          "pressure": 1007.76,
+          "rain": 3,
+          "temperature": 27.13,
+          "timestamp": 1773643702,
+          "uv": 0.55
+        },
+        "1773643712": {
+          "altitude": 54.98,
+          "humidity": 56.06,
+          "mics5524": 3.3,
+          "mq5": 432,
+          "pressure": 1007.72,
+          "rain": 624,
+          "temperature": 27.11,
+          "timestamp": 1773643712,
+          "uv": 0.55
+        },
+        "1773643722": {
+          "altitude": 55.04,
+          "humidity": 56.2,
+          "mics5524": 3.3,
+          "mq5": 385,
+          "pressure": 1007.74,
+          "rain": 266,
+          "temperature": 27.13,
+          "timestamp": 1773643722,
+          "uv": 0.55
+        },
+        "1773643732": {
+          "altitude": 55,
+          "humidity": 56.28,
+          "mics5524": 3.3,
+          "mq5": 434,
+          "pressure": 1007.73,
+          "rain": 161,
+          "temperature": 27.11,
+          "timestamp": 1773643732,
+          "uv": 0.56
+        },
+        "1773643742": {
+          "altitude": 54.98,
+          "humidity": 56.3,
+          "mics5524": 3.3,
+          "mq5": 431,
+          "pressure": 1007.74,
+          "rain": 905,
+          "temperature": 27.12,
+          "timestamp": 1773643742,
+          "uv": 0.55
+        },
+        "1773643752": {
+          "altitude": 55.07,
+          "humidity": 56.14,
+          "mics5524": 3.3,
+          "mq5": 432,
+          "pressure": 1007.71,
+          "rain": 4095,
+          "temperature": 27.12,
+          "timestamp": 1773643752,
+          "uv": 0.55
+        },
+        "1773643762": {
+          "altitude": 55.56,
+          "humidity": 56.12,
+          "mics5524": 3.3,
+          "mq5": 432,
+          "pressure": 1007.68,
+          "rain": 0,
+          "temperature": 27.13,
+          "timestamp": 1773643762,
+          "uv": 0.55
+        },
+        "1773643772": {
+          "altitude": 55.31,
+          "humidity": 56.07,
+          "mics5524": 3.3,
+          "mq5": 430,
+          "pressure": 1007.71,
+          "rain": 263,
+          "temperature": 27.15,
+          "timestamp": 1773643772,
+          "uv": 0.55
+        },
+        "1773643782": {
+          "altitude": 55.14,
+          "humidity": 55.79,
+          "mics5524": 3.3,
+          "mq5": 432,
+          "pressure": 1007.68,
+          "rain": 4095,
+          "temperature": 27.16,
+          "timestamp": 1773643782,
+          "uv": 0.55
+        },
+        "1773643792": {
+          "altitude": 55.45,
+          "humidity": 55.81,
+          "mics5524": 3.3,
+          "mq5": 434,
+          "pressure": 1007.67,
+          "rain": 979,
+          "temperature": 27.15,
+          "timestamp": 1773643792,
+          "uv": 0.55
+        },
+        "1773643803": {
+          "altitude": 55.32,
+          "humidity": 55.57,
+          "mics5524": 3.3,
+          "mq5": 431,
+          "pressure": 1007.7,
+          "rain": 1006,
+          "temperature": 27.14,
+          "timestamp": 1773643803,
+          "uv": 0.55
+        },
+        "1773643813": {
+          "altitude": 55.13,
+          "humidity": 55.61,
+          "mics5524": 3.3,
+          "mq5": 433,
+          "pressure": 1007.67,
+          "rain": 0,
+          "temperature": 27.17,
+          "timestamp": 1773643813,
+          "uv": 0.56
+        },
+        "1773643823": {
+          "altitude": 55.16,
+          "humidity": 55.48,
+          "mics5524": 3.3,
+          "mq5": 430,
+          "pressure": 1007.73,
+          "rain": 209,
+          "temperature": 27.17,
+          "timestamp": 1773643823,
+          "uv": 0.56
+        },
+        "1773643833": {
+          "altitude": 55.01,
+          "humidity": 55.54,
+          "mics5524": 3.3,
+          "mq5": 430,
+          "pressure": 1007.74,
+          "rain": 155,
+          "temperature": 27.15,
+          "timestamp": 1773643833,
+          "uv": 0.55
+        },
+        "1773643843": {
+          "altitude": 55.19,
+          "humidity": 55.54,
+          "mics5524": 3.3,
+          "mq5": 432,
+          "pressure": 1007.71,
+          "rain": 0,
+          "temperature": 27.17,
+          "timestamp": 1773643843,
+          "uv": 0.54
+        },
+        "1773643853": {
+          "altitude": 54.96,
+          "humidity": 55.28,
+          "mics5524": 3.3,
+          "mq5": 427,
+          "pressure": 1007.72,
+          "rain": 199,
+          "temperature": 27.12,
+          "timestamp": 1773643853,
+          "uv": 0.53
+        },
+        "1773643863": {
+          "altitude": 55.37,
+          "humidity": 55.37,
+          "mics5524": 3.3,
+          "mq5": 431,
+          "pressure": 1007.71,
+          "rain": 675,
+          "temperature": 27.13,
+          "timestamp": 1773643863,
+          "uv": 0.54
+        },
+        "1773643873": {
+          "altitude": 55.42,
+          "humidity": 55.23,
+          "mics5524": 3.3,
+          "mq5": 427,
+          "pressure": 1007.66,
+          "rain": 0,
+          "temperature": 27.09,
+          "timestamp": 1773643873,
+          "uv": 0.53
+        },
+        "1773643883": {
+          "altitude": 55.3,
+          "humidity": 55.38,
+          "mics5524": 3.3,
+          "mq5": 426,
+          "pressure": 1007.67,
+          "rain": 830,
+          "temperature": 27.1,
+          "timestamp": 1773643883,
+          "uv": 0.54
+        },
+        "1773643893": {
+          "altitude": 54.91,
+          "humidity": 55.52,
+          "mics5524": 3.3,
+          "mq5": 430,
+          "pressure": 1007.69,
+          "rain": 4095,
+          "temperature": 27.13,
+          "timestamp": 1773643893,
+          "uv": 0.53
+        },
+        "1773643903": {
+          "altitude": 55.34,
+          "humidity": 55.2,
+          "mics5524": 3.3,
+          "mq5": 430,
+          "pressure": 1007.68,
+          "rain": 0,
+          "temperature": 27.11,
+          "timestamp": 1773643903,
+          "uv": 0.54
+        },
+        "1773643913": {
+          "altitude": 55.18,
+          "humidity": 55.16,
+          "mics5524": 3.3,
+          "mq5": 485,
+          "pressure": 1007.69,
+          "rain": 1140,
+          "temperature": 27.14,
+          "timestamp": 1773643913,
+          "uv": 0.54
+        },
+        "1773643923": {
+          "altitude": 55,
+          "humidity": 54.97,
+          "mics5524": 3.3,
+          "mq5": 434,
+          "pressure": 1007.68,
+          "rain": 4095,
+          "temperature": 27.14,
+          "timestamp": 1773643923,
+          "uv": 0.54
+        },
+        "1773643933": {
+          "altitude": 55.13,
+          "humidity": 54.93,
+          "mics5524": 3.3,
+          "mq5": 428,
+          "pressure": 1007.67,
+          "rain": 397,
+          "temperature": 27.16,
+          "timestamp": 1773643933,
+          "uv": 0.53
+        },
+        "1773643943": {
+          "altitude": 55,
+          "humidity": 54.91,
+          "mics5524": 3.3,
+          "mq5": 427,
+          "pressure": 1007.68,
+          "rain": 117,
+          "temperature": 27.16,
+          "timestamp": 1773643943,
+          "uv": 0.53
+        },
+        "1773643953": {
+          "altitude": 55.17,
+          "humidity": 54.91,
+          "mics5524": 3.3,
+          "mq5": 430,
+          "pressure": 1007.69,
+          "rain": 105,
+          "temperature": 27.18,
+          "timestamp": 1773643953,
+          "uv": 0.54
+        },
+        "1773643963": {
+          "altitude": 55.18,
+          "humidity": 54.88,
+          "mics5524": 3.3,
+          "mq5": 429,
+          "pressure": 1007.73,
+          "rain": 875,
+          "temperature": 27.2,
+          "timestamp": 1773643963,
+          "uv": 0.53
+        },
+        "1773643973": {
+          "altitude": 55.32,
+          "humidity": 54.6,
+          "mics5524": 3.3,
+          "mq5": 427,
+          "pressure": 1007.68,
+          "rain": 159,
+          "temperature": 27.16,
+          "timestamp": 1773643973,
+          "uv": 0.53
+        },
+        "1773643983": {
+          "altitude": 55.37,
+          "humidity": 54.65,
+          "mics5524": 3.3,
+          "mq5": 428,
+          "pressure": 1007.67,
+          "rain": 243,
+          "temperature": 27.18,
+          "timestamp": 1773643983,
+          "uv": 0.54
+        },
+        "1773643993": {
+          "altitude": 55.56,
+          "humidity": 54.59,
+          "mics5524": 3.3,
+          "mq5": 427,
+          "pressure": 1007.67,
+          "rain": 171,
+          "temperature": 27.18,
+          "timestamp": 1773643993,
+          "uv": 0.54
+        },
+        "1773644003": {
+          "altitude": 55.35,
+          "humidity": 54.63,
+          "mics5524": 3.3,
+          "mq5": 425,
+          "pressure": 1007.67,
+          "rain": 912,
+          "temperature": 27.2,
+          "timestamp": 1773644003,
+          "uv": 0.53
+        },
+        "1773644013": {
+          "altitude": 55.27,
+          "humidity": 54.32,
+          "mics5524": 3.3,
+          "mq5": 418,
+          "pressure": 1007.68,
+          "rain": 0,
+          "temperature": 27.13,
+          "timestamp": 1773644013,
+          "uv": 0.54
+        },
+        "1773644023": {
+          "altitude": 55.37,
+          "humidity": 54.44,
+          "mics5524": 3.3,
+          "mq5": 417,
+          "pressure": 1007.66,
+          "rain": 0,
+          "temperature": 27.13,
+          "timestamp": 1773644023,
+          "uv": 0.54
+        },
+        "1773644033": {
+          "altitude": 55.32,
+          "humidity": 54.55,
+          "mics5524": 3.3,
+          "mq5": 432,
+          "pressure": 1007.67,
+          "rain": 4095,
+          "temperature": 27.15,
+          "timestamp": 1773644033,
+          "uv": 0.54
+        },
+        "1773644043": {
+          "altitude": 55.43,
+          "humidity": 54.34,
+          "mics5524": 3.3,
+          "mq5": 412,
+          "pressure": 1007.67,
+          "rain": 320,
+          "temperature": 27.15,
+          "timestamp": 1773644043,
+          "uv": 0.54
+        },
+        "1773644053": {
+          "altitude": 55.41,
+          "humidity": 54.44,
+          "mics5524": 3.3,
+          "mq5": 420,
+          "pressure": 1007.68,
+          "rain": 624,
+          "temperature": 27.16,
+          "timestamp": 1773644053,
+          "uv": 0.53
+        },
+        "1773644063": {
+          "altitude": 55.04,
+          "humidity": 54.12,
+          "mics5524": 3.3,
+          "mq5": 497,
+          "pressure": 1007.7,
+          "rain": 4095,
+          "temperature": 27.15,
+          "timestamp": 1773644063,
+          "uv": 0.54
+        },
+        "1773644073": {
+          "altitude": 55.36,
+          "humidity": 54.11,
+          "mics5524": 3.3,
+          "mq5": 425,
+          "pressure": 1007.69,
+          "rain": 176,
+          "temperature": 27.15,
+          "timestamp": 1773644073,
+          "uv": 0.54
+        },
+        "1773644083": {
+          "altitude": 55.28,
+          "humidity": 53.33,
+          "mics5524": 3.3,
+          "mq5": 419,
+          "pressure": 1007.67,
+          "rain": 237,
+          "temperature": 27.07,
+          "timestamp": 1773644083,
+          "uv": 0.54
+        },
+        "1773644093": {
+          "altitude": 55.45,
+          "humidity": 53.81,
+          "mics5524": 3.3,
+          "mq5": 422,
+          "pressure": 1007.68,
+          "rain": 965,
+          "temperature": 27.08,
+          "timestamp": 1773644093,
+          "uv": 0.53
+        },
+        "1773644103": {
+          "altitude": 55.49,
+          "humidity": 54.03,
+          "mics5524": 3.3,
+          "mq5": 421,
+          "pressure": 1007.66,
+          "rain": 266,
+          "temperature": 27.1,
+          "timestamp": 1773644103,
+          "uv": 0.54
+        },
+        "1773644113": {
+          "altitude": 55.69,
+          "humidity": 53.33,
+          "mics5524": 3.3,
+          "mq5": 418,
+          "pressure": 1007.64,
+          "rain": 299,
+          "temperature": 26.98,
+          "timestamp": 1773644113,
+          "uv": 0.53
+        },
+        "1773644123": {
+          "altitude": 55.48,
+          "humidity": 53.57,
+          "mics5524": 3.3,
+          "mq5": 422,
+          "pressure": 1007.66,
+          "rain": 983,
+          "temperature": 27.02,
+          "timestamp": 1773644123,
+          "uv": 0.54
+        },
+        "1773644133": {
+          "altitude": 55.61,
+          "humidity": 53.72,
+          "mics5524": 3.3,
+          "mq5": 413,
+          "pressure": 1007.67,
+          "rain": 426,
+          "temperature": 26.97,
+          "timestamp": 1773644133,
+          "uv": 0.54
+        },
+        "1773644143": {
+          "altitude": 55.59,
+          "humidity": 53.76,
+          "mics5524": 3.3,
+          "mq5": 420,
+          "pressure": 1007.64,
+          "rain": 199,
+          "temperature": 26.98,
+          "timestamp": 1773644143,
+          "uv": 0.53
+        },
+        "1773644153": {
+          "altitude": 55.32,
+          "humidity": 54.19,
+          "mics5524": 3.3,
+          "mq5": 416,
+          "pressure": 1007.66,
+          "rain": 970,
+          "temperature": 26.94,
+          "timestamp": 1773644153,
+          "uv": 0.54
+        },
+        "1773644163": {
+          "altitude": 55.3,
+          "humidity": 54.19,
+          "mics5524": 3.3,
+          "mq5": 414,
+          "pressure": 1007.65,
+          "rain": 717,
+          "temperature": 26.96,
+          "timestamp": 1773644163,
+          "uv": 0.53
+        },
+        "1773644173": {
+          "altitude": 55.56,
+          "humidity": 53.98,
+          "mics5524": 3.3,
+          "mq5": 417,
+          "pressure": 1007.63,
+          "rain": 4095,
+          "temperature": 26.98,
+          "timestamp": 1773644173,
+          "uv": 0.53
+        },
+        "1773644183": {
+          "altitude": 55.51,
+          "humidity": 54.31,
+          "mics5524": 3.3,
+          "mq5": 419,
+          "pressure": 1007.63,
+          "rain": 727,
+          "temperature": 26.95,
+          "timestamp": 1773644183,
+          "uv": 0.54
+        },
+        "1773644193": {
+          "altitude": 55.26,
+          "humidity": 54.11,
+          "mics5524": 3.3,
+          "mq5": 421,
+          "pressure": 1007.67,
+          "rain": 149,
+          "temperature": 26.94,
+          "timestamp": 1773644193,
+          "uv": 0.54
+        },
+        "1773644203": {
+          "altitude": 55.26,
+          "humidity": 54.4,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.63,
+          "rain": 4095,
+          "temperature": 26.95,
+          "timestamp": 1773644203,
+          "uv": 0.54
+        },
+        "1773644213": {
+          "altitude": 55.59,
+          "humidity": 54.32,
+          "mics5524": 3.3,
+          "mq5": 412,
+          "pressure": 1007.63,
+          "rain": 331,
+          "temperature": 26.98,
+          "timestamp": 1773644213,
+          "uv": 0.53
+        },
+        "1773644224": {
+          "altitude": 55.69,
+          "humidity": 54.22,
+          "mics5524": 3.3,
+          "mq5": 413,
+          "pressure": 1007.6,
+          "rain": 599,
+          "temperature": 26.97,
+          "timestamp": 1773644224,
+          "uv": 0.54
+        },
+        "1773644234": {
+          "altitude": 56.14,
+          "humidity": 54.27,
+          "mics5524": 3.3,
+          "mq5": 418,
+          "pressure": 1007.59,
+          "rain": 2559,
+          "temperature": 26.98,
+          "timestamp": 1773644234,
+          "uv": 0.53
+        },
+        "1773644244": {
+          "altitude": 55.97,
+          "humidity": 54.16,
+          "mics5524": 3.3,
+          "mq5": 419,
+          "pressure": 1007.59,
+          "rain": 821,
+          "temperature": 26.99,
+          "timestamp": 1773644244,
+          "uv": 0.54
+        },
+        "1773644254": {
+          "altitude": 55.73,
+          "humidity": 53.96,
+          "mics5524": 3.3,
+          "mq5": 420,
+          "pressure": 1007.61,
+          "rain": 880,
+          "temperature": 26.98,
+          "timestamp": 1773644254,
+          "uv": 0.54
+        },
+        "1773644264": {
+          "altitude": 56.3,
+          "humidity": 54.08,
+          "mics5524": 3.3,
+          "mq5": 420,
+          "pressure": 1007.58,
+          "rain": 913,
+          "temperature": 27,
+          "timestamp": 1773644264,
+          "uv": 0.54
+        },
+        "1773644274": {
+          "altitude": 56.34,
+          "humidity": 54,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.62,
+          "rain": 965,
+          "temperature": 26.99,
+          "timestamp": 1773644274,
+          "uv": 0.54
+        },
+        "1773644284": {
+          "altitude": 56.04,
+          "humidity": 54.07,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.61,
+          "rain": 205,
+          "temperature": 27,
+          "timestamp": 1773644284,
+          "uv": 0.53
+        },
+        "1773644294": {
+          "altitude": 56.13,
+          "humidity": 54,
+          "mics5524": 3.3,
+          "mq5": 419,
+          "pressure": 1007.6,
+          "rain": 599,
+          "temperature": 27.01,
+          "timestamp": 1773644294,
+          "uv": 0.54
+        },
+        "1773644304": {
+          "altitude": 56.19,
+          "humidity": 53.97,
+          "mics5524": 3.3,
+          "mq5": 417,
+          "pressure": 1007.59,
+          "rain": 625,
+          "temperature": 27.02,
+          "timestamp": 1773644304,
+          "uv": 0.53
+        },
+        "1773644314": {
+          "altitude": 56.46,
+          "humidity": 54.04,
+          "mics5524": 3.3,
+          "mq5": 420,
+          "pressure": 1007.55,
+          "rain": 509,
+          "temperature": 27.03,
+          "timestamp": 1773644314,
+          "uv": 0.53
+        },
+        "1773644324": {
+          "altitude": 56.19,
+          "humidity": 53.81,
+          "mics5524": 3.3,
+          "mq5": 418,
+          "pressure": 1007.57,
+          "rain": 932,
+          "temperature": 27.02,
+          "timestamp": 1773644324,
+          "uv": 0.54
+        },
+        "1773644334": {
+          "altitude": 56.38,
+          "humidity": 53.91,
+          "mics5524": 3.3,
+          "mq5": 418,
+          "pressure": 1007.54,
+          "rain": 608,
+          "temperature": 27.01,
+          "timestamp": 1773644334,
+          "uv": 0.54
+        },
+        "1773644344": {
+          "altitude": 56.49,
+          "humidity": 53.77,
+          "mics5524": 3.3,
+          "mq5": 414,
+          "pressure": 1007.53,
+          "rain": 4095,
+          "temperature": 26.99,
+          "timestamp": 1773644344,
+          "uv": 0.54
+        },
+        "1773644354": {
+          "altitude": 56.35,
+          "humidity": 53.7,
+          "mics5524": 3.3,
+          "mq5": 418,
+          "pressure": 1007.56,
+          "rain": 0,
+          "temperature": 27,
+          "timestamp": 1773644354,
+          "uv": 0.53
+        },
+        "1773644364": {
+          "altitude": 56.31,
+          "humidity": 53.86,
+          "mics5524": 3.3,
+          "mq5": 416,
+          "pressure": 1007.56,
+          "rain": 959,
+          "temperature": 27.03,
+          "timestamp": 1773644364,
+          "uv": 0.53
+        },
+        "1773644374": {
+          "altitude": 56.51,
+          "humidity": 53.52,
+          "mics5524": 3.3,
+          "mq5": 413,
+          "pressure": 1007.52,
+          "rain": 4095,
+          "temperature": 27.01,
+          "timestamp": 1773644374,
+          "uv": 0.53
+        },
+        "1773644384": {
+          "altitude": 56.46,
+          "humidity": 53.59,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.54,
+          "rain": 202,
+          "temperature": 27.04,
+          "timestamp": 1773644384,
+          "uv": 0.54
+        },
+        "1773644394": {
+          "altitude": 56.41,
+          "humidity": 53.4,
+          "mics5524": 3.3,
+          "mq5": 410,
+          "pressure": 1007.55,
+          "rain": 969,
+          "temperature": 26.99,
+          "timestamp": 1773644394,
+          "uv": 0.53
+        },
+        "1773644404": {
+          "altitude": 57.01,
+          "humidity": 53.49,
+          "mics5524": 3.3,
+          "mq5": 474,
+          "pressure": 1007.53,
+          "rain": 821,
+          "temperature": 27.01,
+          "timestamp": 1773644404,
+          "uv": 0.54
+        },
+        "1773644414": {
+          "altitude": 56.81,
+          "humidity": 53.44,
+          "mics5524": 3.3,
+          "mq5": 416,
+          "pressure": 1007.52,
+          "rain": 18,
+          "temperature": 27.03,
+          "timestamp": 1773644414,
+          "uv": 0.54
+        },
+        "1773644424": {
+          "altitude": 56.69,
+          "humidity": 53.32,
+          "mics5524": 3.3,
+          "mq5": 416,
+          "pressure": 1007.52,
+          "rain": 422,
+          "temperature": 27.04,
+          "timestamp": 1773644424,
+          "uv": 0.53
+        },
+        "1773644434": {
+          "altitude": 56.71,
+          "humidity": 53.22,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.52,
+          "rain": 960,
+          "temperature": 27.03,
+          "timestamp": 1773644434,
+          "uv": 0.53
+        },
+        "1773644444": {
+          "altitude": 56.77,
+          "humidity": 53.22,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.52,
+          "rain": 0,
+          "temperature": 27.03,
+          "timestamp": 1773644444,
+          "uv": 0.53
+        },
+        "1773644454": {
+          "altitude": 56.87,
+          "humidity": 53.2,
+          "mics5524": 3.3,
+          "mq5": 416,
+          "pressure": 1007.52,
+          "rain": 194,
+          "temperature": 27.04,
+          "timestamp": 1773644454,
+          "uv": 0.54
+        },
+        "1773644464": {
+          "altitude": 57.01,
+          "humidity": 53.12,
+          "mics5524": 3.3,
+          "mq5": 411,
+          "pressure": 1007.49,
+          "rain": 969,
+          "temperature": 27,
+          "timestamp": 1773644464,
+          "uv": 0.54
+        },
+        "1773644474": {
+          "altitude": 56.7,
+          "humidity": 53.08,
+          "mics5524": 3.3,
+          "mq5": 447,
+          "pressure": 1007.51,
+          "rain": 843,
+          "temperature": 27.03,
+          "timestamp": 1773644474,
+          "uv": 0.54
+        },
+        "1773644484": {
+          "altitude": 56.97,
+          "humidity": 53.02,
+          "mics5524": 3.3,
+          "mq5": 409,
+          "pressure": 1007.52,
+          "rain": 4095,
+          "temperature": 27,
+          "timestamp": 1773644484,
+          "uv": 0.53
+        },
+        "1773644494": {
+          "altitude": 56.82,
+          "humidity": 53.04,
+          "mics5524": 3.3,
+          "mq5": 412,
+          "pressure": 1007.5,
+          "rain": 0,
+          "temperature": 27.02,
+          "timestamp": 1773644494,
+          "uv": 0.54
+        },
+        "1773644504": {
+          "altitude": 57.13,
+          "humidity": 53.07,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.53,
+          "rain": 226,
+          "temperature": 27.05,
+          "timestamp": 1773644504,
+          "uv": 0.54
+        },
+        "1773644514": {
+          "altitude": 57.03,
+          "humidity": 52.88,
+          "mics5524": 3.3,
+          "mq5": 414,
+          "pressure": 1007.51,
+          "rain": 4095,
+          "temperature": 27.03,
+          "timestamp": 1773644514,
+          "uv": 0.53
+        },
+        "1773644524": {
+          "altitude": 56.93,
+          "humidity": 52.73,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.53,
+          "rain": 935,
+          "temperature": 27,
+          "timestamp": 1773644524,
+          "uv": 0.56
+        },
+        "1773644534": {
+          "altitude": 57.06,
+          "humidity": 52.72,
+          "mics5524": 3.3,
+          "mq5": 412,
+          "pressure": 1007.5,
+          "rain": 139,
+          "temperature": 26.95,
+          "timestamp": 1773644534,
+          "uv": 0.53
+        },
+        "1773644544": {
+          "altitude": 56.95,
+          "humidity": 52.9,
+          "mics5524": 3.3,
+          "mq5": 414,
+          "pressure": 1007.5,
+          "rain": 1883,
+          "temperature": 26.98,
+          "timestamp": 1773644544,
+          "uv": 0.54
+        },
+        "1773644554": {
+          "altitude": 57.22,
+          "humidity": 52.8,
+          "mics5524": 3.3,
+          "mq5": 409,
+          "pressure": 1007.48,
+          "rain": 656,
+          "temperature": 26.98,
+          "timestamp": 1773644554,
+          "uv": 0.53
+        },
+        "1773644564": {
+          "altitude": 57.22,
+          "humidity": 52.69,
+          "mics5524": 3.3,
+          "mq5": 411,
+          "pressure": 1007.46,
+          "rain": 112,
+          "temperature": 27,
+          "timestamp": 1773644564,
+          "uv": 0.54
+        },
+        "1773644574": {
+          "altitude": 57.29,
+          "humidity": 52.68,
+          "mics5524": 3.3,
+          "mq5": 403,
+          "pressure": 1007.48,
+          "rain": 57,
+          "temperature": 27.03,
+          "timestamp": 1773644574,
+          "uv": 0.54
+        },
+        "1773644584": {
+          "altitude": 57.39,
+          "humidity": 52.64,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.46,
+          "rain": 884,
+          "temperature": 27.03,
+          "timestamp": 1773644584,
+          "uv": 0.54
+        },
+        "1773644594": {
+          "altitude": 57.7,
+          "humidity": 52.71,
+          "mics5524": 3.3,
+          "mq5": 454,
+          "pressure": 1007.49,
+          "rain": 932,
+          "temperature": 27.05,
+          "timestamp": 1773644594,
+          "uv": 0.54
+        },
+        "1773644604": {
+          "altitude": 57.48,
+          "humidity": 52.44,
+          "mics5524": 3.3,
+          "mq5": 410,
+          "pressure": 1007.44,
+          "rain": 614,
+          "temperature": 27.04,
+          "timestamp": 1773644604,
+          "uv": 0.54
+        },
+        "1773644614": {
+          "altitude": 57.48,
+          "humidity": 52.47,
+          "mics5524": 3.3,
+          "mq5": 413,
+          "pressure": 1007.45,
+          "rain": 251,
+          "temperature": 27.04,
+          "timestamp": 1773644614,
+          "uv": 0.53
+        },
+        "1773644624": {
+          "altitude": 57.67,
+          "humidity": 52.29,
+          "mics5524": 3.3,
+          "mq5": 407,
+          "pressure": 1007.46,
+          "rain": 1023,
+          "temperature": 26.99,
+          "timestamp": 1773644624,
+          "uv": 0.54
+        },
+        "1773644634": {
+          "altitude": 57.37,
+          "humidity": 52.39,
+          "mics5524": 3.3,
+          "mq5": 496,
+          "pressure": 1007.44,
+          "rain": 535,
+          "temperature": 27.01,
+          "timestamp": 1773644634,
+          "uv": 0.54
+        },
+        "1773644644": {
+          "altitude": 57.6,
+          "humidity": 52.39,
+          "mics5524": 3.3,
+          "mq5": 410,
+          "pressure": 1007.48,
+          "rain": 408,
+          "temperature": 27.02,
+          "timestamp": 1773644644,
+          "uv": 0.54
+        },
+        "1773644654": {
+          "altitude": 57.92,
+          "humidity": 52.41,
+          "mics5524": 3.3,
+          "mq5": 407,
+          "pressure": 1007.47,
+          "rain": 4095,
+          "temperature": 27.03,
+          "timestamp": 1773644654,
+          "uv": 0.53
+        },
+        "1773644664": {
+          "altitude": 57.57,
+          "humidity": 52.4,
+          "mics5524": 3.3,
+          "mq5": 408,
+          "pressure": 1007.44,
+          "rain": 117,
+          "temperature": 27.04,
+          "timestamp": 1773644664,
+          "uv": 0.54
+        },
+        "1773644674": {
+          "altitude": 57.78,
+          "humidity": 52.34,
+          "mics5524": 3.3,
+          "mq5": 407,
+          "pressure": 1007.47,
+          "rain": 532,
+          "temperature": 27,
+          "timestamp": 1773644674,
+          "uv": 0.54
+        },
+        "1773644684": {
+          "altitude": 57.75,
+          "humidity": 52.37,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.46,
+          "rain": 4095,
+          "temperature": 27.03,
+          "timestamp": 1773644684,
+          "uv": 0.54
+        },
+        "1773644694": {
+          "altitude": 57.65,
+          "humidity": 52.42,
+          "mics5524": 3.3,
+          "mq5": 413,
+          "pressure": 1007.44,
+          "rain": 0,
+          "temperature": 27.06,
+          "timestamp": 1773644694,
+          "uv": 0.54
+        },
+        "1773644704": {
+          "altitude": 57.5,
+          "humidity": 52.19,
+          "mics5524": 3.3,
+          "mq5": 406,
+          "pressure": 1007.46,
+          "rain": 298,
+          "temperature": 27.05,
+          "timestamp": 1773644704,
+          "uv": 0.54
+        },
+        "1773644714": {
+          "altitude": 57.73,
+          "humidity": 52.24,
+          "mics5524": 3.3,
+          "mq5": 415,
+          "pressure": 1007.45,
+          "rain": 4095,
+          "temperature": 27.07,
+          "timestamp": 1773644714,
+          "uv": 0.54
+        },
+        "1773644724": {
+          "altitude": 57.41,
+          "humidity": 52.17,
+          "mics5524": 3.3,
+          "mq5": 403,
+          "pressure": 1007.43,
+          "rain": 251,
+          "temperature": 27.06,
+          "timestamp": 1773644724,
+          "uv": 0.54
+        },
+        "1773644735": {
+          "altitude": 57.8,
+          "humidity": 52.18,
+          "mics5524": 3.3,
+          "mq5": 406,
+          "pressure": 1007.42,
+          "rain": 302,
+          "temperature": 27.07,
+          "timestamp": 1773644735,
+          "uv": 0.53
+        },
+        "1773644745": {
+          "altitude": 57.76,
+          "humidity": 52,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.42,
+          "rain": 976,
+          "temperature": 27.08,
+          "timestamp": 1773644745,
+          "uv": 0.54
+        },
+        "1773644755": {
+          "altitude": 57.71,
+          "humidity": 52.02,
+          "mics5524": 3.3,
+          "mq5": 403,
+          "pressure": 1007.44,
+          "rain": 832,
+          "temperature": 27.09,
+          "timestamp": 1773644755,
+          "uv": 0.53
+        },
+        "1773644765": {
+          "altitude": 57.77,
+          "humidity": 51.87,
+          "mics5524": 3.3,
+          "mq5": 404,
+          "pressure": 1007.46,
+          "rain": 419,
+          "temperature": 27.06,
+          "timestamp": 1773644765,
+          "uv": 0.54
+        },
+        "1773644775": {
+          "altitude": 57.47,
+          "humidity": 51.88,
+          "mics5524": 3.3,
+          "mq5": 403,
+          "pressure": 1007.42,
+          "rain": 224,
+          "temperature": 27.07,
+          "timestamp": 1773644775,
+          "uv": 0.54
+        },
+        "1773644785": {
+          "altitude": 57.69,
+          "humidity": 51.89,
+          "mics5524": 3.3,
+          "mq5": 411,
+          "pressure": 1007.44,
+          "rain": 98,
+          "temperature": 27.08,
+          "timestamp": 1773644785,
+          "uv": 0.54
+        },
+        "1773644795": {
+          "altitude": 57.78,
+          "humidity": 51.84,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.44,
+          "rain": 324,
+          "temperature": 27.08,
+          "timestamp": 1773644795,
+          "uv": 0.54
+        },
+        "1773644805": {
+          "altitude": 57.92,
+          "humidity": 51.93,
+          "mics5524": 3.3,
+          "mq5": 402,
+          "pressure": 1007.43,
+          "rain": 0,
+          "temperature": 27.08,
+          "timestamp": 1773644805,
+          "uv": 0.54
+        },
+        "1773644815": {
+          "altitude": 58.41,
+          "humidity": 51.69,
+          "mics5524": 3.3,
+          "mq5": 403,
+          "pressure": 1007.4,
+          "rain": 83,
+          "temperature": 27.03,
+          "timestamp": 1773644815,
+          "uv": 0.53
+        },
+        "1773644825": {
+          "altitude": 57.57,
+          "humidity": 51.78,
+          "mics5524": 3.3,
+          "mq5": 402,
+          "pressure": 1007.43,
+          "rain": 4095,
+          "temperature": 27.06,
+          "timestamp": 1773644825,
+          "uv": 0.53
+        },
+        "1773644835": {
+          "altitude": 58.34,
+          "humidity": 51.75,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.39,
+          "rain": 722,
+          "temperature": 27.01,
+          "timestamp": 1773644835,
+          "uv": 0.54
+        },
+        "1773644845": {
+          "altitude": 58.13,
+          "humidity": 51.79,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.41,
+          "rain": 1072,
+          "temperature": 27.04,
+          "timestamp": 1773644845,
+          "uv": 0.54
+        },
+        "1773644855": {
+          "altitude": 58.2,
+          "humidity": 51.78,
+          "mics5524": 3.3,
+          "mq5": 404,
+          "pressure": 1007.4,
+          "rain": 4095,
+          "temperature": 27.05,
+          "timestamp": 1773644855,
+          "uv": 0.53
+        },
+        "1773644865": {
+          "altitude": 58.2,
+          "humidity": 51.63,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.41,
+          "rain": 849,
+          "temperature": 27.04,
+          "timestamp": 1773644865,
+          "uv": 0.54
+        },
+        "1773644875": {
+          "altitude": 58.13,
+          "humidity": 51.74,
+          "mics5524": 3.3,
+          "mq5": 422,
+          "pressure": 1007.43,
+          "rain": 320,
+          "temperature": 27.05,
+          "timestamp": 1773644875,
+          "uv": 0.54
+        },
+        "1773644885": {
+          "altitude": 58.51,
+          "humidity": 51.73,
+          "mics5524": 3.3,
+          "mq5": 399,
+          "pressure": 1007.39,
+          "rain": 805,
+          "temperature": 27.03,
+          "timestamp": 1773644885,
+          "uv": 0.54
+        },
+        "1773644895": {
+          "altitude": 58.34,
+          "humidity": 51.78,
+          "mics5524": 3.3,
+          "mq5": 406,
+          "pressure": 1007.39,
+          "rain": 834,
+          "temperature": 27.05,
+          "timestamp": 1773644895,
+          "uv": 0.54
+        },
+        "1773644905": {
+          "altitude": 58.24,
+          "humidity": 51.65,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.38,
+          "rain": 1136,
+          "temperature": 27.03,
+          "timestamp": 1773644905,
+          "uv": 0.54
+        },
+        "1773644915": {
+          "altitude": 58.29,
+          "humidity": 51.59,
+          "mics5524": 3.3,
+          "mq5": 407,
+          "pressure": 1007.38,
+          "rain": 976,
+          "temperature": 27.05,
+          "timestamp": 1773644915,
+          "uv": 0.54
+        },
+        "1773644925": {
+          "altitude": 58.13,
+          "humidity": 51.66,
+          "mics5524": 3.3,
+          "mq5": 404,
+          "pressure": 1007.36,
+          "rain": 656,
+          "temperature": 27.06,
+          "timestamp": 1773644925,
+          "uv": 0.54
+        },
+        "1773644935": {
+          "altitude": 58.26,
+          "humidity": 51.44,
+          "mics5524": 3.3,
+          "mq5": 403,
+          "pressure": 1007.38,
+          "rain": 1166,
+          "temperature": 27.07,
+          "timestamp": 1773644935,
+          "uv": 0.53
+        },
+        "1773644945": {
+          "altitude": 58.33,
+          "humidity": 51.6,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.36,
+          "rain": 511,
+          "temperature": 27.1,
+          "timestamp": 1773644945,
+          "uv": 0.54
+        },
+        "1773644955": {
+          "altitude": 58.78,
+          "humidity": 51.4,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.33,
+          "rain": 244,
+          "temperature": 27.07,
+          "timestamp": 1773644955,
+          "uv": 0.54
+        },
+        "1773644965": {
+          "altitude": 58.62,
+          "humidity": 51.39,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.34,
+          "rain": 172,
+          "temperature": 27.07,
+          "timestamp": 1773644965,
+          "uv": 0.54
+        },
+        "1773644975": {
+          "altitude": 58.76,
+          "humidity": 51.29,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.37,
+          "rain": 127,
+          "temperature": 27.01,
+          "timestamp": 1773644975,
+          "uv": 0.55
+        },
+        "1773644985": {
+          "altitude": 58.54,
+          "humidity": 51.37,
+          "mics5524": 3.3,
+          "mq5": 402,
+          "pressure": 1007.36,
+          "rain": 656,
+          "temperature": 27.03,
+          "timestamp": 1773644985,
+          "uv": 0.54
+        },
+        "1773644995": {
+          "altitude": 58.55,
+          "humidity": 51.42,
+          "mics5524": 3.3,
+          "mq5": 410,
+          "pressure": 1007.36,
+          "rain": 4095,
+          "temperature": 27.04,
+          "timestamp": 1773644995,
+          "uv": 0.54
+        },
+        "1773645005": {
+          "altitude": 58.42,
+          "humidity": 51.15,
+          "mics5524": 3.3,
+          "mq5": 403,
+          "pressure": 1007.4,
+          "rain": 481,
+          "temperature": 27.03,
+          "timestamp": 1773645005,
+          "uv": 0.55
+        },
+        "1773645015": {
+          "altitude": 58.28,
+          "humidity": 51.55,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.34,
+          "rain": 961,
+          "temperature": 27.04,
+          "timestamp": 1773645015,
+          "uv": 0.54
+        },
+        "1773645025": {
+          "altitude": 58.67,
+          "humidity": 51.32,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.34,
+          "rain": 4095,
+          "temperature": 26.99,
+          "timestamp": 1773645025,
+          "uv": 0.55
+        },
+        "1773645035": {
+          "altitude": 58.69,
+          "humidity": 51.32,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.35,
+          "rain": 154,
+          "temperature": 27.02,
+          "timestamp": 1773645035,
+          "uv": 0.54
+        },
+        "1773645045": {
+          "altitude": 58.55,
+          "humidity": 51.34,
+          "mics5524": 3.3,
+          "mq5": 404,
+          "pressure": 1007.34,
+          "rain": 769,
+          "temperature": 27.02,
+          "timestamp": 1773645045,
+          "uv": 0.54
+        },
+        "1773645055": {
+          "altitude": 58.42,
+          "humidity": 51.28,
+          "mics5524": 3.3,
+          "mq5": 407,
+          "pressure": 1007.35,
+          "rain": 0,
+          "temperature": 27.04,
+          "timestamp": 1773645055,
+          "uv": 0.55
+        },
+        "1773645065": {
+          "altitude": 58.59,
+          "humidity": 51.34,
+          "mics5524": 3.3,
+          "mq5": 409,
+          "pressure": 1007.35,
+          "rain": 79,
+          "temperature": 27.04,
+          "timestamp": 1773645065,
+          "uv": 0.54
+        },
+        "1773645075": {
+          "altitude": 58.81,
+          "humidity": 51.23,
+          "mics5524": 3.3,
+          "mq5": 409,
+          "pressure": 1007.3,
+          "rain": 357,
+          "temperature": 27,
+          "timestamp": 1773645075,
+          "uv": 0.55
+        },
+        "1773645085": {
+          "altitude": 58.53,
+          "humidity": 51.34,
+          "mics5524": 3.3,
+          "mq5": 412,
+          "pressure": 1007.31,
+          "rain": 73,
+          "temperature": 27.02,
+          "timestamp": 1773645085,
+          "uv": 0.55
+        },
+        "1773645095": {
+          "altitude": 58.55,
+          "humidity": 51.25,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.32,
+          "rain": 938,
+          "temperature": 26.98,
+          "timestamp": 1773645095,
+          "uv": 0.55
+        },
+        "1773645105": {
+          "altitude": 58.81,
+          "humidity": 51.36,
+          "mics5524": 3.3,
+          "mq5": 406,
+          "pressure": 1007.33,
+          "rain": 173,
+          "temperature": 27.01,
+          "timestamp": 1773645105,
+          "uv": 0.54
+        },
+        "1773645115": {
+          "altitude": 58.3,
+          "humidity": 51.44,
+          "mics5524": 3.3,
+          "mq5": 407,
+          "pressure": 1007.35,
+          "rain": 707,
+          "temperature": 27.02,
+          "timestamp": 1773645115,
+          "uv": 0.55
+        },
+        "1773645125": {
+          "altitude": 58.67,
+          "humidity": 51.25,
+          "mics5524": 3.3,
+          "mq5": 411,
+          "pressure": 1007.32,
+          "rain": 34,
+          "temperature": 27.03,
+          "timestamp": 1773645125,
+          "uv": 0.55
+        },
+        "1773645135": {
+          "altitude": 58.44,
+          "humidity": 51.34,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.32,
+          "rain": 4095,
+          "temperature": 27.03,
+          "timestamp": 1773645135,
+          "uv": 0.55
+        },
+        "1773645145": {
+          "altitude": 58.41,
+          "humidity": 51.29,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.34,
+          "rain": 404,
+          "temperature": 26.97,
+          "timestamp": 1773645145,
+          "uv": 0.55
+        },
+        "1773645155": {
+          "altitude": 58.64,
+          "humidity": 51.34,
+          "mics5524": 3.3,
+          "mq5": 406,
+          "pressure": 1007.34,
+          "rain": 1107,
+          "temperature": 27,
+          "timestamp": 1773645155,
+          "uv": 0.55
+        },
+        "1773645165": {
+          "altitude": 59.01,
+          "humidity": 51.2,
+          "mics5524": 3.3,
+          "mq5": 404,
+          "pressure": 1007.3,
+          "rain": 4095,
+          "temperature": 27,
+          "timestamp": 1773645165,
+          "uv": 0.54
+        },
+        "1773645175": {
+          "altitude": 58.62,
+          "humidity": 51.22,
+          "mics5524": 3.3,
+          "mq5": 409,
+          "pressure": 1007.33,
+          "rain": 592,
+          "temperature": 27.02,
+          "timestamp": 1773645175,
+          "uv": 0.55
+        },
+        "1773645185": {
+          "altitude": 58.64,
+          "humidity": 51.14,
+          "mics5524": 3.3,
+          "mq5": 404,
+          "pressure": 1007.31,
+          "rain": 117,
+          "temperature": 26.98,
+          "timestamp": 1773645185,
+          "uv": 0.55
+        },
+        "1773645195": {
+          "altitude": 59.14,
+          "humidity": 51.11,
+          "mics5524": 3.3,
+          "mq5": 404,
+          "pressure": 1007.29,
+          "rain": 119,
+          "temperature": 27,
+          "timestamp": 1773645195,
+          "uv": 0.55
+        },
+        "1773645205": {
+          "altitude": 58.69,
+          "humidity": 51.08,
+          "mics5524": 3.3,
+          "mq5": 407,
+          "pressure": 1007.31,
+          "rain": 494,
+          "temperature": 26.98,
+          "timestamp": 1773645205,
+          "uv": 0.55
+        },
+        "1773645215": {
+          "altitude": 59.13,
+          "humidity": 51.04,
+          "mics5524": 3.3,
+          "mq5": 405,
+          "pressure": 1007.31,
+          "rain": 555,
+          "temperature": 26.96,
+          "timestamp": 1773645215,
+          "uv": 0.54
+        },
+        "1773645225": {
+          "altitude": 59.08,
+          "humidity": 51.06,
+          "mics5524": 3.3,
+          "mq5": 406,
+          "pressure": 1007.29,
+          "rain": 0,
+          "temperature": 26.97,
+          "timestamp": 1773645225,
+          "uv": 0.54
+        },
+        "1773645235": {
+          "altitude": 59.01,
+          "humidity": 50.94,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.3,
+          "rain": 749,
+          "temperature": 26.97,
+          "timestamp": 1773645235,
+          "uv": 0.54
+        },
+        "1773645245": {
+          "altitude": 58.97,
+          "humidity": 50.97,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.3,
+          "rain": 207,
+          "temperature": 26.99,
+          "timestamp": 1773645245,
+          "uv": 0.55
+        },
+        "1773645256": {
+          "altitude": 58.83,
+          "humidity": 50.96,
+          "mics5524": 3.3,
+          "mq5": 409,
+          "pressure": 1007.32,
+          "rain": 0,
+          "temperature": 27,
+          "timestamp": 1773645256,
+          "uv": 0.55
+        },
+        "1773645266": {
+          "altitude": 58.71,
+          "humidity": 50.92,
+          "mics5524": 3.3,
+          "mq5": 416,
+          "pressure": 1007.32,
+          "rain": 48,
+          "temperature": 27,
+          "timestamp": 1773645266,
+          "uv": 0.55
+        },
+        "1773645276": {
+          "altitude": 59.14,
+          "humidity": 50.89,
+          "mics5524": 3.3,
+          "mq5": 407,
+          "pressure": 1007.29,
+          "rain": 4095,
+          "temperature": 27,
+          "timestamp": 1773645276,
+          "uv": 0.54
+        },
+        "1773645286": {
+          "altitude": 59.12,
+          "humidity": 50.76,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.25,
+          "rain": 642,
+          "temperature": 26.98,
+          "timestamp": 1773645286,
+          "uv": 0.54
+        },
+        "1773645296": {
+          "altitude": 58.82,
+          "humidity": 50.85,
+          "mics5524": 3.3,
+          "mq5": 402,
+          "pressure": 1007.27,
+          "rain": 1147,
+          "temperature": 27.01,
+          "timestamp": 1773645296,
+          "uv": 0.53
+        },
+        "1773645306": {
+          "altitude": 58.94,
+          "humidity": 50.75,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.27,
+          "rain": 4095,
+          "temperature": 26.97,
+          "timestamp": 1773645306,
+          "uv": 0.54
+        },
+        "1773645316": {
+          "altitude": 59.07,
+          "humidity": 50.85,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.25,
+          "rain": 37,
+          "temperature": 27,
+          "timestamp": 1773645316,
+          "uv": 0.53
+        },
+        "1773645326": {
+          "altitude": 59.09,
+          "humidity": 50.68,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.26,
+          "rain": 112,
+          "temperature": 26.98,
+          "timestamp": 1773645326,
+          "uv": 0.53
+        },
+        "1773645336": {
+          "altitude": 58.97,
+          "humidity": 50.71,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.29,
+          "rain": 4095,
+          "temperature": 26.98,
+          "timestamp": 1773645336,
+          "uv": 0.54
+        },
+        "1773645346": {
+          "altitude": 59.06,
+          "humidity": 50.79,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.27,
+          "rain": 0,
+          "temperature": 26.99,
+          "timestamp": 1773645346,
+          "uv": 0.54
+        },
+        "1773645356": {
+          "altitude": 59.01,
+          "humidity": 50.67,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.25,
+          "rain": 107,
+          "temperature": 26.98,
+          "timestamp": 1773645356,
+          "uv": 0.54
+        },
+        "1773645366": {
+          "altitude": 59.42,
+          "humidity": 50.7,
+          "mics5524": 3.3,
+          "mq5": 403,
+          "pressure": 1007.26,
+          "rain": 538,
+          "temperature": 27,
+          "timestamp": 1773645366,
+          "uv": 0.53
+        },
+        "1773645376": {
+          "altitude": 59.3,
+          "humidity": 50.54,
+          "mics5524": 3.3,
+          "mq5": 398,
+          "pressure": 1007.22,
+          "rain": 551,
+          "temperature": 26.92,
+          "timestamp": 1773645376,
+          "uv": 0.53
+        },
+        "1773645386": {
+          "altitude": 59.56,
+          "humidity": 50.64,
+          "mics5524": 3.3,
+          "mq5": 420,
+          "pressure": 1007.19,
+          "rain": 269,
+          "temperature": 26.97,
+          "timestamp": 1773645386,
+          "uv": 0.53
+        },
+        "1773645396": {
+          "altitude": 59.64,
+          "humidity": 50.57,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.23,
+          "rain": 0,
+          "temperature": 26.99,
+          "timestamp": 1773645396,
+          "uv": 0.54
+        },
+        "1773645406": {
+          "altitude": 59.46,
+          "humidity": 50.53,
+          "mics5524": 3.3,
+          "mq5": 402,
+          "pressure": 1007.2,
+          "rain": 890,
+          "temperature": 27,
+          "timestamp": 1773645406,
+          "uv": 0.53
+        },
+        "1773645416": {
+          "altitude": 59.78,
+          "humidity": 50.48,
+          "mics5524": 3.3,
+          "mq5": 402,
+          "pressure": 1007.2,
+          "rain": 464,
+          "temperature": 27.01,
+          "timestamp": 1773645416,
+          "uv": 0.53
+        },
+        "1773645426": {
+          "altitude": 59.79,
+          "humidity": 50.28,
+          "mics5524": 3.3,
+          "mq5": 409,
+          "pressure": 1007.19,
+          "rain": 974,
+          "temperature": 26.95,
+          "timestamp": 1773645426,
+          "uv": 0.54
+        },
+        "1773645436": {
+          "altitude": 59.31,
+          "humidity": 50.38,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.23,
+          "rain": 21,
+          "temperature": 26.99,
+          "timestamp": 1773645436,
+          "uv": 0.53
+        },
+        "1773645446": {
+          "altitude": 59.66,
+          "humidity": 50.37,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.23,
+          "rain": 4095,
+          "temperature": 26.94,
+          "timestamp": 1773645446,
+          "uv": 0.53
+        },
+        "1773645456": {
+          "altitude": 59.61,
+          "humidity": 50.4,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.22,
+          "rain": 977,
+          "temperature": 26.98,
+          "timestamp": 1773645456,
+          "uv": 0.53
+        },
+        "1773645466": {
+          "altitude": 59.66,
+          "humidity": 50.32,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.21,
+          "rain": 1121,
+          "temperature": 26.99,
+          "timestamp": 1773645466,
+          "uv": 0.53
+        },
+        "1773645476": {
+          "altitude": 59.42,
+          "humidity": 50.4,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.21,
+          "rain": 4095,
+          "temperature": 26.98,
+          "timestamp": 1773645476,
+          "uv": 0.53
+        },
+        "1773645486": {
+          "altitude": 59.6,
+          "humidity": 50.27,
+          "mics5524": 3.3,
+          "mq5": 401,
+          "pressure": 1007.17,
+          "rain": 144,
+          "temperature": 26.98,
+          "timestamp": 1773645486,
+          "uv": 0.53
+        },
+        "1773645496": {
+          "altitude": 59.77,
+          "humidity": 50.32,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.14,
+          "rain": 1088,
+          "temperature": 27,
+          "timestamp": 1773645496,
+          "uv": 0.53
+        },
+        "1773645506": {
+          "altitude": 59.77,
+          "humidity": 50.24,
+          "mics5524": 3.3,
+          "mq5": 397,
+          "pressure": 1007.18,
+          "rain": 693,
+          "temperature": 27.02,
+          "timestamp": 1773645506,
+          "uv": 0.53
+        },
+        "1773645516": {
+          "altitude": 59.88,
+          "humidity": 50.1,
+          "mics5524": 3.3,
+          "mq5": 391,
+          "pressure": 1007.19,
+          "rain": 960,
+          "temperature": 26.99,
+          "timestamp": 1773645516,
+          "uv": 0.53
+        },
+        "1773645526": {
+          "altitude": 59.91,
+          "humidity": 50.13,
+          "mics5524": 3.3,
+          "mq5": 400,
+          "pressure": 1007.18,
+          "rain": 976,
+          "temperature": 27.01,
+          "timestamp": 1773645526,
+          "uv": 0.53
+        }
+      }
+    }
+  }
+}
