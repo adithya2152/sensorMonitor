@@ -16,11 +16,17 @@ import {
   fromUnixTime,
   isAfter,
   startOfDay,
-  subHours,
   subDays,
+  subHours,
   subMonths,
 } from "date-fns";
-import { getFallbackReadings, subscribeToLiveReadings } from "./firebaseStream";
+import {
+  getFallbackReadings,
+  loginWithEmailPassword,
+  logoutCurrentUser,
+  observeAuth,
+  subscribeToLiveReadings,
+} from "./firebaseStream";
 
 const UNIT_BY_METRIC = {
   temperature: "deg C",
@@ -189,6 +195,7 @@ function aggregateReadings(readings, range) {
       range === "day"
         ? format(date, "HH:00")
         : format(startOfDay(date), "MMM d");
+
     const record = grouped.get(key) ?? {
       key,
       count: 0,
@@ -269,10 +276,31 @@ function SensorCard({ metric, value, sparklineData, status }) {
   );
 }
 
+function normalizeAuthError(error) {
+  const code = String(error?.code ?? "");
+
+  if (code.includes("auth/invalid-credential")) {
+    return "Invalid email or password.";
+  }
+  if (code.includes("auth/user-disabled")) {
+    return "This account has been disabled.";
+  }
+  if (code.includes("auth/too-many-requests")) {
+    return "Too many attempts. Please try again later.";
+  }
+
+  return error?.message || "Authentication failed.";
+}
+
 function App() {
   const [readings, setReadings] = useState([]);
   const [error, setError] = useState("");
+  const [authError, setAuthError] = useState("");
   const [source, setSource] = useState("connecting");
+  const [authReady, setAuthReady] = useState(false);
+  const [authLoading, setAuthLoading] = useState(false);
+  const [authUser, setAuthUser] = useState(null);
+  const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [notificationPermission, setNotificationPermission] = useState(() => {
     if (typeof window === "undefined" || !("Notification" in window)) {
       return "unsupported";
@@ -282,14 +310,56 @@ function App() {
   const lastRedAlertRef = useRef("");
 
   useEffect(() => {
+    const unsubscribe = observeAuth(
+      (user) => {
+        setAuthUser(user);
+        setAuthReady(true);
+      },
+      (firebaseError) => {
+        setAuthReady(true);
+        setAuthError(normalizeAuthError(firebaseError));
+      },
+    );
+
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    if (!authReady) {
+      return;
+    }
+
     let mounted = true;
 
+    if (!authUser) {
+      setSource("local-export");
+      getFallbackReadings()
+        .then((fallback) => {
+          if (!mounted) {
+            return;
+          }
+          setReadings(fallback);
+        })
+        .catch((fallbackError) => {
+          if (!mounted) {
+            return;
+          }
+          setError(fallbackError.message);
+        });
+
+      return () => {
+        mounted = false;
+      };
+    }
+
     const live = subscribeToLiveReadings(
+      authUser.uid,
       (liveReadings) => {
         if (!mounted) {
           return;
         }
 
+        setError("");
         setReadings(liveReadings);
         setSource("firebase-live");
       },
@@ -299,14 +369,16 @@ function App() {
         }
 
         setError(firebaseError.message);
+        setSource("local-export");
         try {
           const fallback = await getFallbackReadings();
           if (mounted) {
             setReadings(fallback);
-            setSource("local-export");
           }
         } catch (fallbackError) {
-          setError(fallbackError.message);
+          if (mounted) {
+            setError(fallbackError.message);
+          }
         }
       },
     );
@@ -314,10 +386,11 @@ function App() {
     if (!live.connected) {
       getFallbackReadings()
         .then((fallback) => {
-          if (mounted) {
-            setReadings(fallback);
-            setSource("local-export");
+          if (!mounted) {
+            return;
           }
+          setReadings(fallback);
+          setSource("local-export");
         })
         .catch((fallbackError) => {
           if (mounted) {
@@ -330,7 +403,7 @@ function App() {
       mounted = false;
       live.unsubscribe();
     };
-  }, []);
+  }, [authReady, authUser]);
 
   const latest = readings[readings.length - 1];
   const quality = useMemo(() => computeScore(latest), [latest]);
@@ -386,6 +459,7 @@ function App() {
       .map((item) => item.metric)
       .sort()
       .join("|");
+
     if (!signature || signature === lastRedAlertRef.current) {
       return;
     }
@@ -403,6 +477,34 @@ function App() {
           : `${list} is critical now.`,
     });
   }, [alertSummary, notificationPermission]);
+
+  const handleSignIn = async (event) => {
+    event.preventDefault();
+    setAuthError("");
+    setAuthLoading(true);
+
+    try {
+      await loginWithEmailPassword(loginForm.email.trim(), loginForm.password);
+      setLoginForm((current) => ({ ...current, password: "" }));
+    } catch (signInError) {
+      setAuthError(normalizeAuthError(signInError));
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    setAuthError("");
+    setAuthLoading(true);
+
+    try {
+      await logoutCurrentUser();
+    } catch (signOutError) {
+      setAuthError(normalizeAuthError(signOutError));
+    } finally {
+      setAuthLoading(false);
+    }
+  };
 
   const requestNotifications = async () => {
     if (typeof window === "undefined" || !("Notification" in window)) {
@@ -518,13 +620,57 @@ function App() {
                 ? "Export JSON"
                 : "Connecting..."}
           </p>
+          <p className="auth-subtitle">
+            {authReady
+              ? authUser
+                ? `Signed in as ${authUser.email || authUser.uid}`
+                : "Sign in to use live Firebase data"
+              : "Checking authentication..."}
+          </p>
         </div>
         {latest?.timestamp ? (
-          <span>
-            Last update: {format(fromUnixTime(latest.timestamp), "PPpp")}
-          </span>
+          <span>Last update: {format(fromUnixTime(latest.timestamp), "PPpp")}</span>
         ) : null}
       </header>
+
+      {!authUser ? (
+        <section className="auth-panel">
+          <h3>Sign In</h3>
+          <form className="auth-form" onSubmit={handleSignIn}>
+            <input
+              type="email"
+              name="email"
+              autoComplete="email"
+              placeholder="Email"
+              value={loginForm.email}
+              onChange={(event) =>
+                setLoginForm((current) => ({
+                  ...current,
+                  email: event.target.value,
+                }))
+              }
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              placeholder="Password"
+              value={loginForm.password}
+              onChange={(event) =>
+                setLoginForm((current) => ({
+                  ...current,
+                  password: event.target.value,
+                }))
+              }
+              required
+            />
+            <button type="submit" disabled={authLoading || !authReady}>
+              {authLoading ? "Signing in..." : "Sign In"}
+            </button>
+          </form>
+        </section>
+      ) : null}
 
       <section className="toolbar">
         <div className="toolbar-group">
@@ -541,9 +687,17 @@ function App() {
               ? "Notifications Enabled"
               : "Enable Notifications"}
           </button>
+          {authUser ? (
+            <button type="button" onClick={handleSignOut} disabled={authLoading}>
+              {authLoading ? "Please wait..." : "Sign Out"}
+            </button>
+          ) : null}
           <span className="live-pill">Auto-refresh active</span>
         </div>
       </section>
+
+      {authError ? <p className="warning">{authError}</p> : null}
+      {error ? <p className="warning">{error}</p> : null}
 
       <section className="alerts-panel">
         <h3>Alert Status</h3>
@@ -562,8 +716,6 @@ function App() {
           </span>
         </div>
       </section>
-
-      {error ? <p className="warning">{error}</p> : null}
 
       <section className="top-section">
         <article className="quality-panel">

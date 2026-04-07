@@ -1,5 +1,13 @@
 import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { getDatabase, onValue, ref } from "firebase/database";
+
+let firebaseServices = null;
 
 function getConfig() {
   const config = {
@@ -37,19 +45,78 @@ function normalizeReadings(snapshotValue) {
     .sort((a, b) => a.timestamp - b.timestamp);
 }
 
-export function subscribeToLiveReadings(onData, onError) {
-  const { config, hasRequired } = getConfig();
+function getFirebaseServices() {
+  if (firebaseServices) {
+    return firebaseServices;
+  }
 
+  const { config, hasRequired } = getConfig();
   if (!hasRequired) {
-    return { connected: false, unsubscribe: () => {} };
+    return null;
   }
 
   const app = initializeApp(config);
+  const auth = getAuth(app);
   const db = getDatabase(app);
-  const userId = import.meta.env.VITE_FIREBASE_USER_ID;
+  firebaseServices = { app, auth, db };
+  return firebaseServices;
+}
 
-  const path = userId ? `UsersData/${userId}/readings` : "UsersData";
-  const readingsRef = ref(db, path);
+export function observeAuth(onChange, onError) {
+  const services = getFirebaseServices();
+  if (!services) {
+    onError(
+      new Error(
+        "Firebase is not configured. Set required VITE_FIREBASE_* variables in .env.",
+      ),
+    );
+    return () => {};
+  }
+
+  return onAuthStateChanged(services.auth, onChange, onError);
+}
+
+export async function loginWithEmailPassword(email, password) {
+  const services = getFirebaseServices();
+  if (!services) {
+    throw new Error(
+      "Firebase is not configured. Set required VITE_FIREBASE_* variables in .env.",
+    );
+  }
+
+  const credentials = await signInWithEmailAndPassword(
+    services.auth,
+    email,
+    password,
+  );
+  return credentials.user;
+}
+
+export async function logoutCurrentUser() {
+  const services = getFirebaseServices();
+  if (!services) {
+    return;
+  }
+
+  await signOut(services.auth);
+}
+
+export function subscribeToLiveReadings(userId, onData, onError) {
+  const services = getFirebaseServices();
+  if (!services) {
+    return { connected: false, unsubscribe: () => {} };
+  }
+
+  const effectiveUserId = userId || import.meta.env.VITE_FIREBASE_USER_ID;
+  if (!effectiveUserId) {
+    onError(
+      new Error("No user is signed in and VITE_FIREBASE_USER_ID is not set."),
+    );
+    return { connected: false, unsubscribe: () => {} };
+  }
+
+  const path = `UsersData/${effectiveUserId}/readings`;
+  const readingsRef = ref(services.db, path);
 
   const unsubscribe = onValue(
     readingsRef,
@@ -58,13 +125,6 @@ export function subscribeToLiveReadings(onData, onError) {
 
       if (!value) {
         onData([]);
-        return;
-      }
-
-      if (path === "UsersData") {
-        const [firstUser] = Object.values(value);
-        const readingsObject = firstUser?.readings ?? {};
-        onData(normalizeReadings(readingsObject));
         return;
       }
 
