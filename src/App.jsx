@@ -37,16 +37,6 @@ const UNIT_BY_METRIC = {
   uv: "index",
   mq5: "ppm",
   mics5524: "V",
-  mq5_rs_kohm: "kOhm",
-  mics5524_co_ppm: "ppm",
-  mics5524_ch4_ppm: "ppm",
-  mics5524_h2_ppm: "ppm",
-  mics5524_ethanol_ppm: "ppm",
-  mics5524_rs_kohm: "kOhm",
-  wind_speed_kmh: "km/h",
-  wind_speed_ms: "m/s",
-  wind_direction_deg: "deg",
-  dust_density_ugm3: "ug/m3",
 };
 
 const THRESHOLDS_BY_METRIC = {
@@ -86,38 +76,6 @@ function toFixedNumber(value) {
     return "--";
   }
   return Number(value).toFixed(2);
-}
-
-function formatSensorValue(value) {
-  if (value === null || value === undefined || value === "") {
-    return "--";
-  }
-
-  if (typeof value === "number") {
-    return Number.isInteger(value) ? String(value) : value.toFixed(2);
-  }
-
-  if (typeof value === "boolean") {
-    return value ? "true" : "false";
-  }
-
-  return String(value);
-}
-
-function formatTimestampLabel(timestamp) {
-  if (timestamp === null || timestamp === undefined || timestamp === "") {
-    return "Live snapshot";
-  }
-
-  if (!Number.isFinite(Number(timestamp))) {
-    return "Live snapshot";
-  }
-
-  if (Number(timestamp) === 0) {
-    return "Live snapshot";
-  }
-
-  return format(fromUnixTime(Number(timestamp)), "PPpp");
 }
 
 function csvEscape(rawValue) {
@@ -289,8 +247,6 @@ function Gauge({ score, label }) {
 }
 
 function SensorCard({ metric, value, sparklineData, status }) {
-  const displayValue = formatSensorValue(value);
-
   return (
     <article className="sensor-card">
       <div className="sensor-head-row">
@@ -300,10 +256,8 @@ function SensorCard({ metric, value, sparklineData, status }) {
         </span>
       </div>
       <div className="sensor-value-row">
-        <strong>{displayValue}</strong>
-        <span>
-          {Number.isFinite(Number(value)) ? (UNIT_BY_METRIC[metric] ?? "") : ""}
-        </span>
+        <strong>{toFixedNumber(value)}</strong>
+        <span>{UNIT_BY_METRIC[metric] ?? ""}</span>
       </div>
       <div className="sparkline-wrap" aria-label={`${metric} sparkline`}>
         <ResponsiveContainer width="100%" height="100%">
@@ -574,10 +528,8 @@ function App() {
     const headers = ["timestamp_iso", ...metrics];
 
     const rows = readings.map((entry) => {
-      const iso = Number.isFinite(Number(entry.timestamp))
-        ? Number(entry.timestamp) === 0
-          ? "Live snapshot"
-          : format(fromUnixTime(Number(entry.timestamp)), "yyyy-MM-dd HH:mm:ss")
+      const iso = entry.timestamp
+        ? format(fromUnixTime(Number(entry.timestamp)), "yyyy-MM-dd HH:mm:ss")
         : "";
       const values = metrics.map((field) => csvEscape(entry[field] ?? ""));
       return [csvEscape(iso), ...values].join(",");
@@ -629,7 +581,9 @@ function App() {
         "MQ5",
       ];
       const tableBody = previewRows.map((entry) => [
-        formatTimestampLabel(entry.timestamp),
+        entry.timestamp
+          ? format(fromUnixTime(Number(entry.timestamp)), "PPpp")
+          : "--",
         toFixedNumber(entry.temperature),
         toFixedNumber(entry.humidity),
         toFixedNumber(entry.pressure),
@@ -674,8 +628,8 @@ function App() {
               : "Checking authentication..."}
           </p>
         </div>
-        {latest ? (
-          <span>Last update: {formatTimestampLabel(latest.timestamp)}</span>
+        {latest?.timestamp ? (
+          <span>Last update: {format(fromUnixTime(latest.timestamp), "PPpp")}</span>
         ) : null}
       </header>
 
@@ -734,11 +688,7 @@ function App() {
               : "Enable Notifications"}
           </button>
           {authUser ? (
-            <button
-              type="button"
-              onClick={handleSignOut}
-              disabled={authLoading}
-            >
+            <button type="button" onClick={handleSignOut} disabled={authLoading}>
               {authLoading ? "Please wait..." : "Sign Out"}
             </button>
           ) : null}

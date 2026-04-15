@@ -201,15 +201,7 @@ export function subscribeToLiveReadings(userId, onData, onError) {
     return { connected: false, unsubscribe: () => {} };
   }
 
-  const effectiveUserId = userId || import.meta.env.VITE_FIREBASE_USER_ID;
-  if (!effectiveUserId) {
-    onError(
-      new Error("No user is signed in and VITE_FIREBASE_USER_ID is not set."),
-    );
-    return { connected: false, unsubscribe: () => {} };
-  }
-
-  const path = `UsersData/${effectiveUserId}`;
+  const path = "readings";
   const readingsRef = ref(services.db, path);
 
   const unsubscribe = onValue(
@@ -222,7 +214,7 @@ export function subscribeToLiveReadings(userId, onData, onError) {
         return;
       }
 
-      onData(normalizeReadings(value.readings ?? value.sensors ?? value));
+      onData(normalizeReadings(value));
     },
     (error) => {
       onError(error);
@@ -240,9 +232,5 @@ export async function getFallbackReadings() {
   }
 
   const payload = await response.json();
-  const usersData = payload?.UsersData;
-  const [firstUser] = usersData ? Object.values(usersData) : [];
-  return normalizeReadings(
-    firstUser?.readings ?? firstUser?.sensors ?? firstUser ?? {},
-  );
+  return normalizeReadings(payload?.readings ?? {});
 }
