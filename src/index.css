@@ -1,8 +1,9 @@
 :root {
   --bg: #071330;
   --bg-soft: #0f2148;
-  --panel: #102a5e;
-  --panel-alt: #13356f;
+  --panel: #122c5f;
+  --panel-alt: #16366f;
+  --panel-deep: #0e2450;
   --border: #3a5ea0;
   --text: #ecf4ff;
   --muted: #b8c6e3;
@@ -36,12 +37,12 @@ body {
 .dashboard {
   width: min(1400px, 100% - 2rem);
   margin: 1rem auto;
-  border: 1px solid #61ff1a66;
+  border: 1px solid #68ee8d55;
   border-radius: 20px;
-  padding: 1.1rem;
+  padding: 1.25rem;
   backdrop-filter: blur(6px);
-  background: linear-gradient(180deg, #0c1c44f0, #081a3bf0);
-  box-shadow: 0 10px 35px #02122f;
+  background: linear-gradient(180deg, #0b1d45f7, #081a3bf2);
+  box-shadow: 0 16px 44px #02122f;
   animation: rise-in 500ms ease-out;
 }
 
@@ -210,38 +211,66 @@ body {
 
 .top-section {
   display: grid;
-  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: minmax(148px, auto);
+  grid-auto-flow: row dense;
+  align-items: start;
+  gap: 0.5rem;
+}
+
+.top-section>.sensor-card,
+.top-section>.quality-panel {
+  grid-column: span 3;
 }
 
 .quality-panel,
 .chart-card,
 .sensor-card {
-  border: 1px solid #ffffff24;
+  border: 1px solid #ffffff26;
   border-radius: 14px;
-  background: linear-gradient(120deg, var(--panel), var(--panel-alt));
+  background:
+    radial-gradient(circle at 78% 18%, #9bcaff1c 0, transparent 32%),
+    linear-gradient(128deg, var(--panel-deep) 0%, var(--panel) 46%, var(--panel-alt) 100%);
+  box-shadow: inset 0 1px 0 #ffffff10, 0 8px 18px #020d2457;
 }
 
 .quality-panel {
-  padding: 1rem;
+  padding: 1.05rem;
+  grid-row: span 2;
+  min-height: 312px;
+  position: relative;
+  overflow: hidden;
+}
+
+.quality-panel::before {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -40px;
+  top: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #9eff2530 0%, transparent 72%);
+  pointer-events: none;
 }
 
 .quality-panel h3,
 .chart-card h3 {
   margin: 0 0 0.8rem;
   font-family: var(--font-head);
-  font-size: 1.1rem;
-  letter-spacing: 0.04em;
+  font-size: 1.18rem;
+  letter-spacing: 0.03em;
 }
 
 .gauge-shell {
   display: grid;
   place-items: center;
-  padding: 1rem 0 0.4rem;
+  height: calc(100% - 2rem);
+  padding: 0.35rem 0;
 }
 
 .gauge-circle {
-  width: 230px;
+  width: clamp(210px, 18vw, 270px);
   aspect-ratio: 1;
   border-radius: 50%;
   display: grid;
@@ -281,9 +310,16 @@ body {
 }
 
 .sensor-card {
-  padding: 0.85rem;
+  padding: 0.7rem;
   position: relative;
   overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  min-height: 150px;
+}
+
+.sensor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px #020d2480;
 }
 
 .sensor-card::after {
@@ -296,8 +332,8 @@ body {
 
 .sensor-title {
   margin: 0;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
   color: var(--muted);
 }
 
@@ -310,10 +346,10 @@ body {
 
 .status-pill {
   border-radius: 999px;
-  font-size: 0.66rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.2rem 0.42rem;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
   border: 1px solid transparent;
 }
 
@@ -360,6 +396,55 @@ body {
   height: 44px;
 }
 
+.sensor-card-group {
+  min-height: 220px;
+}
+
+.sensor-group-list {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.55rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.sensor-group-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.38rem 0;
+  border-bottom: 1px solid #ffffff14;
+}
+
+.sensor-group-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sensor-group-label {
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.sensor-group-value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  text-align: right;
+}
+
+.sensor-group-value strong {
+  font-size: 1.05rem;
+  font-family: var(--font-head);
+}
+
+.sensor-group-value span {
+  color: var(--aqua);
+  font-size: 0.78rem;
+}
+
 .charts-grid {
   margin-top: 1rem;
   display: grid;
@@ -404,19 +489,31 @@ body {
 }
 
 @media (max-width: 1140px) {
-  .card-grid {
-    grid-template-columns: repeat(2, minmax(170px, 1fr));
+  .top-section {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .top-section>.sensor-card,
+  .top-section>.quality-panel {
+    grid-column: span 2;
   }
 }
 
 @media (max-width: 900px) {
   .top-section {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .top-section>.sensor-card,
+  .top-section>.quality-panel {
+    grid-column: span 2;
   }
 
   .quality-panel {
     display: grid;
     place-items: center;
+    grid-row: span 1;
+    min-height: 260px;
   }
 
   .dashboard-header {
@@ -451,8 +548,17 @@ body {
     padding: 0.65rem;
   }
 
-  .card-grid {
+  .top-section {
     grid-template-columns: 1fr;
+  }
+
+  .top-section>.sensor-card,
+  .top-section>.quality-panel {
+    grid-column: span 1;
+  }
+
+  .sensor-group-row {
+    gap: 0.5rem;
   }
 
   .toolbar-group {

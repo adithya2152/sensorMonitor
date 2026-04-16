@@ -36,7 +36,25 @@ const UNIT_BY_METRIC = {
   rain: "raw",
   uv: "index",
   mq5: "ppm",
+  mq5_rs_kohm: "kOhm",
   mics5524: "V",
+  mics5524_co_ppm: "ppm",
+  mics5524_ch4_ppm: "ppm",
+  mics5524_h2_ppm: "ppm",
+  mics5524_ethanol_ppm: "ppm",
+  mics5524_rs_kohm: "kOhm",
+  dust_density_ugm3: "ug/m³",
+  dust_voltage_v: "V",
+  wind_speed_kmh: "km/h",
+  wind_speed_ms: "m/s",
+  wind_voltage_v: "V",
+  wind_direction_deg: "deg",
+  mpu6050_accel_x: "g",
+  mpu6050_accel_y: "g",
+  mpu6050_accel_z: "g",
+  mpu6050_gyro_x: "deg/s",
+  mpu6050_gyro_y: "deg/s",
+  mpu6050_gyro_z: "deg/s",
 };
 
 const THRESHOLDS_BY_METRIC = {
@@ -64,7 +82,124 @@ const STATUS_COLOR = {
   unknown: "#9cb2da",
 };
 
+const SENSOR_GROUP_DEFINITIONS = [
+  {
+    key: "accelerometer",
+    title: "Accelerometer",
+    visibilityMetrics: [
+      "mpu6050_accel_x",
+      "mpu6050_accel_y",
+      "mpu6050_accel_z",
+    ],
+    fields: [
+      { label: "X", metric: "mpu6050_accel_x", unit: "g" },
+      { label: "Y", metric: "mpu6050_accel_y", unit: "g" },
+      { label: "Z", metric: "mpu6050_accel_z", unit: "g" },
+    ],
+  },
+  {
+    key: "gyroscope",
+    title: "Gyroscope",
+    visibilityMetrics: ["mpu6050_gyro_x", "mpu6050_gyro_y", "mpu6050_gyro_z"],
+    fields: [
+      { label: "X", metric: "mpu6050_gyro_x", unit: "deg/s" },
+      { label: "Y", metric: "mpu6050_gyro_y", unit: "deg/s" },
+      { label: "Z", metric: "mpu6050_gyro_z", unit: "deg/s" },
+    ],
+  },
+  {
+    key: "dust",
+    title: "Dust",
+    visibilityMetrics: ["dust_density_ugm3", "dust_voltage_v"],
+    fields: [
+      { label: "Dust density", metric: "dust_density_ugm3", unit: "ug/m3" },
+      { label: "Dust voltage", metric: "dust_voltage_v", unit: "V" },
+    ],
+  },
+  {
+    key: "mics5524",
+    title: "MICS 5524",
+    visibilityMetrics: [
+      "mics5524_co_ppm",
+      "mics5524_ch4_ppm",
+      "mics5524_h2_ppm",
+      "mics5524_ethanol_ppm",
+      "mics5524_rs_kohm",
+    ],
+    fields: [
+      { label: "CO", metric: "mics5524_co_ppm", unit: "ppm" },
+      { label: "CH4", metric: "mics5524_ch4_ppm", unit: "ppm" },
+      { label: "H2", metric: "mics5524_h2_ppm", unit: "ppm" },
+      { label: "Ethanol", metric: "mics5524_ethanol_ppm", unit: "ppm" },
+      { label: "Rs", metric: "mics5524_rs_kohm", unit: "kOhm" },
+    ],
+  },
+  {
+    key: "mq5",
+    title: "MQ5 / LPG",
+    visibilityMetrics: ["mq5", "mq5_rs_kohm"],
+    statusMetrics: ["mq5"],
+    fields: [
+      { label: "LPG ppm", metric: "mq5", unit: "ppm" },
+      { label: "Rs", metric: "mq5_rs_kohm", unit: "kOhm" },
+      {
+        label: "Status",
+        resolve: (reading) => STATUS_LABEL[getStatus("mq5", reading?.mq5)],
+      },
+    ],
+  },
+  {
+    key: "rain",
+    title: "Rain",
+    visibilityMetrics: ["rain", "rain_status"],
+    statusMetrics: ["rain"],
+    fields: [
+      { label: "Rain raw", metric: "rain", unit: "raw" },
+      {
+        label: "Status",
+        metric: "rain_status",
+        resolve: (reading) =>
+          reading?.rain_status ??
+          STATUS_LABEL[getStatus("rain", reading?.rain)],
+      },
+    ],
+  },
+  {
+    key: "wind-direction",
+    title: "Wind Direction",
+    visibilityMetrics: [
+      "wind_direction_deg",
+      "wind_direction_text",
+      "wind_voltage_v",
+    ],
+    fields: [
+      { label: "Angle", metric: "wind_direction_deg", unit: "deg" },
+      { label: "Heading", metric: "wind_direction_text" },
+      { label: "Voltage", metric: "wind_voltage_v", unit: "V" },
+    ],
+  },
+  {
+    key: "wind-speed",
+    title: "Wind Speed",
+    visibilityMetrics: ["wind_speed_kmh", "wind_speed_ms", "wind_voltage_v"],
+    fields: [
+      { label: "Speed", metric: "wind_speed_kmh", unit: "km/h" },
+      { label: "Speed", metric: "wind_speed_ms", unit: "m/s" },
+      { label: "Voltage", metric: "wind_voltage_v", unit: "V" },
+    ],
+  },
+];
+
+const SENSOR_GROUP_METRICS = new Set(
+  SENSOR_GROUP_DEFINITIONS.flatMap((group) =>
+    group.fields.flatMap((field) => (field.metric ? [field.metric] : [])),
+  ),
+);
+
 function formatMetricName(metric) {
+  if (!metric || typeof metric !== "string") {
+    return "Unknown";
+  }
   return metric
     .replaceAll("_", " ")
     .replace(/([a-z])([A-Z])/g, "$1 $2")
@@ -76,6 +211,36 @@ function toFixedNumber(value) {
     return "--";
   }
   return Number(value).toFixed(2);
+}
+
+function formatDisplayValue(value) {
+  if (value === null || value === undefined || value === "") {
+    return "--";
+  }
+
+  if (typeof value === "number") {
+    return toFixedNumber(value);
+  }
+
+  const numericValue = Number(value);
+  if (Number.isFinite(numericValue) && String(value).trim() !== "") {
+    return toFixedNumber(numericValue);
+  }
+
+  return String(value);
+}
+
+function combineStatuses(statuses) {
+  if (statuses.includes("red")) {
+    return "red";
+  }
+  if (statuses.includes("yellow")) {
+    return "yellow";
+  }
+  if (statuses.includes("green")) {
+    return "green";
+  }
+  return "unknown";
 }
 
 function csvEscape(rawValue) {
@@ -276,6 +441,30 @@ function SensorCard({ metric, value, sparklineData, status }) {
   );
 }
 
+function SensorGroupCard({ title, rows, status }) {
+  return (
+    <article className="sensor-card sensor-card-group">
+      <div className="sensor-head-row">
+        <p className="sensor-title">{title}</p>
+        <span className={`status-pill status-${status}`}>
+          {STATUS_LABEL[status]}
+        </span>
+      </div>
+      <div className="sensor-group-list">
+        {rows.map((row) => (
+          <div className="sensor-group-row" key={row.label}>
+            <span className="sensor-group-label">{row.label}</span>
+            <span className="sensor-group-value">
+              <strong>{formatDisplayValue(row.value)}</strong>
+              {row.unit ? <span>{row.unit}</span> : null}
+            </span>
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 function normalizeAuthError(error) {
   const code = String(error?.code ?? "");
 
@@ -415,35 +604,87 @@ function App() {
     () => aggregateReadings(readings, "week"),
     [readings],
   );
-  const monthlySeries = useMemo(
-    () => aggregateReadings(readings, "month"),
-    [readings],
-  );
 
-  const metricCards = useMemo(() => {
+  const liveTrendData = useMemo(() => {
+    if (!readings || readings.length === 0) {
+      return [];
+    }
+    const lastHour = subHours(new Date(), 1);
+    return readings
+      .filter(
+        (entry) =>
+          entry.timestamp &&
+          isAfter(fromUnixTime(Number(entry.timestamp)), lastHour),
+      )
+      .map((entry) => ({
+        timestamp: entry.timestamp
+          ? format(fromUnixTime(Number(entry.timestamp)), "HH:mm:ss")
+          : "",
+        temperature: Number(entry.temperature ?? 0),
+        humidity: Number(entry.humidity ?? 0),
+        mq5: Number(entry.mq5 ?? 0),
+        pressure: Number(entry.pressure ?? 0),
+        uv: Number(entry.uv ?? 0),
+      }))
+      .slice(-50);
+  }, [readings]);
+
+  const sensorCards = useMemo(() => {
     if (!latest) {
       return [];
     }
 
-    return Object.entries(latest)
-      .filter(([metric]) => metric !== "timestamp")
+    const groupedCards = SENSOR_GROUP_DEFINITIONS.map((group) => {
+      const rows = group.fields.map((field) => ({
+        label: field.label,
+        value: field.resolve ? field.resolve(latest) : latest[field.metric],
+        unit: field.unit,
+      }));
+
+      const hasVisibleData = group.visibilityMetrics.some(
+        (metric) => latest[metric] !== undefined && latest[metric] !== null,
+      );
+
+      if (!hasVisibleData) {
+        return null;
+      }
+
+      const statusSource = (group.statusMetrics ?? group.visibilityMetrics)
+        .map((metric) => getStatus(metric, latest[metric]))
+        .filter(Boolean);
+
+      return {
+        kind: "group",
+        key: group.key,
+        title: group.title,
+        status: combineStatuses(statusSource),
+        rows,
+      };
+    }).filter(Boolean);
+
+    const standaloneCards = Object.entries(latest)
+      .filter(
+        ([metric]) =>
+          metric !== "timestamp" && !SENSOR_GROUP_METRICS.has(metric),
+      )
       .sort(([a], [b]) => a.localeCompare(b))
-      .map(([metric, value]) => {
-        const status = getStatus(metric, value);
-        return {
-          metric,
-          value,
-          status,
-          sparklineData: getSparklineData(readings, metric),
-        };
-      });
+      .map(([metric, value]) => ({
+        kind: "single",
+        key: metric,
+        metric,
+        value,
+        status: getStatus(metric, value),
+        sparklineData: getSparklineData(readings, metric),
+      }));
+
+    return [...groupedCards, ...standaloneCards];
   }, [latest, readings]);
 
   const alertSummary = useMemo(() => {
-    const red = metricCards.filter((item) => item.status === "red");
-    const yellow = metricCards.filter((item) => item.status === "yellow");
+    const red = sensorCards.filter((item) => item.status === "red");
+    const yellow = sensorCards.filter((item) => item.status === "yellow");
     return { red, yellow };
-  }, [metricCards]);
+  }, [sensorCards]);
 
   useEffect(() => {
     if (
@@ -456,7 +697,7 @@ function App() {
     }
 
     const signature = alertSummary.red
-      .map((item) => item.metric)
+      .map((item) => item.metric || item.key)
       .sort()
       .join("|");
 
@@ -467,7 +708,7 @@ function App() {
     lastRedAlertRef.current = signature;
     const list = alertSummary.red
       .slice(0, 4)
-      .map((item) => formatMetricName(item.metric))
+      .map((item) => (item.metric ? formatMetricName(item.metric) : item.title))
       .join(", ");
 
     new Notification("Critical sensor alert", {
@@ -629,7 +870,9 @@ function App() {
           </p>
         </div>
         {latest?.timestamp ? (
-          <span>Last update: {format(fromUnixTime(latest.timestamp), "PPpp")}</span>
+          <span>
+            Last update: {format(fromUnixTime(latest.timestamp), "PPpp")}
+          </span>
         ) : null}
       </header>
 
@@ -688,7 +931,11 @@ function App() {
               : "Enable Notifications"}
           </button>
           {authUser ? (
-            <button type="button" onClick={handleSignOut} disabled={authLoading}>
+            <button
+              type="button"
+              onClick={handleSignOut}
+              disabled={authLoading}
+            >
               {authLoading ? "Please wait..." : "Sign Out"}
             </button>
           ) : null}
@@ -710,7 +957,7 @@ function App() {
           </span>
           <span className="alert-chip chip-green">
             Normal:{" "}
-            {metricCards.length -
+            {sensorCards.length -
               alertSummary.red.length -
               alertSummary.yellow.length}
           </span>
@@ -723,17 +970,24 @@ function App() {
           <Gauge score={quality.score} label={quality.label} />
         </article>
 
-        <section className="card-grid">
-          {metricCards.map((card) => (
+        {sensorCards.map((card) =>
+          card.kind === "group" ? (
+            <SensorGroupCard
+              key={card.key}
+              title={card.title}
+              status={card.status}
+              rows={card.rows}
+            />
+          ) : (
             <SensorCard
-              key={card.metric}
+              key={card.key}
               metric={card.metric}
               value={card.value}
               status={card.status}
               sparklineData={card.sparklineData}
             />
-          ))}
-        </section>
+          ),
+        )}
       </section>
 
       <section className="charts-grid">
@@ -786,34 +1040,45 @@ function App() {
         </article>
 
         <article className="chart-card chart-card-wide">
-          <h3>Monthly Trend (30d)</h3>
-          <ResponsiveContainer width="100%" height={280}>
-            <LineChart data={monthlySeries}>
-              <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
-              <XAxis dataKey="label" stroke="#b8c6e3" />
-              <YAxis stroke="#b8c6e3" />
-              <Tooltip />
-              <Legend />
-              <Line
-                dataKey="temperature"
-                stroke="#54f5ff"
-                strokeWidth={2}
-                dot={false}
-              />
-              <Line
-                dataKey="humidity"
-                stroke="#9dff47"
-                strokeWidth={2}
-                dot={false}
-              />
-              <Line
-                dataKey="pressure"
-                stroke="#8cabff"
-                strokeWidth={2}
-                dot={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <h3>Live Trend (Last 1h)</h3>
+          {liveTrendData.length === 0 ? (
+            <p className="chart-empty">Insufficient real-time data available</p>
+          ) : (
+            <ResponsiveContainer width="100%" height={280}>
+              <LineChart data={liveTrendData}>
+                <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
+                <XAxis dataKey="timestamp" stroke="#b8c6e3" />
+                <YAxis yAxisId="left" stroke="#b8c6e3" />
+                <YAxis yAxisId="right" orientation="right" stroke="#b8c6e3" />
+                <Tooltip />
+                <Legend />
+                <Line
+                  yAxisId="left"
+                  dataKey="temperature"
+                  stroke="#54f5ff"
+                  strokeWidth={2}
+                  dot={false}
+                  name="Temperature (°C)"
+                />
+                <Line
+                  yAxisId="left"
+                  dataKey="humidity"
+                  stroke="#9dff47"
+                  strokeWidth={2}
+                  dot={false}
+                  name="Humidity (%)"
+                />
+                <Line
+                  yAxisId="right"
+                  dataKey="mq5"
+                  stroke="#f7b851"
+                  strokeWidth={2}
+                  dot={false}
+                  name="MQ5 (ppm)"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          )}
         </article>
       </section>
     </main>

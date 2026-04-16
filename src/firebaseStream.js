@@ -31,55 +31,57 @@ function normalizeReadings(snapshotValue) {
     return [];
   }
 
-  const aliasMap = {
-    bme280: {
-      temperature_c: "temperature",
-      humidity_pct: "humidity",
-      pressure_hpa: "pressure",
-    },
-    bmp280: {
-      altitude_m: "altitude",
-    },
-    rain: {
-      adc: "rain",
-    },
-    mq5: {
-      lpg_ppm: "mq5",
-      rs_kohm: "mq5_rs_kohm",
-      status: "mq5_status",
-    },
-    uv: {
-      voltage_v: "uv",
-    },
-    mics5524: {
-      co_ppm: "mics5524_co_ppm",
-      ch4_ppm: "mics5524_ch4_ppm",
-      h2_ppm: "mics5524_h2_ppm",
-      ethanol_ppm: "mics5524_ethanol_ppm",
-      rs_kohm: "mics5524_rs_kohm",
-    },
-    windspeed: {
-      speed_kmh: "wind_speed_kmh",
-      speed_ms: "wind_speed_ms",
-    },
-    wind_direction: {
-      angle_degrees: "wind_direction_deg",
-      direction: "wind_direction_text",
-    },
-    dust: {
-      density_ugm3: "dust_density_ugm3",
-      voltage_v: "dust_voltage_v",
-      adc_raw: "dust_adc_raw",
-      air_quality: "dust_air_quality",
-    },
-    mpu6050: {
-      accel_x: "mpu6050_accel_x",
-      accel_y: "mpu6050_accel_y",
-      accel_z: "mpu6050_accel_z",
-      gyro_x: "mpu6050_gyro_x",
-      gyro_y: "mpu6050_gyro_y",
-      gyro_z: "mpu6050_gyro_z",
-    },
+  // Direct field name mapping: Firebase field → Normalized field name
+  const fieldAliases = {
+    // Temperature & Humidity & Pressure (keep as-is)
+    temperature: "temperature",
+    humidity: "humidity",
+    pressure: "pressure",
+    altitude: "altitude",
+
+    // UV
+    uv_voltage: "uv",
+
+    // Accelerometer (normalize to mpu6050_*)
+    accel_x: "mpu6050_accel_x",
+    accel_y: "mpu6050_accel_y",
+    accel_z: "mpu6050_accel_z",
+
+    // Gyroscope (normalize to mpu6050_*)
+    gyro_x: "mpu6050_gyro_x",
+    gyro_y: "mpu6050_gyro_y",
+    gyro_z: "mpu6050_gyro_z",
+
+    // Rain
+    rain_raw: "rain",
+    rain_status: "rain_status",
+
+    // MQ5 (normalize to mq5_*)
+    lpg_ppm: "mq5",
+    mq5_Rs: "mq5_rs_kohm",
+
+    // MICS5524 (normalize to mics5524_*)
+    co_ppm: "mics5524_co_ppm",
+    ch4_ppm: "mics5524_ch4_ppm",
+    h2_ppm: "mics5524_h2_ppm",
+    ethanol_ppm: "mics5524_ethanol_ppm",
+    mics_Rs: "mics5524_rs_kohm",
+
+    // Dust
+    dust_density: "dust_density_ugm3",
+    dust_voltage: "dust_voltage_v",
+
+    // Wind Direction
+    wind_direction_deg: "wind_direction_deg",
+    wind_direction_text: "wind_direction_text",
+    wind_voltage: "wind_voltage_v",
+
+    // Wind Speed
+    wind_speed_kmh: "wind_speed_kmh",
+    wind_speed_ms: "wind_speed_ms",
+
+    // Timestamp
+    timestamp: "timestamp",
   };
 
   function coerceReading(entry) {
@@ -87,25 +89,25 @@ function normalizeReadings(snapshotValue) {
       return null;
     }
 
-    if (Number.isFinite(Number(entry.timestamp))) {
-      return {
-        ...entry,
-        timestamp: Number(entry.timestamp),
-      };
-    }
-
+    // Flatten nested data if it exists (for backward compatibility)
     const flattened = {};
 
-    for (const [groupName, groupValue] of Object.entries(entry)) {
-      if (!groupValue || typeof groupValue !== "object") {
-        flattened[groupName] = groupValue;
+    for (const [key, value] of Object.entries(entry)) {
+      if (value === null || value === undefined) {
         continue;
       }
 
-      const aliases = aliasMap[groupName] ?? {};
-      for (const [fieldName, fieldValue] of Object.entries(groupValue)) {
-        const alias = aliases[fieldName] ?? `${groupName}_${fieldName}`;
-        flattened[alias] = fieldValue;
+      // If it's a nested object, flatten it with sensor group prefix
+      if (typeof value === "object" && !Array.isArray(value)) {
+        for (const [subKey, subValue] of Object.entries(value)) {
+          const aliasKey = `${key}_${subKey}`;
+          const alias = fieldAliases[aliasKey] ?? aliasKey;
+          flattened[alias] = subValue;
+        }
+      } else {
+        // Direct field - use alias or original name
+        const alias = fieldAliases[key] ?? key;
+        flattened[alias] = value;
       }
     }
 
