@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  Area,
-  AreaChart,
   CartesianGrid,
   Legend,
   Line,
@@ -82,6 +80,44 @@ const STATUS_COLOR = {
   unknown: "#9cb2da",
 };
 
+const TREND_COLOR_PALETTE = [
+  "#54f5ff",
+  "#9dff47",
+  "#f7b851",
+  "#ee7b62",
+  "#a1b8ff",
+  "#7effd4",
+  "#ffd968",
+  "#f7a7ff",
+  "#8ef3a7",
+  "#79d5ff",
+  "#ffc59b",
+  "#c0ff72",
+];
+
+const HIDDEN_STANDALONE_METRICS = new Set([
+  "mics5524_rs_kohm",
+  "mq5_rs_kohm",
+  "mics_rs",
+  "mq5_rs",
+  "dust_voltage_v",
+  "wind_voltage_v",
+]);
+
+const NON_TREND_METRICS = new Set([
+  "timestamp",
+  "rain_status",
+  "wind_direction_text",
+  ...HIDDEN_STANDALONE_METRICS,
+]);
+
+const METRIC_LABEL_OVERRIDES = {
+  mics5524_ch4_ppm: "ch4 ppm",
+  mics5524_co_ppm: "co ppm",
+  mics5524_h2_ppm: "h2 ppm",
+  mics5524_ethanol_ppm: "ethanol ppm",
+};
+
 const SENSOR_GROUP_DEFINITIONS = [
   {
     key: "accelerometer",
@@ -110,38 +146,36 @@ const SENSOR_GROUP_DEFINITIONS = [
   {
     key: "dust",
     title: "Dust",
-    visibilityMetrics: ["dust_density_ugm3", "dust_voltage_v"],
+    visibilityMetrics: ["dust_density_ugm3"],
     fields: [
       { label: "Dust density", metric: "dust_density_ugm3", unit: "ug/m3" },
-      { label: "Dust voltage", metric: "dust_voltage_v", unit: "V" },
     ],
   },
-  {
-    key: "mics5524",
-    title: "MICS 5524",
-    visibilityMetrics: [
-      "mics5524_co_ppm",
-      "mics5524_ch4_ppm",
-      "mics5524_h2_ppm",
-      "mics5524_ethanol_ppm",
-      "mics5524_rs_kohm",
-    ],
-    fields: [
-      { label: "CO", metric: "mics5524_co_ppm", unit: "ppm" },
-      { label: "CH4", metric: "mics5524_ch4_ppm", unit: "ppm" },
-      { label: "H2", metric: "mics5524_h2_ppm", unit: "ppm" },
-      { label: "Ethanol", metric: "mics5524_ethanol_ppm", unit: "ppm" },
-      { label: "Rs", metric: "mics5524_rs_kohm", unit: "kOhm" },
-    ],
-  },
+  // {
+  //   key: "mics5524",
+  //   title: "MICS 5524",
+  //   visibilityMetrics: [
+  //     "mics5524_co_ppm",
+  //     "mics5524_ch4_ppm",
+  //     "mics5524_h2_ppm",
+  //     "mics5524_ethanol_ppm",
+  //     "mics5524_rs_kohm",
+  //   ],
+  //   fields: [
+  //     { label: "CO", metric: "mics5524_co_ppm", unit: "ppm" },
+  //     { label: "CH4", metric: "mics5524_ch4_ppm", unit: "ppm" },
+  //     { label: "H2", metric: "mics5524_h2_ppm", unit: "ppm" },
+  //     { label: "Ethanol", metric: "mics5524_ethanol_ppm", unit: "ppm" },
+  //     { label: "Rs", metric: "mics5524_rs_kohm", unit: "kOhm" },
+  //   ],
+  // },
   {
     key: "mq5",
     title: "MQ5 / LPG",
-    visibilityMetrics: ["mq5", "mq5_rs_kohm"],
+    visibilityMetrics: ["mq5"],
     statusMetrics: ["mq5"],
     fields: [
       { label: "LPG ppm", metric: "mq5", unit: "ppm" },
-      { label: "Rs", metric: "mq5_rs_kohm", unit: "kOhm" },
       {
         label: "Status",
         resolve: (reading) => STATUS_LABEL[getStatus("mq5", reading?.mq5)],
@@ -167,25 +201,19 @@ const SENSOR_GROUP_DEFINITIONS = [
   {
     key: "wind-direction",
     title: "Wind Direction",
-    visibilityMetrics: [
-      "wind_direction_deg",
-      "wind_direction_text",
-      "wind_voltage_v",
-    ],
+    visibilityMetrics: ["wind_direction_deg", "wind_direction_text"],
     fields: [
       { label: "Angle", metric: "wind_direction_deg", unit: "deg" },
       { label: "Heading", metric: "wind_direction_text" },
-      { label: "Voltage", metric: "wind_voltage_v", unit: "V" },
     ],
   },
   {
     key: "wind-speed",
     title: "Wind Speed",
-    visibilityMetrics: ["wind_speed_kmh", "wind_speed_ms", "wind_voltage_v"],
+    visibilityMetrics: ["wind_speed_kmh", "wind_speed_ms"],
     fields: [
       { label: "Speed", metric: "wind_speed_kmh", unit: "km/h" },
       { label: "Speed", metric: "wind_speed_ms", unit: "m/s" },
-      { label: "Voltage", metric: "wind_voltage_v", unit: "V" },
     ],
   },
 ];
@@ -200,10 +228,24 @@ function formatMetricName(metric) {
   if (!metric || typeof metric !== "string") {
     return "Unknown";
   }
+
+  if (METRIC_LABEL_OVERRIDES[metric]) {
+    return METRIC_LABEL_OVERRIDES[metric];
+  }
+
   return metric
     .replaceAll("_", " ")
     .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/^./, (text) => text.toUpperCase());
+}
+
+function isHiddenStandaloneMetric(metric) {
+  if (!metric || typeof metric !== "string") {
+    return false;
+  }
+
+  const normalizedMetric = metric.toLowerCase();
+  return HIDDEN_STANDALONE_METRICS.has(normalizedMetric);
 }
 
 function toFixedNumber(value) {
@@ -339,7 +381,11 @@ function computeScore(reading) {
   return { score, label: "Poor" };
 }
 
-function aggregateReadings(readings, range) {
+function aggregateReadings(readings, range, metrics) {
+  if (!Array.isArray(metrics) || metrics.length === 0) {
+    return [];
+  }
+
   const now = new Date();
   const start =
     range === "day"
@@ -364,30 +410,38 @@ function aggregateReadings(readings, range) {
     const record = grouped.get(key) ?? {
       key,
       count: 0,
-      temperature: 0,
-      humidity: 0,
-      pressure: 0,
-      mq5: 0,
-      uv: 0,
+      sums: {},
+      counts: {},
     };
 
     record.count += 1;
-    record.temperature += Number(reading.temperature ?? 0);
-    record.humidity += Number(reading.humidity ?? 0);
-    record.pressure += Number(reading.pressure ?? 0);
-    record.mq5 += Number(reading.mq5 ?? 0);
-    record.uv += Number(reading.uv ?? 0);
+
+    for (const metric of metrics) {
+      const numericValue = Number(reading[metric]);
+      if (!Number.isFinite(numericValue)) {
+        continue;
+      }
+
+      record.sums[metric] = (record.sums[metric] ?? 0) + numericValue;
+      record.counts[metric] = (record.counts[metric] ?? 0) + 1;
+    }
+
     grouped.set(key, record);
   }
 
-  return [...grouped.values()].map((row) => ({
-    label: row.key,
-    temperature: Number((row.temperature / row.count).toFixed(2)),
-    humidity: Number((row.humidity / row.count).toFixed(2)),
-    pressure: Number((row.pressure / row.count).toFixed(2)),
-    mq5: Number((row.mq5 / row.count).toFixed(2)),
-    uv: Number((row.uv / row.count).toFixed(2)),
-  }));
+  return [...grouped.values()].map((row) => {
+    const point = { label: row.key };
+
+    for (const metric of metrics) {
+      const metricCount = row.counts[metric] ?? 0;
+      point[metric] =
+        metricCount > 0
+          ? Number((row.sums[metric] / metricCount).toFixed(2))
+          : null;
+    }
+
+    return point;
+  });
 }
 
 function Gauge({ score, label }) {
@@ -399,7 +453,7 @@ function Gauge({ score, label }) {
       <div
         className="gauge-circle"
         style={{
-          background: `conic-gradient(#a3ff12 ${angle}deg, #193f81 ${angle}deg 360deg)`,
+          "--gauge-angle": `${angle}deg`,
         }}
       >
         <div className="gauge-inner">
@@ -490,6 +544,9 @@ function App() {
   const [authLoading, setAuthLoading] = useState(false);
   const [authUser, setAuthUser] = useState(null);
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
+  const [sensorCardOrder, setSensorCardOrder] = useState([]);
+  const [draggingCardKey, setDraggingCardKey] = useState("");
+  const [dragOverCardKey, setDragOverCardKey] = useState("");
   const [notificationPermission, setNotificationPermission] = useState(() => {
     if (typeof window === "undefined" || !("Notification" in window)) {
       return "unsupported";
@@ -596,38 +653,68 @@ function App() {
 
   const latest = readings[readings.length - 1];
   const quality = useMemo(() => computeScore(latest), [latest]);
-  const dailySeries = useMemo(
-    () => aggregateReadings(readings, "day"),
-    [readings],
-  );
-  const weeklySeries = useMemo(
-    () => aggregateReadings(readings, "week"),
-    [readings],
-  );
 
-  const liveTrendData = useMemo(() => {
+  const trendMetrics = useMemo(() => {
     if (!readings || readings.length === 0) {
       return [];
     }
+
+    const metrics = new Set();
+
+    for (const reading of readings) {
+      for (const [metric, value] of Object.entries(reading)) {
+        if (NON_TREND_METRICS.has(metric)) {
+          continue;
+        }
+
+        const numericValue = Number(value);
+        if (Number.isFinite(numericValue)) {
+          metrics.add(metric);
+        }
+      }
+    }
+
+    return [...metrics].sort((a, b) => a.localeCompare(b));
+  }, [readings]);
+
+  const dailySeries = useMemo(
+    () => aggregateReadings(readings, "day", trendMetrics),
+    [readings, trendMetrics],
+  );
+  const weeklySeries = useMemo(
+    () => aggregateReadings(readings, "week", trendMetrics),
+    [readings, trendMetrics],
+  );
+
+  const liveTrendData = useMemo(() => {
+    if (!readings || readings.length === 0 || trendMetrics.length === 0) {
+      return [];
+    }
+
     const lastHour = subHours(new Date(), 1);
+
     return readings
       .filter(
         (entry) =>
           entry.timestamp &&
           isAfter(fromUnixTime(Number(entry.timestamp)), lastHour),
       )
-      .map((entry) => ({
-        timestamp: entry.timestamp
-          ? format(fromUnixTime(Number(entry.timestamp)), "HH:mm:ss")
-          : "",
-        temperature: Number(entry.temperature ?? 0),
-        humidity: Number(entry.humidity ?? 0),
-        mq5: Number(entry.mq5 ?? 0),
-        pressure: Number(entry.pressure ?? 0),
-        uv: Number(entry.uv ?? 0),
-      }))
+      .map((entry) => {
+        const point = {
+          timestamp: entry.timestamp
+            ? format(fromUnixTime(Number(entry.timestamp)), "HH:mm:ss")
+            : "",
+        };
+
+        for (const metric of trendMetrics) {
+          const numericValue = Number(entry[metric]);
+          point[metric] = Number.isFinite(numericValue) ? numericValue : null;
+        }
+
+        return point;
+      })
       .slice(-50);
-  }, [readings]);
+  }, [readings, trendMetrics]);
 
   const sensorCards = useMemo(() => {
     if (!latest) {
@@ -665,7 +752,9 @@ function App() {
     const standaloneCards = Object.entries(latest)
       .filter(
         ([metric]) =>
-          metric !== "timestamp" && !SENSOR_GROUP_METRICS.has(metric),
+          metric !== "timestamp" &&
+          !SENSOR_GROUP_METRICS.has(metric) &&
+          !isHiddenStandaloneMetric(metric),
       )
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([metric, value]) => ({
@@ -685,6 +774,84 @@ function App() {
     const yellow = sensorCards.filter((item) => item.status === "yellow");
     return { red, yellow };
   }, [sensorCards]);
+
+  useEffect(() => {
+    const currentKeys = sensorCards.map((card) => card.key);
+
+    setSensorCardOrder((previous) => {
+      const kept = previous.filter((key) => currentKeys.includes(key));
+      const added = currentKeys.filter((key) => !kept.includes(key));
+      return [...kept, ...added];
+    });
+  }, [sensorCards]);
+
+  const orderedSensorCards = useMemo(() => {
+    if (sensorCards.length <= 1) {
+      return sensorCards;
+    }
+
+    const cardByKey = new Map(sensorCards.map((card) => [card.key, card]));
+    const arranged = sensorCardOrder
+      .map((key) => cardByKey.get(key))
+      .filter(Boolean);
+
+    if (arranged.length !== sensorCards.length) {
+      return sensorCards;
+    }
+
+    return arranged;
+  }, [sensorCards, sensorCardOrder]);
+
+  const handleCardDragStart = (event, sourceKey) => {
+    setDraggingCardKey(sourceKey);
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("text/plain", sourceKey);
+  };
+
+  const handleCardDragOver = (event, targetKey) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+    if (dragOverCardKey !== targetKey) {
+      setDragOverCardKey(targetKey);
+    }
+  };
+
+  const handleCardDrop = (event, targetKey) => {
+    event.preventDefault();
+
+    const sourceKey =
+      draggingCardKey || event.dataTransfer.getData("text/plain");
+    if (!sourceKey || sourceKey === targetKey) {
+      setDragOverCardKey("");
+      setDraggingCardKey("");
+      return;
+    }
+
+    setSensorCardOrder((previous) => {
+      const orderedKeys =
+        previous.length > 0
+          ? [...previous]
+          : sensorCards.map((card) => card.key);
+      const sourceIndex = orderedKeys.indexOf(sourceKey);
+      const targetIndex = orderedKeys.indexOf(targetKey);
+
+      if (sourceIndex < 0 || targetIndex < 0) {
+        return previous;
+      }
+
+      const [moved] = orderedKeys.splice(sourceIndex, 1);
+      orderedKeys.splice(targetIndex, 0, moved);
+      return orderedKeys;
+    });
+
+    setDragOverCardKey("");
+    setDraggingCardKey("");
+  };
+
+  const handleCardDragEnd = () => {
+    setDragOverCardKey("");
+    setDraggingCardKey("");
+  };
 
   useEffect(() => {
     if (
@@ -970,27 +1137,64 @@ function App() {
           <Gauge score={quality.score} label={quality.label} />
         </article>
 
-        {sensorCards.map((card) =>
-          card.kind === "group" ? (
-            <SensorGroupCard
-              key={card.key}
-              title={card.title}
-              status={card.status}
-              rows={card.rows}
-            />
-          ) : (
-            <SensorCard
-              key={card.key}
-              metric={card.metric}
-              value={card.value}
-              status={card.status}
-              sparklineData={card.sparklineData}
-            />
-          ),
-        )}
+        {orderedSensorCards.map((card) => (
+          <div
+            key={card.key}
+            className={`sensor-card-slot${draggingCardKey === card.key ? " sensor-card-dragging" : ""}${dragOverCardKey === card.key ? " sensor-card-drop-target" : ""}`}
+            draggable
+            onDragStart={(event) => handleCardDragStart(event, card.key)}
+            onDragOver={(event) => handleCardDragOver(event, card.key)}
+            onDrop={(event) => handleCardDrop(event, card.key)}
+            onDragEnd={handleCardDragEnd}
+          >
+            {card.kind === "group" ? (
+              <SensorGroupCard
+                title={card.title}
+                status={card.status}
+                rows={card.rows}
+              />
+            ) : (
+              <SensorCard
+                metric={card.metric}
+                value={card.value}
+                status={card.status}
+                sparklineData={card.sparklineData}
+              />
+            )}
+          </div>
+        ))}
       </section>
 
       <section className="charts-grid">
+        <article className="chart-card chart-card-wide">
+          <h3>Live Trend (Last 1h)</h3>
+          {liveTrendData.length === 0 ? (
+            <p className="chart-empty">Insufficient real-time data available</p>
+          ) : (
+            <ResponsiveContainer width="100%" height={280}>
+              <LineChart data={liveTrendData}>
+                <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
+                <XAxis dataKey="timestamp" stroke="#b8c6e3" />
+                <YAxis stroke="#b8c6e3" />
+                <Tooltip />
+                <Legend />
+                {trendMetrics.map((metric, index) => (
+                  <Line
+                    key={`live-${metric}`}
+                    dataKey={metric}
+                    stroke={
+                      TREND_COLOR_PALETTE[index % TREND_COLOR_PALETTE.length]
+                    }
+                    strokeWidth={2}
+                    dot={false}
+                    connectNulls
+                    name={`${formatMetricName(metric)}${UNIT_BY_METRIC[metric] ? ` (${UNIT_BY_METRIC[metric]})` : ""}`}
+                  />
+                ))}
+              </LineChart>
+            </ResponsiveContainer>
+          )}
+        </article>
         <article className="chart-card">
           <h3>Daily Trend (24h)</h3>
           {dailySeries.length === 0 ? (
@@ -1003,18 +1207,19 @@ function App() {
                 <YAxis stroke="#b8c6e3" />
                 <Tooltip />
                 <Legend />
-                <Line
-                  dataKey="temperature"
-                  stroke="#54f5ff"
-                  strokeWidth={2}
-                  dot={false}
-                />
-                <Line
-                  dataKey="humidity"
-                  stroke="#9dff47"
-                  strokeWidth={2}
-                  dot={false}
-                />
+                {trendMetrics.map((metric, index) => (
+                  <Line
+                    key={`day-${metric}`}
+                    dataKey={metric}
+                    stroke={
+                      TREND_COLOR_PALETTE[index % TREND_COLOR_PALETTE.length]
+                    }
+                    strokeWidth={2}
+                    dot={false}
+                    connectNulls
+                    name={`${formatMetricName(metric)}${UNIT_BY_METRIC[metric] ? ` (${UNIT_BY_METRIC[metric]})` : ""}`}
+                  />
+                ))}
               </LineChart>
             </ResponsiveContainer>
           )}
@@ -1026,56 +1231,25 @@ function App() {
             <p className="chart-empty">Insufficient data available</p>
           ) : (
             <ResponsiveContainer width="100%" height={260}>
-              <AreaChart data={weeklySeries}>
+              <LineChart data={weeklySeries}>
                 <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
                 <XAxis dataKey="label" stroke="#b8c6e3" />
                 <YAxis stroke="#b8c6e3" />
                 <Tooltip />
                 <Legend />
-                <Area dataKey="mq5" stroke="#f7b851" fill="#f7b85166" />
-                <Area dataKey="uv" stroke="#ee7b62" fill="#ee7b6266" />
-              </AreaChart>
-            </ResponsiveContainer>
-          )}
-        </article>
-
-        <article className="chart-card chart-card-wide">
-          <h3>Live Trend (Last 1h)</h3>
-          {liveTrendData.length === 0 ? (
-            <p className="chart-empty">Insufficient real-time data available</p>
-          ) : (
-            <ResponsiveContainer width="100%" height={280}>
-              <LineChart data={liveTrendData}>
-                <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
-                <XAxis dataKey="timestamp" stroke="#b8c6e3" />
-                <YAxis yAxisId="left" stroke="#b8c6e3" />
-                <YAxis yAxisId="right" orientation="right" stroke="#b8c6e3" />
-                <Tooltip />
-                <Legend />
-                <Line
-                  yAxisId="left"
-                  dataKey="temperature"
-                  stroke="#54f5ff"
-                  strokeWidth={2}
-                  dot={false}
-                  name="Temperature (°C)"
-                />
-                <Line
-                  yAxisId="left"
-                  dataKey="humidity"
-                  stroke="#9dff47"
-                  strokeWidth={2}
-                  dot={false}
-                  name="Humidity (%)"
-                />
-                <Line
-                  yAxisId="right"
-                  dataKey="mq5"
-                  stroke="#f7b851"
-                  strokeWidth={2}
-                  dot={false}
-                  name="MQ5 (ppm)"
-                />
+                {trendMetrics.map((metric, index) => (
+                  <Line
+                    key={`week-${metric}`}
+                    dataKey={metric}
+                    stroke={
+                      TREND_COLOR_PALETTE[index % TREND_COLOR_PALETTE.length]
+                    }
+                    strokeWidth={2}
+                    dot={false}
+                    connectNulls
+                    name={`${formatMetricName(metric)}${UNIT_BY_METRIC[metric] ? ` (${UNIT_BY_METRIC[metric]})` : ""}`}
+                  />
+                ))}
               </LineChart>
             </ResponsiveContainer>
           )}

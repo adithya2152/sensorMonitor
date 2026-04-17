@@ -58,14 +58,14 @@ function normalizeReadings(snapshotValue) {
 
     // MQ5 (normalize to mq5_*)
     lpg_ppm: "mq5",
-    mq5_Rs: "mq5_rs_kohm",
+    // mq5_Rs: "mq5_rs_kohm",
 
     // MICS5524 (normalize to mics5524_*)
     co_ppm: "mics5524_co_ppm",
     ch4_ppm: "mics5524_ch4_ppm",
     h2_ppm: "mics5524_h2_ppm",
     ethanol_ppm: "mics5524_ethanol_ppm",
-    mics_Rs: "mics5524_rs_kohm",
+    // mics_Rs: "mics5524_rs_kohm",
 
     // Dust
     dust_density: "dust_density_ugm3",

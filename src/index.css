@@ -51,7 +51,9 @@ body {
   justify-content: space-between;
   gap: 1rem;
   align-items: start;
-  padding: 0.35rem 0.4rem 1rem;
+  padding: 0 0 1rem;
+  margin: 0 0.4rem;
+  border-bottom: 1px solid #ffffff14;
 }
 
 .dashboard-header h1 {
@@ -211,16 +213,47 @@ body {
 
 .top-section {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-rows: minmax(148px, auto);
-  grid-auto-flow: row dense;
-  align-items: start;
-  gap: 0.5rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(200px, auto);
+  grid-auto-flow: row;
+  align-items: stretch;
+  gap: 1rem;
+  margin: 0 0.4rem;
 }
 
-.top-section>.sensor-card,
 .top-section>.quality-panel {
-  grid-column: span 3;
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.top-section>.sensor-card {
+  grid-column: span 1;
+}
+
+.top-section>.sensor-card-slot {
+  grid-column: span 1;
+  min-width: 0;
+}
+
+.sensor-card-slot {
+  cursor: grab;
+}
+
+.sensor-card-slot:active {
+  cursor: grabbing;
+}
+
+.sensor-card-slot>.sensor-card {
+  height: 100%;
+}
+
+.sensor-card-dragging {
+  opacity: 0.55;
+}
+
+.sensor-card-drop-target>.sensor-card {
+  outline: 2px dashed #54f5ff;
+  outline-offset: 3px;
 }
 
 .quality-panel,
@@ -232,23 +265,27 @@ body {
     radial-gradient(circle at 78% 18%, #9bcaff1c 0, transparent 32%),
     linear-gradient(128deg, var(--panel-deep) 0%, var(--panel) 46%, var(--panel-alt) 100%);
   box-shadow: inset 0 1px 0 #ffffff10, 0 8px 18px #020d2457;
+  display: flex;
+  flex-direction: column;
 }
 
 .quality-panel {
-  padding: 1.05rem;
-  grid-row: span 2;
-  min-height: 312px;
+  padding: 1.25rem;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .quality-panel::before {
   content: '';
   position: absolute;
-  width: 220px;
-  height: 220px;
-  right: -40px;
-  top: -40px;
+  width: 200px;
+  height: 200px;
+  right: -50px;
+  top: -50px;
   border-radius: 50%;
   background: radial-gradient(circle, #9eff2530 0%, transparent 72%);
   pointer-events: none;
@@ -265,22 +302,23 @@ body {
 .gauge-shell {
   display: grid;
   place-items: center;
-  height: calc(100% - 2rem);
-  padding: 0.35rem 0;
+  flex: 1;
+  min-height: 0;
 }
 
 .gauge-circle {
-  width: clamp(210px, 18vw, 270px);
-  aspect-ratio: 1;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   transition: background 300ms ease;
+  background: conic-gradient(#a3ff12 var(--gauge-angle, 0deg), #193f81 var(--gauge-angle, 0deg) 360deg);
 }
 
 .gauge-inner {
-  width: 160px;
-  aspect-ratio: 1;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   background: radial-gradient(circle, #132f66 10%, #0b1d44 75%);
   display: grid;
@@ -310,11 +348,10 @@ body {
 }
 
 .sensor-card {
-  padding: 0.7rem;
+  padding: 1rem;
   position: relative;
   overflow: hidden;
   transition: transform 180ms ease, box-shadow 180ms ease;
-  min-height: 150px;
 }
 
 .sensor-card:hover {
@@ -328,6 +365,7 @@ body {
   inset: 0;
   background: linear-gradient(105deg, #57f6ff22, transparent 55%);
   pointer-events: none;
+  border-radius: 14px;
 }
 
 .sensor-title {
@@ -342,6 +380,8 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .status-pill {
@@ -351,6 +391,7 @@ body {
   letter-spacing: 0.05em;
   padding: 0.2rem 0.5rem;
   border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .status-green {
@@ -374,30 +415,34 @@ body {
 }
 
 .sensor-value-row {
-  margin-top: 0.45rem;
+  margin-top: 0.6rem;
   display: flex;
   gap: 0.5rem;
   align-items: baseline;
+  position: relative;
+  z-index: 2;
 }
 
 .sensor-value-row strong {
-  font-size: 1.35rem;
+  font-size: 1.6rem;
   font-family: var(--font-head);
 }
 
 .sensor-value-row span {
   color: var(--aqua);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
 }
 
 .sparkline-wrap {
-  margin-top: 0.45rem;
+  margin-top: 0.8rem;
   width: 100%;
-  height: 44px;
+  height: 50px;
+  position: relative;
+  z-index: 1;
 }
 
 .sensor-card-group {
-  min-height: 220px;
+  min-height: auto;
 }
 
 .sensor-group-list {
@@ -446,14 +491,15 @@ body {
 }
 
 .charts-grid {
-  margin-top: 1rem;
+  margin: 1.5rem 0.4rem 0;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .chart-card {
-  padding: 1rem;
+  padding: 1.25rem;
+  min-height: 350px;
 }
 
 .chart-empty {
@@ -490,30 +536,35 @@ body {
 
 @media (max-width: 1140px) {
   .top-section {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .top-section>.sensor-card,
   .top-section>.quality-panel {
-    grid-column: span 2;
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .top-section>.sensor-card {
+    grid-column: span 1;
+  }
+
+  .top-section>.sensor-card-slot {
+    grid-column: span 1;
   }
 }
 
 @media (max-width: 900px) {
   .top-section {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .top-section>.sensor-card,
   .top-section>.quality-panel {
-    grid-column: span 2;
+    grid-column: span 1;
+    grid-row: span 1;
   }
 
   .quality-panel {
-    display: grid;
-    place-items: center;
-    grid-row: span 1;
-    min-height: 260px;
+    min-height: 220px;
   }
 
   .dashboard-header {
@@ -553,6 +604,7 @@ body {
   }
 
   .top-section>.sensor-card,
+  .top-section>.sensor-card-slot,
   .top-section>.quality-panel {
     grid-column: span 1;
   }
