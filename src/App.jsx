@@ -4,6 +4,8 @@ import {
   Legend,
   Line,
   LineChart,
+  ReferenceArea,
+  ReferenceDot,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -55,15 +57,36 @@ const UNIT_BY_METRIC = {
   mpu6050_gyro_z: "deg/s",
 };
 
+const OVERVIEW_TREND_METRICS = ["temperature", "humidity", "pressure", "altitude"];
+
 const THRESHOLDS_BY_METRIC = {
-  temperature: { type: "range", green: [18, 30], yellow: [15, 35] },
-  humidity: { type: "range", green: [35, 70], yellow: [25, 80] },
-  pressure: { type: "range", green: [980, 1030], yellow: [960, 1050] },
-  altitude: { type: "max", green: 1500, yellow: 2200 },
-  uv: { type: "max", green: 3, yellow: 6 },
-  mq5: { type: "max", green: 300, yellow: 700 },
-  mics5524: { type: "max", green: 3.5, yellow: 4.5 },
-  rain: { type: "max", green: 1500, yellow: 3000 },
+  temperature: { kind: "range", green: [20, 28], yellow: [15, 35] },
+  humidity: { kind: "range", green: [30, 60], yellow: [20, 70] },
+  pressure: { kind: "range", green: [1000, 1025], yellow: [980, 999] },
+  altitude: { kind: "monitor" },
+  uv: { kind: "upper", green: 2, yellow: 7 },
+  mq5: { kind: "upper", green: 399, yellow: 1000 },
+  co_ppm: { kind: "upper", green: 9, yellow: 50 },
+  ch4_ppm: { kind: "upper", green: 500, yellow: 1000 },
+  h2_ppm: { kind: "upper", green: 100, yellow: 400 },
+  ethanol_ppm: { kind: "upper", green: 100, yellow: 500 },
+  dust_density_ugm3: { kind: "upper", green: 50, yellow: 100 },
+  rain: { kind: "lower", green: 2000, yellow: 1000 },
+  wind_speed_kmh: { kind: "upper", green: 20, yellow: 40 },
+  wind_speed_ms: { kind: "upper", green: 5.5, yellow: 11 },
+  mpu6050_accel_x: { kind: "symmetric", green: 2, yellow: 5 },
+  mpu6050_accel_y: { kind: "symmetric", green: 2, yellow: 5 },
+  mpu6050_accel_z: { kind: "range-with-warning", green: [8.8, 10.8], yellow: [0, 8.7] },
+  mpu6050_gyro_x: { kind: "symmetric", green: 5, yellow: 45 },
+  mpu6050_gyro_y: { kind: "symmetric", green: 5, yellow: 45 },
+  mpu6050_gyro_z: { kind: "symmetric", green: 5, yellow: 45 },
+  mics5524_co_ppm: { kind: "upper", green: 9, yellow: 50 },
+  mics5524_ch4_ppm: { kind: "upper", green: 500, yellow: 1000 },
+  mics5524_h2_ppm: { kind: "upper", green: 100, yellow: 400 },
+  mics5524_ethanol_ppm: { kind: "upper", green: 100, yellow: 500 },
+  mics5524_rs_kohm: { kind: "monitor" },
+  mq5_rs_kohm: { kind: "monitor" },
+  mics5524: { kind: "monitor" },
 };
 
 const STATUS_LABEL = {
@@ -122,11 +145,8 @@ const SENSOR_GROUP_DEFINITIONS = [
   {
     key: "accelerometer",
     title: "Accelerometer",
-    visibilityMetrics: [
-      "mpu6050_accel_x",
-      "mpu6050_accel_y",
-      "mpu6050_accel_z",
-    ],
+    chartMetric: "mpu6050_accel_x",
+    visibilityMetrics: ["mpu6050_accel_x", "mpu6050_accel_y", "mpu6050_accel_z"],
     fields: [
       { label: "X", metric: "mpu6050_accel_x", unit: "g" },
       { label: "Y", metric: "mpu6050_accel_y", unit: "g" },
@@ -136,6 +156,7 @@ const SENSOR_GROUP_DEFINITIONS = [
   {
     key: "gyroscope",
     title: "Gyroscope",
+    chartMetric: "mpu6050_gyro_x",
     visibilityMetrics: ["mpu6050_gyro_x", "mpu6050_gyro_y", "mpu6050_gyro_z"],
     fields: [
       { label: "X", metric: "mpu6050_gyro_x", unit: "deg/s" },
@@ -146,45 +167,22 @@ const SENSOR_GROUP_DEFINITIONS = [
   {
     key: "dust",
     title: "Dust",
+    chartMetric: "dust_density_ugm3",
     visibilityMetrics: ["dust_density_ugm3"],
-    fields: [
-      { label: "Dust density", metric: "dust_density_ugm3", unit: "ug/m3" },
-    ],
+    fields: [{ label: "Dust density", metric: "dust_density_ugm3", unit: "ug/m3" }],
   },
-  // {
-  //   key: "mics5524",
-  //   title: "MICS 5524",
-  //   visibilityMetrics: [
-  //     "mics5524_co_ppm",
-  //     "mics5524_ch4_ppm",
-  //     "mics5524_h2_ppm",
-  //     "mics5524_ethanol_ppm",
-  //     "mics5524_rs_kohm",
-  //   ],
-  //   fields: [
-  //     { label: "CO", metric: "mics5524_co_ppm", unit: "ppm" },
-  //     { label: "CH4", metric: "mics5524_ch4_ppm", unit: "ppm" },
-  //     { label: "H2", metric: "mics5524_h2_ppm", unit: "ppm" },
-  //     { label: "Ethanol", metric: "mics5524_ethanol_ppm", unit: "ppm" },
-  //     { label: "Rs", metric: "mics5524_rs_kohm", unit: "kOhm" },
-  //   ],
-  // },
   {
     key: "mq5",
     title: "MQ5 / LPG",
+    chartMetric: "mq5",
     visibilityMetrics: ["mq5"],
     statusMetrics: ["mq5"],
-    fields: [
-      { label: "LPG ppm", metric: "mq5", unit: "ppm" },
-      {
-        label: "Status",
-        resolve: (reading) => STATUS_LABEL[getStatus("mq5", reading?.mq5)],
-      },
-    ],
+    fields: [{ label: "LPG ppm", metric: "mq5", unit: "ppm" }],
   },
   {
     key: "rain",
     title: "Rain",
+    chartMetric: "rain",
     visibilityMetrics: ["rain", "rain_status"],
     statusMetrics: ["rain"],
     fields: [
@@ -192,15 +190,14 @@ const SENSOR_GROUP_DEFINITIONS = [
       {
         label: "Status",
         metric: "rain_status",
-        resolve: (reading) =>
-          reading?.rain_status ??
-          STATUS_LABEL[getStatus("rain", reading?.rain)],
+        resolve: (reading) => reading?.rain_status ?? STATUS_LABEL[getStatus("rain", reading?.rain)],
       },
     ],
   },
   {
     key: "wind-direction",
     title: "Wind Direction",
+    chartMetric: "wind_direction_deg",
     visibilityMetrics: ["wind_direction_deg", "wind_direction_text"],
     fields: [
       { label: "Angle", metric: "wind_direction_deg", unit: "deg" },
@@ -210,6 +207,7 @@ const SENSOR_GROUP_DEFINITIONS = [
   {
     key: "wind-speed",
     title: "Wind Speed",
+    chartMetric: "wind_speed_kmh",
     visibilityMetrics: ["wind_speed_kmh", "wind_speed_ms"],
     fields: [
       { label: "Speed", metric: "wind_speed_kmh", unit: "km/h" },
@@ -223,6 +221,48 @@ const SENSOR_GROUP_METRICS = new Set(
     group.fields.flatMap((field) => (field.metric ? [field.metric] : [])),
   ),
 );
+
+const ANALYSIS_GROUP_DEFINITIONS = [
+  {
+    key: "environment",
+    title: "Environment",
+    metrics: ["temperature", "humidity", "pressure", "altitude", "uv"],
+  },
+  {
+    key: "air-quality",
+    title: "Air Quality",
+    metrics: [
+      "mq5",
+      "mics5524_co_ppm",
+      "mics5524_ch4_ppm",
+      "mics5524_h2_ppm",
+      "mics5524_ethanol_ppm",
+      "dust_density_ugm3",
+    ],
+  },
+  {
+    key: "weather",
+    title: "Weather",
+    metrics: ["rain", "wind_speed_kmh", "wind_speed_ms", "wind_direction_deg"],
+  },
+  {
+    key: "motion",
+    title: "Motion",
+    metrics: [
+      "mpu6050_accel_x",
+      "mpu6050_accel_y",
+      "mpu6050_accel_z",
+      "mpu6050_gyro_x",
+      "mpu6050_gyro_y",
+      "mpu6050_gyro_z",
+    ],
+  },
+  {
+    key: "signal-state",
+    title: "Signal States",
+    metrics: ["rain_status", "wind_direction_text"],
+  },
+];
 
 function formatMetricName(metric) {
   if (!metric || typeof metric !== "string") {
@@ -244,8 +284,7 @@ function isHiddenStandaloneMetric(metric) {
     return false;
   }
 
-  const normalizedMetric = metric.toLowerCase();
-  return HIDDEN_STANDALONE_METRICS.has(normalizedMetric);
+  return HIDDEN_STANDALONE_METRICS.has(metric.toLowerCase());
 }
 
 function toFixedNumber(value) {
@@ -272,16 +311,196 @@ function formatDisplayValue(value) {
   return String(value);
 }
 
-function combineStatuses(statuses) {
-  if (statuses.includes("red")) {
+function getThresholdConfig(metric) {
+  return THRESHOLDS_BY_METRIC[metric] ?? { kind: "monitor" };
+}
+
+function getStatus(metric, value) {
+  const config = getThresholdConfig(metric);
+  const numeric = Number(value);
+
+  if (!Number.isFinite(numeric) || config.kind === "monitor") {
+    return "unknown";
+  }
+
+  if (config.kind === "range") {
+    const [greenMin, greenMax] = config.green;
+    const [yellowMin, yellowMax] = config.yellow;
+    if (numeric >= greenMin && numeric <= greenMax) return "green";
+    if (numeric >= yellowMin && numeric <= yellowMax) return "yellow";
     return "red";
   }
-  if (statuses.includes("yellow")) {
-    return "yellow";
+
+  if (config.kind === "upper") {
+    if (numeric <= config.green) return "green";
+    if (numeric <= config.yellow) return "yellow";
+    return "red";
   }
-  if (statuses.includes("green")) {
-    return "green";
+
+  if (config.kind === "lower") {
+    if (numeric >= config.green) return "green";
+    if (numeric >= config.yellow) return "yellow";
+    return "red";
   }
+
+  if (config.kind === "symmetric") {
+    const absolute = Math.abs(numeric);
+    if (absolute <= config.green) return "green";
+    if (absolute <= config.yellow) return "yellow";
+    return "red";
+  }
+
+  if (config.kind === "range-with-warning") {
+    const [greenMin, greenMax] = config.green;
+    const [yellowMin, yellowMax] = config.yellow;
+    if (numeric >= greenMin && numeric <= greenMax) return "green";
+    if (numeric >= yellowMin && numeric <= yellowMax) return "yellow";
+    return "red";
+  }
+
+  return "unknown";
+}
+
+function getMetricTimeline(readings, metric) {
+  if (!Array.isArray(readings) || readings.length === 0) {
+    return [];
+  }
+
+  return readings
+    .map((entry, index) => {
+      const value = Number(entry?.[metric]);
+      if (!Number.isFinite(value)) {
+        return null;
+      }
+
+      return { index, value, stamp: Number(entry.timestamp ?? 0) };
+    })
+    .filter(Boolean);
+}
+
+function getMetricSummary(readings, metric) {
+  const timeline = getMetricTimeline(readings, metric);
+
+  if (timeline.length === 0) {
+    return { current: null, minimum: null, maximum: null, average: null, stage: "unknown", timeline };
+  }
+
+  const values = timeline.map((point) => point.value);
+  const current = values[values.length - 1];
+  const minimum = Math.min(...values);
+  const maximum = Math.max(...values);
+  const average = values.reduce((sum, value) => sum + value, 0) / values.length;
+
+  return {
+    current,
+    minimum,
+    maximum,
+    average,
+    stage: getStatus(metric, current),
+    timeline,
+  };
+}
+
+function getChartDomain(timeline, metric) {
+  const values = Array.isArray(timeline)
+    ? timeline.map((point) => Number(point?.value)).filter(Number.isFinite)
+    : [];
+
+  const config = getThresholdConfig(metric);
+  const thresholdValues = [];
+
+  if (config.kind === "range") {
+    thresholdValues.push(...config.green, ...config.yellow);
+  } else if (config.kind === "upper") {
+    thresholdValues.push(0, config.green, config.yellow);
+  } else if (config.kind === "lower") {
+    thresholdValues.push(0, config.yellow, config.green);
+  } else if (config.kind === "symmetric") {
+    thresholdValues.push(-config.yellow, -config.green, config.green, config.yellow);
+  } else if (config.kind === "range-with-warning") {
+    thresholdValues.push(...config.green, ...config.yellow);
+  }
+
+  const combined = [...values, ...thresholdValues].filter(Number.isFinite);
+  if (combined.length === 0) return [0, 1];
+
+  const min = Math.min(...combined);
+  const max = Math.max(...combined);
+  const padding = max === min ? Math.max(1, Math.abs(max) * 0.2 || 1) : (max - min) * 0.12;
+
+  return [min - padding, max + padding];
+}
+
+function getThresholdBands(metric, domain) {
+  const config = getThresholdConfig(metric);
+  const maxDomain = Array.isArray(domain) ? domain[1] : null;
+
+  if (config.kind === "range") {
+    return [
+      { level: "green", y1: config.green[0], y2: config.green[1] },
+      { level: "yellow", y1: config.yellow[0], y2: config.green[0] },
+      { level: "yellow", y1: config.green[1], y2: config.yellow[1] },
+    ].filter((band) => Number.isFinite(band.y1) && Number.isFinite(band.y2));
+  }
+
+  if (config.kind === "upper") {
+    return [
+      { level: "green", y1: 0, y2: config.green },
+      { level: "yellow", y1: config.green, y2: config.yellow },
+    ].filter((band) => Number.isFinite(band.y1) && Number.isFinite(band.y2));
+  }
+
+  if (config.kind === "lower") {
+    return [
+      { level: "yellow", y1: config.yellow, y2: config.green },
+      { level: "green", y1: config.green, y2: Number.isFinite(maxDomain) ? maxDomain : config.green * 1.2 },
+    ].filter((band) => Number.isFinite(band.y1) && Number.isFinite(band.y2));
+  }
+
+  if (config.kind === "symmetric") {
+    return [
+      { level: "yellow", y1: -config.yellow, y2: -config.green },
+      { level: "green", y1: -config.green, y2: config.green },
+      { level: "yellow", y1: config.green, y2: config.yellow },
+    ].filter((band) => Number.isFinite(band.y1) && Number.isFinite(band.y2));
+  }
+
+  if (config.kind === "range-with-warning") {
+    return [
+      { level: "yellow", y1: config.yellow[0], y2: config.green[0] },
+      { level: "green", y1: config.green[0], y2: config.green[1] },
+    ].filter((band) => Number.isFinite(band.y1) && Number.isFinite(band.y2));
+  }
+
+  return [];
+}
+
+function getThresholdSummary(metric) {
+  const config = getThresholdConfig(metric);
+
+  if (config.kind === "range") {
+    return `Safe ${config.green[0]}-${config.green[1]} | Watch ${config.yellow[0]}-${config.green[0]} and ${config.green[1]}-${config.yellow[1]}`;
+  }
+  if (config.kind === "upper") {
+    return `Safe <= ${config.green} | Watch ${config.green + 1}-${config.yellow}`;
+  }
+  if (config.kind === "lower") {
+    return `Safe >= ${config.green} | Watch ${config.yellow}-${config.green}`;
+  }
+  if (config.kind === "symmetric") {
+    return `Safe within ±${config.green} | Watch within ±${config.yellow}`;
+  }
+  if (config.kind === "range-with-warning") {
+    return `Safe ${config.green[0]}-${config.green[1]} | Watch ${config.yellow[0]}-${config.green[0]}`;
+  }
+
+  return "No fixed threshold";
+}
+
+function combineStatuses(statuses) {
+  if (statuses.includes("red")) return "red";
+  if (statuses.includes("yellow")) return "yellow";
+  if (statuses.includes("green")) return "green";
   return "unknown";
 }
 
@@ -303,52 +522,6 @@ function triggerDownload(content, filename, mimeType) {
   URL.revokeObjectURL(url);
 }
 
-function getStatus(metric, value) {
-  const config = THRESHOLDS_BY_METRIC[metric];
-  const numeric = Number(value);
-
-  if (!config || !Number.isFinite(numeric)) {
-    return "unknown";
-  }
-
-  if (config.type === "range") {
-    const [greenMin, greenMax] = config.green;
-    const [yellowMin, yellowMax] = config.yellow;
-
-    if (numeric >= greenMin && numeric <= greenMax) {
-      return "green";
-    }
-    if (numeric >= yellowMin && numeric <= yellowMax) {
-      return "yellow";
-    }
-    return "red";
-  }
-
-  if (config.type === "max") {
-    if (numeric <= config.green) {
-      return "green";
-    }
-    if (numeric <= config.yellow) {
-      return "yellow";
-    }
-    return "red";
-  }
-
-  return "unknown";
-}
-
-function getSparklineData(readings, metric, hours = 6) {
-  const start = subHours(new Date(), hours);
-  return readings
-    .filter((entry) => entry && Number.isFinite(Number(entry[metric])))
-    .filter((entry) => isAfter(fromUnixTime(Number(entry.timestamp)), start))
-    .slice(-40)
-    .map((entry) => ({
-      value: Number(entry[metric]),
-      stamp: Number(entry.timestamp),
-    }));
-}
-
 function computeScore(reading) {
   if (!reading) {
     return { score: 0, label: "No Data" };
@@ -359,25 +532,15 @@ function computeScore(reading) {
   const mq5 = Number(reading.mq5 ?? 0);
   const uv = Number(reading.uv ?? 0);
 
-  const comfort = Math.max(
-    0,
-    100 - Math.abs(temp - 24) * 4 - Math.abs(humidity - 55) * 1.2,
-  );
+  const comfort = Math.max(0, 100 - Math.abs(temp - 24) * 4 - Math.abs(humidity - 55) * 1.2);
   const pollutionPenalty = mq5 > 0 ? Math.min(45, mq5 / 20) : 0;
   const uvPenalty = uv > 0 ? Math.min(20, uv * 1.8) : 0;
-
   const base = Math.max(0, comfort - pollutionPenalty - uvPenalty);
   const score = Math.round((base / 100) * 10);
 
-  if (score >= 8) {
-    return { score, label: "Excellent" };
-  }
-  if (score >= 6) {
-    return { score, label: "Good" };
-  }
-  if (score >= 4) {
-    return { score, label: "Moderate" };
-  }
+  if (score >= 8) return { score, label: "Excellent" };
+  if (score >= 6) return { score, label: "Good" };
+  if (score >= 4) return { score, label: "Moderate" };
   return { score, label: "Poor" };
 }
 
@@ -402,17 +565,8 @@ function aggregateReadings(readings, range, metrics) {
       continue;
     }
 
-    const key =
-      range === "day"
-        ? format(date, "HH:00")
-        : format(startOfDay(date), "MMM d");
-
-    const record = grouped.get(key) ?? {
-      key,
-      count: 0,
-      sums: {},
-      counts: {},
-    };
+    const key = range === "day" ? format(date, "HH:00") : format(startOfDay(date), "MMM d");
+    const record = grouped.get(key) ?? { key, count: 0, sums: {}, counts: {} };
 
     record.count += 1;
 
@@ -431,15 +585,10 @@ function aggregateReadings(readings, range, metrics) {
 
   return [...grouped.values()].map((row) => {
     const point = { label: row.key };
-
     for (const metric of metrics) {
       const metricCount = row.counts[metric] ?? 0;
-      point[metric] =
-        metricCount > 0
-          ? Number((row.sums[metric] / metricCount).toFixed(2))
-          : null;
+      point[metric] = metricCount > 0 ? Number((row.sums[metric] / metricCount).toFixed(2)) : null;
     }
-
     return point;
   });
 }
@@ -450,12 +599,7 @@ function Gauge({ score, label }) {
 
   return (
     <div className="gauge-shell">
-      <div
-        className="gauge-circle"
-        style={{
-          "--gauge-angle": `${angle}deg`,
-        }}
-      >
+      <div className="gauge-circle" style={{ "--gauge-angle": `${angle}deg` }}>
         <div className="gauge-inner">
           <h2>{normalized}</h2>
           <p>{label}</p>
@@ -465,44 +609,98 @@ function Gauge({ score, label }) {
   );
 }
 
-function SensorCard({ metric, value, sparklineData, status }) {
+function MetricSparkline({ metric, timeline, status }) {
+  if (!timeline || timeline.length === 0) {
+    return <p className="sparkline-empty">No trend data yet</p>;
+  }
+
+  const domain = getChartDomain(timeline, metric);
+  const bands = getThresholdBands(metric, domain);
+  const latestPoint = timeline[timeline.length - 1];
+
+  return (
+    <div className="sparkline-wrap" aria-label={`${metric} trend graph`}>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={timeline}>
+          <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
+          <XAxis dataKey="index" type="number" hide domain={["dataMin", "dataMax"]} />
+          <YAxis hide domain={domain} width={0} />
+          <Tooltip
+            cursor={{ stroke: "#b8c6e3", strokeDasharray: "4 4" }}
+            formatter={(value) => [toFixedNumber(value), formatMetricName(metric)]}
+            labelFormatter={(_, payload) => {
+              const first = payload?.[0]?.payload;
+              if (!first) {
+                return "";
+              }
+              return first.stamp ? format(fromUnixTime(first.stamp), "PPpp") : `Point ${first.index + 1}`;
+            }}
+          />
+          {bands.map((band) => (
+            <ReferenceArea
+              key={`${metric}-${band.level}-${band.y1}-${band.y2}`}
+              y1={band.y1}
+              y2={band.y2}
+              fill={STATUS_COLOR[band.level]}
+              fillOpacity={band.level === "green" ? 0.08 : 0.12}
+              strokeOpacity={0}
+            />
+          ))}
+          <Line
+            dataKey="value"
+            stroke={STATUS_COLOR[status]}
+            strokeWidth={2.2}
+            dot={false}
+            isAnimationActive={false}
+            connectNulls
+          />
+          <ReferenceDot
+            x={latestPoint.index}
+            y={latestPoint.value}
+            r={3.75}
+            fill={STATUS_COLOR[status]}
+            stroke="#081a3b"
+            strokeWidth={1.25}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+function SensorCard({ metric, summary }) {
+  const value = summary?.current;
+  const minimum = summary?.minimum;
+  const maximum = summary?.maximum;
+  const status = summary?.stage ?? "unknown";
+
   return (
     <article className="sensor-card">
       <div className="sensor-head-row">
         <p className="sensor-title">{formatMetricName(metric)}</p>
-        <span className={`status-pill status-${status}`}>
-          {STATUS_LABEL[status]}
-        </span>
+        <span className={`status-pill status-${status}`}>{STATUS_LABEL[status]}</span>
       </div>
+      <p className="sensor-threshold-text">{getThresholdSummary(metric)}</p>
       <div className="sensor-value-row">
-        <strong>{toFixedNumber(value)}</strong>
+        <strong>{formatDisplayValue(value)}</strong>
         <span>{UNIT_BY_METRIC[metric] ?? ""}</span>
       </div>
-      <div className="sparkline-wrap" aria-label={`${metric} sparkline`}>
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={sparklineData}>
-            <Line
-              dataKey="value"
-              stroke={STATUS_COLOR[status]}
-              strokeWidth={2}
-              dot={false}
-              isAnimationActive={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+      <MetricSparkline metric={metric} timeline={summary?.timeline ?? []} status={status} />
+      <div className="sensor-summary-row">
+        <span><strong>Low</strong> {formatDisplayValue(minimum)}</span>
+        <span><strong>Current</strong> {formatDisplayValue(value)}</span>
+        <span><strong>High</strong> {formatDisplayValue(maximum)}</span>
       </div>
     </article>
   );
 }
 
-function SensorGroupCard({ title, rows, status }) {
+function SensorGroupCard({ title, rows, status, chartMetric, summary }) {
   return (
     <article className="sensor-card sensor-card-group">
       <div className="sensor-head-row">
         <p className="sensor-title">{title}</p>
-        <span className={`status-pill status-${status}`}>
-          {STATUS_LABEL[status]}
-        </span>
+        <span className={`status-pill status-${status}`}>{STATUS_LABEL[status]}</span>
       </div>
       <div className="sensor-group-list">
         {rows.map((row) => (
@@ -515,23 +713,42 @@ function SensorGroupCard({ title, rows, status }) {
           </div>
         ))}
       </div>
+      {chartMetric && summary ? (
+        <>
+          <p className="sensor-threshold-text">{getThresholdSummary(chartMetric)}</p>
+          <MetricSparkline metric={chartMetric} timeline={summary.timeline} status={status} />
+          <div className="sensor-summary-row">
+            <span><strong>Low</strong> {formatDisplayValue(summary.minimum)}</span>
+            <span><strong>Current</strong> {formatDisplayValue(summary.current)}</span>
+            <span><strong>High</strong> {formatDisplayValue(summary.maximum)}</span>
+          </div>
+        </>
+      ) : null}
+    </article>
+  );
+}
+
+function SignalStateCard({ metric, value }) {
+  return (
+    <article className="sensor-card sensor-card-signal">
+      <div className="sensor-head-row">
+        <p className="sensor-title">{formatMetricName(metric)}</p>
+        <span className="status-pill status-unknown">Signal</span>
+      </div>
+      <p className="sensor-threshold-text">Non-numeric live signal</p>
+      <div className="sensor-value-row">
+        <strong>{formatDisplayValue(value)}</strong>
+        <span>state</span>
+      </div>
     </article>
   );
 }
 
 function normalizeAuthError(error) {
   const code = String(error?.code ?? "");
-
-  if (code.includes("auth/invalid-credential")) {
-    return "Invalid email or password.";
-  }
-  if (code.includes("auth/user-disabled")) {
-    return "This account has been disabled.";
-  }
-  if (code.includes("auth/too-many-requests")) {
-    return "Too many attempts. Please try again later.";
-  }
-
+  if (code.includes("auth/invalid-credential")) return "Invalid email or password.";
+  if (code.includes("auth/user-disabled")) return "This account has been disabled.";
+  if (code.includes("auth/too-many-requests")) return "Too many attempts. Please try again later.";
   return error?.message || "Authentication failed.";
 }
 
@@ -544,6 +761,7 @@ function App() {
   const [authLoading, setAuthLoading] = useState(false);
   const [authUser, setAuthUser] = useState(null);
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
+  const [activePage, setActivePage] = useState("overview");
   const [sensorCardOrder, setSensorCardOrder] = useState([]);
   const [draggingCardKey, setDraggingCardKey] = useState("");
   const [dragOverCardKey, setDragOverCardKey] = useState("");
@@ -581,15 +799,11 @@ function App() {
       setSource("local-export");
       getFallbackReadings()
         .then((fallback) => {
-          if (!mounted) {
-            return;
-          }
+          if (!mounted) return;
           setReadings(fallback);
         })
         .catch((fallbackError) => {
-          if (!mounted) {
-            return;
-          }
+          if (!mounted) return;
           setError(fallbackError.message);
         });
 
@@ -601,19 +815,13 @@ function App() {
     const live = subscribeToLiveReadings(
       authUser.uid,
       (liveReadings) => {
-        if (!mounted) {
-          return;
-        }
-
+        if (!mounted) return;
         setError("");
         setReadings(liveReadings);
         setSource("firebase-live");
       },
       async (firebaseError) => {
-        if (!mounted) {
-          return;
-        }
-
+        if (!mounted) return;
         setError(firebaseError.message);
         setSource("local-export");
         try {
@@ -632,16 +840,12 @@ function App() {
     if (!live.connected) {
       getFallbackReadings()
         .then((fallback) => {
-          if (!mounted) {
-            return;
-          }
+          if (!mounted) return;
           setReadings(fallback);
           setSource("local-export");
         })
         .catch((fallbackError) => {
-          if (mounted) {
-            setError(fallbackError.message);
-          }
+          if (mounted) setError(fallbackError.message);
         });
     }
 
@@ -654,59 +858,30 @@ function App() {
   const latest = readings[readings.length - 1];
   const quality = useMemo(() => computeScore(latest), [latest]);
 
-  const trendMetrics = useMemo(() => {
-    if (!readings || readings.length === 0) {
-      return [];
-    }
-
-    const metrics = new Set();
-
-    for (const reading of readings) {
-      for (const [metric, value] of Object.entries(reading)) {
-        if (NON_TREND_METRICS.has(metric)) {
-          continue;
-        }
-
-        const numericValue = Number(value);
-        if (Number.isFinite(numericValue)) {
-          metrics.add(metric);
-        }
-      }
-    }
-
-    return [...metrics].sort((a, b) => a.localeCompare(b));
-  }, [readings]);
-
   const dailySeries = useMemo(
-    () => aggregateReadings(readings, "day", trendMetrics),
-    [readings, trendMetrics],
+    () => aggregateReadings(readings, "day", OVERVIEW_TREND_METRICS),
+    [readings],
   );
   const weeklySeries = useMemo(
-    () => aggregateReadings(readings, "week", trendMetrics),
-    [readings, trendMetrics],
+    () => aggregateReadings(readings, "week", OVERVIEW_TREND_METRICS),
+    [readings],
   );
 
   const liveTrendData = useMemo(() => {
-    if (!readings || readings.length === 0 || trendMetrics.length === 0) {
+    if (!readings.length) {
       return [];
     }
 
     const lastHour = subHours(new Date(), 1);
 
     return readings
-      .filter(
-        (entry) =>
-          entry.timestamp &&
-          isAfter(fromUnixTime(Number(entry.timestamp)), lastHour),
-      )
+      .filter((entry) => entry.timestamp && isAfter(fromUnixTime(Number(entry.timestamp)), lastHour))
       .map((entry) => {
         const point = {
-          timestamp: entry.timestamp
-            ? format(fromUnixTime(Number(entry.timestamp)), "HH:mm:ss")
-            : "",
+          timestamp: entry.timestamp ? format(fromUnixTime(Number(entry.timestamp)), "HH:mm:ss") : "",
         };
 
-        for (const metric of trendMetrics) {
+        for (const metric of OVERVIEW_TREND_METRICS) {
           const numericValue = Number(entry[metric]);
           point[metric] = Number.isFinite(numericValue) ? numericValue : null;
         }
@@ -714,7 +889,7 @@ function App() {
         return point;
       })
       .slice(-50);
-  }, [readings, trendMetrics]);
+  }, [readings]);
 
   const sensorCards = useMemo(() => {
     if (!latest) {
@@ -740,12 +915,19 @@ function App() {
         .map((metric) => getStatus(metric, latest[metric]))
         .filter(Boolean);
 
+      const chartMetric =
+        group.chartMetric ??
+        group.visibilityMetrics.find((metric) => Number.isFinite(Number(latest[metric]))) ??
+        null;
+
       return {
         kind: "group",
         key: group.key,
         title: group.title,
         status: combineStatuses(statusSource),
         rows,
+        chartMetric,
+        summary: chartMetric ? getMetricSummary(readings, chartMetric) : null,
       };
     }).filter(Boolean);
 
@@ -757,17 +939,41 @@ function App() {
           !isHiddenStandaloneMetric(metric),
       )
       .sort(([a], [b]) => a.localeCompare(b))
-      .map(([metric, value]) => ({
+      .map(([metric]) => ({
         kind: "single",
         key: metric,
         metric,
-        value,
-        status: getStatus(metric, value),
-        sparklineData: getSparklineData(readings, metric),
+        summary: getMetricSummary(readings, metric),
       }));
 
     return [...groupedCards, ...standaloneCards];
   }, [latest, readings]);
+
+  const analysisSections = useMemo(
+    () =>
+      ANALYSIS_GROUP_DEFINITIONS.map((group) => ({
+        ...group,
+        items: group.metrics
+          .map((metric) => {
+            const summary = getMetricSummary(readings, metric);
+            const latestValue = latest?.[metric];
+
+            if (summary.timeline.length === 0 && latestValue === undefined) {
+              return null;
+            }
+
+            return {
+              metric,
+              summary,
+              latestValue,
+              status: getStatus(metric, summary.current ?? latestValue),
+              isNumeric: summary.timeline.length > 0,
+            };
+          })
+          .filter(Boolean),
+      })),
+    [latest, readings],
+  );
 
   const alertSummary = useMemo(() => {
     const red = sensorCards.filter((item) => item.status === "red");
@@ -777,7 +983,6 @@ function App() {
 
   useEffect(() => {
     const currentKeys = sensorCards.map((card) => card.key);
-
     setSensorCardOrder((previous) => {
       const kept = previous.filter((key) => currentKeys.includes(key));
       const added = currentKeys.filter((key) => !kept.includes(key));
@@ -791,9 +996,7 @@ function App() {
     }
 
     const cardByKey = new Map(sensorCards.map((card) => [card.key, card]));
-    const arranged = sensorCardOrder
-      .map((key) => cardByKey.get(key))
-      .filter(Boolean);
+    const arranged = sensorCardOrder.map((key) => cardByKey.get(key)).filter(Boolean);
 
     if (arranged.length !== sensorCards.length) {
       return sensorCards;
@@ -819,8 +1022,7 @@ function App() {
   const handleCardDrop = (event, targetKey) => {
     event.preventDefault();
 
-    const sourceKey =
-      draggingCardKey || event.dataTransfer.getData("text/plain");
+    const sourceKey = draggingCardKey || event.dataTransfer.getData("text/plain");
     if (!sourceKey || sourceKey === targetKey) {
       setDragOverCardKey("");
       setDraggingCardKey("");
@@ -828,10 +1030,7 @@ function App() {
     }
 
     setSensorCardOrder((previous) => {
-      const orderedKeys =
-        previous.length > 0
-          ? [...previous]
-          : sensorCards.map((card) => card.key);
+      const orderedKeys = previous.length > 0 ? [...previous] : sensorCards.map((card) => card.key);
       const sourceIndex = orderedKeys.indexOf(sourceKey);
       const targetIndex = orderedKeys.indexOf(targetKey);
 
@@ -863,11 +1062,7 @@ function App() {
       return;
     }
 
-    const signature = alertSummary.red
-      .map((item) => item.metric || item.key)
-      .sort()
-      .join("|");
-
+    const signature = alertSummary.red.map((item) => item.metric || item.key).sort().join("|");
     if (!signature || signature === lastRedAlertRef.current) {
       return;
     }
@@ -904,7 +1099,6 @@ function App() {
   const handleSignOut = async () => {
     setAuthError("");
     setAuthLoading(true);
-
     try {
       await logoutCurrentUser();
     } catch (signOutError) {
@@ -930,22 +1124,17 @@ function App() {
       return;
     }
 
-    const metrics = [
-      ...new Set(readings.flatMap((entry) => Object.keys(entry))),
-    ].sort();
+    const metrics = [...new Set(readings.flatMap((entry) => Object.keys(entry)))].sort();
     const headers = ["timestamp_iso", ...metrics];
 
     const rows = readings.map((entry) => {
-      const iso = entry.timestamp
-        ? format(fromUnixTime(Number(entry.timestamp)), "yyyy-MM-dd HH:mm:ss")
-        : "";
+      const iso = entry.timestamp ? format(fromUnixTime(Number(entry.timestamp)), "yyyy-MM-dd HH:mm:ss") : "";
       const values = metrics.map((field) => csvEscape(entry[field] ?? ""));
       return [csvEscape(iso), ...values].join(",");
     });
 
-    const csvContent = `${headers.join(",")}\n${rows.join("\n")}`;
     triggerDownload(
-      csvContent,
+      `${headers.join(",")}\n${rows.join("\n")}`,
       `sensor-report-${Date.now()}.csv`,
       "text/csv;charset=utf-8;",
     );
@@ -969,44 +1158,21 @@ function App() {
       doc.setFontSize(18);
       doc.text("Air Quality Sensor Report", 14, 16);
       doc.setFontSize(11);
-      doc.text(
-        `Generated: ${format(new Date(), "PPpp")} | Source: ${source}`,
-        14,
-        24,
-      );
-      doc.text(
-        `Critical: ${alertSummary.red.length} | Watch: ${alertSummary.yellow.length}`,
-        14,
-        31,
-      );
-
-      const headers = [
-        "Timestamp",
-        "Temperature",
-        "Humidity",
-        "Pressure",
-        "UV",
-        "MQ5",
-      ];
-      const tableBody = previewRows.map((entry) => [
-        entry.timestamp
-          ? format(fromUnixTime(Number(entry.timestamp)), "PPpp")
-          : "--",
-        toFixedNumber(entry.temperature),
-        toFixedNumber(entry.humidity),
-        toFixedNumber(entry.pressure),
-        toFixedNumber(entry.uv),
-        toFixedNumber(entry.mq5),
-      ]);
+      doc.text(`Generated: ${format(new Date(), "PPpp")} | Source: ${source}`, 14, 24);
+      doc.text(`Critical: ${alertSummary.red.length} | Watch: ${alertSummary.yellow.length}`, 14, 31);
 
       autoTable(doc, {
-        head: [headers],
-        body: tableBody,
+        head: [["Timestamp", "Temperature", "Humidity", "Pressure", "UV", "MQ5"]],
+        body: previewRows.map((entry) => [
+          entry.timestamp ? format(fromUnixTime(Number(entry.timestamp)), "PPpp") : "--",
+          toFixedNumber(entry.temperature),
+          toFixedNumber(entry.humidity),
+          toFixedNumber(entry.pressure),
+          toFixedNumber(entry.uv),
+          toFixedNumber(entry.mq5),
+        ]),
         startY: 38,
-        styles: {
-          fontSize: 9,
-          cellPadding: 2,
-        },
+        styles: { fontSize: 9, cellPadding: 2 },
       });
 
       doc.save(`sensor-report-${Date.now()}.pdf`);
@@ -1036,11 +1202,7 @@ function App() {
               : "Checking authentication..."}
           </p>
         </div>
-        {latest?.timestamp ? (
-          <span>
-            Last update: {format(fromUnixTime(latest.timestamp), "PPpp")}
-          </span>
-        ) : null}
+        {latest?.timestamp ? <span>Last update: {format(fromUnixTime(latest.timestamp), "PPpp")}</span> : null}
       </header>
 
       {!authUser ? (
@@ -1054,10 +1216,7 @@ function App() {
               placeholder="Email"
               value={loginForm.email}
               onChange={(event) =>
-                setLoginForm((current) => ({
-                  ...current,
-                  email: event.target.value,
-                }))
+                setLoginForm((current) => ({ ...current, email: event.target.value }))
               }
               required
             />
@@ -1068,10 +1227,7 @@ function App() {
               placeholder="Password"
               value={loginForm.password}
               onChange={(event) =>
-                setLoginForm((current) => ({
-                  ...current,
-                  password: event.target.value,
-                }))
+                setLoginForm((current) => ({ ...current, password: event.target.value }))
               }
               required
             />
@@ -1084,25 +1240,31 @@ function App() {
 
       <section className="toolbar">
         <div className="toolbar-group">
-          <button type="button" onClick={exportCsv}>
-            Export CSV
+          <button type="button" onClick={exportCsv}>Export CSV</button>
+          <button type="button" onClick={exportPdf}>Export PDF</button>
+        </div>
+        <div className="toolbar-group">
+          <button
+            type="button"
+            className={activePage === "overview" ? "toolbar-button-active" : ""}
+            onClick={() => setActivePage("overview")}
+          >
+            Overview
           </button>
-          <button type="button" onClick={exportPdf}>
-            Export PDF
+          <button
+            type="button"
+            className={activePage === "analysis" ? "toolbar-button-active" : ""}
+            onClick={() => setActivePage("analysis")}
+          >
+            Analytics
           </button>
         </div>
         <div className="toolbar-group">
           <button type="button" onClick={requestNotifications}>
-            {notificationPermission === "granted"
-              ? "Notifications Enabled"
-              : "Enable Notifications"}
+            {notificationPermission === "granted" ? "Notifications Enabled" : "Enable Notifications"}
           </button>
           {authUser ? (
-            <button
-              type="button"
-              onClick={handleSignOut}
-              disabled={authLoading}
-            >
+            <button type="button" onClick={handleSignOut} disabled={authLoading}>
               {authLoading ? "Please wait..." : "Sign Out"}
             </button>
           ) : null}
@@ -1116,145 +1278,167 @@ function App() {
       <section className="alerts-panel">
         <h3>Alert Status</h3>
         <div className="alerts-row">
-          <span className="alert-chip chip-red">
-            Critical: {alertSummary.red.length}
-          </span>
-          <span className="alert-chip chip-yellow">
-            Watch: {alertSummary.yellow.length}
-          </span>
+          <span className="alert-chip chip-red">Critical: {alertSummary.red.length}</span>
+          <span className="alert-chip chip-yellow">Watch: {alertSummary.yellow.length}</span>
           <span className="alert-chip chip-green">
-            Normal:{" "}
-            {sensorCards.length -
-              alertSummary.red.length -
-              alertSummary.yellow.length}
+            Normal: {sensorCards.length - alertSummary.red.length - alertSummary.yellow.length}
           </span>
         </div>
       </section>
 
-      <section className="top-section">
-        <article className="quality-panel">
-          <h3>Real-Time Quality Index</h3>
-          <Gauge score={quality.score} label={quality.label} />
-        </article>
+      {activePage === "overview" ? (
+        <>
+          <section className="top-section">
+            <article className="quality-panel">
+              <h3>Real-Time Quality Index</h3>
+              <Gauge score={quality.score} label={quality.label} />
+            </article>
 
-        {orderedSensorCards.map((card) => (
-          <div
-            key={card.key}
-            className={`sensor-card-slot${draggingCardKey === card.key ? " sensor-card-dragging" : ""}${dragOverCardKey === card.key ? " sensor-card-drop-target" : ""}`}
-            draggable
-            onDragStart={(event) => handleCardDragStart(event, card.key)}
-            onDragOver={(event) => handleCardDragOver(event, card.key)}
-            onDrop={(event) => handleCardDrop(event, card.key)}
-            onDragEnd={handleCardDragEnd}
-          >
-            {card.kind === "group" ? (
-              <SensorGroupCard
-                title={card.title}
-                status={card.status}
-                rows={card.rows}
-              />
-            ) : (
-              <SensorCard
-                metric={card.metric}
-                value={card.value}
-                status={card.status}
-                sparklineData={card.sparklineData}
-              />
-            )}
+            {orderedSensorCards.map((card) => (
+              <div
+                key={card.key}
+                className={`sensor-card-slot${draggingCardKey === card.key ? " sensor-card-dragging" : ""}${dragOverCardKey === card.key ? " sensor-card-drop-target" : ""}`}
+                draggable
+                onDragStart={(event) => handleCardDragStart(event, card.key)}
+                onDragOver={(event) => handleCardDragOver(event, card.key)}
+                onDrop={(event) => handleCardDrop(event, card.key)}
+                onDragEnd={handleCardDragEnd}
+              >
+                {card.kind === "group" ? (
+                  <SensorGroupCard
+                    title={card.title}
+                    status={card.status}
+                    rows={card.rows}
+                    chartMetric={card.chartMetric}
+                    summary={card.summary}
+                  />
+                ) : (
+                  <SensorCard metric={card.metric} summary={card.summary} />
+                )}
+              </div>
+            ))}
+          </section>
+
+          <section className="charts-grid">
+            <article className="chart-card chart-card-wide">
+              <h3>Live Trend (Last 1h)</h3>
+              {liveTrendData.length === 0 ? (
+                <p className="chart-empty">Insufficient real-time data available</p>
+              ) : (
+                <ResponsiveContainer width="100%" height={280}>
+                  <LineChart data={liveTrendData}>
+                    <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
+                    <XAxis dataKey="timestamp" stroke="#b8c6e3" />
+                    <YAxis stroke="#b8c6e3" />
+                    <Tooltip />
+                    <Legend />
+                    {OVERVIEW_TREND_METRICS.map((metric, index) => (
+                      <Line
+                        key={`live-${metric}`}
+                        dataKey={metric}
+                        stroke={TREND_COLOR_PALETTE[index % TREND_COLOR_PALETTE.length]}
+                        strokeWidth={2}
+                        dot={false}
+                        connectNulls
+                        name={`${formatMetricName(metric)}${UNIT_BY_METRIC[metric] ? ` (${UNIT_BY_METRIC[metric]})` : ""}`}
+                      />
+                    ))}
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
+            </article>
+
+            <article className="chart-card">
+              <h3>Daily Trend (24h)</h3>
+              {dailySeries.length === 0 ? (
+                <p className="chart-empty">Insufficient data available</p>
+              ) : (
+                <ResponsiveContainer width="100%" height={260}>
+                  <LineChart data={dailySeries}>
+                    <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
+                    <XAxis dataKey="label" stroke="#b8c6e3" />
+                    <YAxis stroke="#b8c6e3" />
+                    <Tooltip />
+                    <Legend />
+                    {OVERVIEW_TREND_METRICS.map((metric, index) => (
+                      <Line
+                        key={`day-${metric}`}
+                        dataKey={metric}
+                        stroke={TREND_COLOR_PALETTE[index % TREND_COLOR_PALETTE.length]}
+                        strokeWidth={2}
+                        dot={false}
+                        connectNulls
+                        name={`${formatMetricName(metric)}${UNIT_BY_METRIC[metric] ? ` (${UNIT_BY_METRIC[metric]})` : ""}`}
+                      />
+                    ))}
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
+            </article>
+
+            <article className="chart-card">
+              <h3>Weekly Trend (7d)</h3>
+              {weeklySeries.length === 0 ? (
+                <p className="chart-empty">Insufficient data available</p>
+              ) : (
+                <ResponsiveContainer width="100%" height={260}>
+                  <LineChart data={weeklySeries}>
+                    <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
+                    <XAxis dataKey="label" stroke="#b8c6e3" />
+                    <YAxis stroke="#b8c6e3" />
+                    <Tooltip />
+                    <Legend />
+                    {OVERVIEW_TREND_METRICS.map((metric, index) => (
+                      <Line
+                        key={`week-${metric}`}
+                        dataKey={metric}
+                        stroke={TREND_COLOR_PALETTE[index % TREND_COLOR_PALETTE.length]}
+                        strokeWidth={2}
+                        dot={false}
+                        connectNulls
+                        name={`${formatMetricName(metric)}${UNIT_BY_METRIC[metric] ? ` (${UNIT_BY_METRIC[metric]})` : ""}`}
+                      />
+                    ))}
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
+            </article>
+          </section>
+        </>
+      ) : (
+        <section className="analysis-page">
+          <div className="analysis-header">
+            <div>
+              <h2>Sensor Analytics</h2>
+              <p>Detailed per-sensor graphs grouped by system.</p>
+            </div>
+            <div className="analysis-header-meta">
+              <span className="live-pill">{analysisSections.length} groups</span>
+              <span className="live-pill">{readings.length} readings</span>
+            </div>
           </div>
-        ))}
-      </section>
 
-      <section className="charts-grid">
-        <article className="chart-card chart-card-wide">
-          <h3>Live Trend (Last 1h)</h3>
-          {liveTrendData.length === 0 ? (
-            <p className="chart-empty">Insufficient real-time data available</p>
-          ) : (
-            <ResponsiveContainer width="100%" height={280}>
-              <LineChart data={liveTrendData}>
-                <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
-                <XAxis dataKey="timestamp" stroke="#b8c6e3" />
-                <YAxis stroke="#b8c6e3" />
-                <Tooltip />
-                <Legend />
-                {trendMetrics.map((metric, index) => (
-                  <Line
-                    key={`live-${metric}`}
-                    dataKey={metric}
-                    stroke={
-                      TREND_COLOR_PALETTE[index % TREND_COLOR_PALETTE.length]
-                    }
-                    strokeWidth={2}
-                    dot={false}
-                    connectNulls
-                    name={`${formatMetricName(metric)}${UNIT_BY_METRIC[metric] ? ` (${UNIT_BY_METRIC[metric]})` : ""}`}
-                  />
-                ))}
-              </LineChart>
-            </ResponsiveContainer>
-          )}
-        </article>
-        <article className="chart-card">
-          <h3>Daily Trend (24h)</h3>
-          {dailySeries.length === 0 ? (
-            <p className="chart-empty">Insufficient data available</p>
-          ) : (
-            <ResponsiveContainer width="100%" height={260}>
-              <LineChart data={dailySeries}>
-                <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
-                <XAxis dataKey="label" stroke="#b8c6e3" />
-                <YAxis stroke="#b8c6e3" />
-                <Tooltip />
-                <Legend />
-                {trendMetrics.map((metric, index) => (
-                  <Line
-                    key={`day-${metric}`}
-                    dataKey={metric}
-                    stroke={
-                      TREND_COLOR_PALETTE[index % TREND_COLOR_PALETTE.length]
-                    }
-                    strokeWidth={2}
-                    dot={false}
-                    connectNulls
-                    name={`${formatMetricName(metric)}${UNIT_BY_METRIC[metric] ? ` (${UNIT_BY_METRIC[metric]})` : ""}`}
-                  />
-                ))}
-              </LineChart>
-            </ResponsiveContainer>
-          )}
-        </article>
-
-        <article className="chart-card">
-          <h3>Weekly Trend (7d)</h3>
-          {weeklySeries.length === 0 ? (
-            <p className="chart-empty">Insufficient data available</p>
-          ) : (
-            <ResponsiveContainer width="100%" height={260}>
-              <LineChart data={weeklySeries}>
-                <CartesianGrid strokeDasharray="2 4" stroke="#2d4473" />
-                <XAxis dataKey="label" stroke="#b8c6e3" />
-                <YAxis stroke="#b8c6e3" />
-                <Tooltip />
-                <Legend />
-                {trendMetrics.map((metric, index) => (
-                  <Line
-                    key={`week-${metric}`}
-                    dataKey={metric}
-                    stroke={
-                      TREND_COLOR_PALETTE[index % TREND_COLOR_PALETTE.length]
-                    }
-                    strokeWidth={2}
-                    dot={false}
-                    connectNulls
-                    name={`${formatMetricName(metric)}${UNIT_BY_METRIC[metric] ? ` (${UNIT_BY_METRIC[metric]})` : ""}`}
-                  />
-                ))}
-              </LineChart>
-            </ResponsiveContainer>
-          )}
-        </article>
-      </section>
+          <div className="analysis-grid">
+            {analysisSections.map((group) => (
+              <article className="analysis-group-card" key={group.key}>
+                <div className="analysis-group-head">
+                  <h3>{group.title}</h3>
+                  <span>{group.items.length} sensors</span>
+                </div>
+                <div className="analysis-group-grid">
+                  {group.items.map((item) =>
+                    item.isNumeric ? (
+                      <SensorCard key={item.metric} metric={item.metric} summary={item.summary} />
+                    ) : (
+                      <SignalStateCard key={item.metric} metric={item.metric} value={item.latestValue} />
+                    ),
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   );
 }
