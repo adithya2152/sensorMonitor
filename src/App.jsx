@@ -125,6 +125,7 @@ const HIDDEN_STANDALONE_METRICS = new Set([
   "mq5_rs",
   "dust_voltage_v",
   "wind_voltage_v",
+  "date"
 ]);
 
 const NON_TREND_METRICS = new Set([
